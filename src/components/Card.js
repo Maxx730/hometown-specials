@@ -9,6 +9,7 @@ import Styles from '../../lib/Styles';
 
 //Import Components
 import Deals from './Deals';
+import Submit from './Submit';
 
 class Card extends React.Component {
     constructor(props) {
@@ -16,7 +17,8 @@ class Card extends React.Component {
 
         this.state = {
             top: new Animated.Value(Dimensions.get('window').height),
-            showMap: true
+            showMap: this.props.showMapDefault,
+            showSubmit: true
         }
     }
 
@@ -32,7 +34,8 @@ class Card extends React.Component {
 
         return(
             <Animated.View style={[Styles.Card,{
-                top: this.state.top
+                top: this.state.top,
+                width: Dimensions.get('window').width
             }]}>
                 <View style={[Styles.LocationHead]}>
                     <Text style={[Styles.LocationTitle]}>
@@ -46,19 +49,24 @@ class Card extends React.Component {
                             this.props.onClose && this.props.onClose(null);
                         });
                     }}>
-                        <Feather name={'x'} size={24}/>
+                        <Feather name={'x'} color={'white'} size={24}/>
                     </TouchableOpacity>
                 </View>
-                <View>
+                <View style={[{
+                    flex: 1
+                }]}>
                     <View>
                         <TouchableOpacity onPress={() => {
                             this.setState({
                                 showMap: !this.state.showMap
                             });
                         }} style={[this.state.showMap ? Styles.HideMap : Styles.ShowMap]}>
-                            <Text>
+                            <Text style={[{
+                                color: 'white',
+                                textAlignVertical: 'center'
+                            }]}>
                                 {
-                                    !this.state.showMap ? 'Show Map' : 'Hide Map'
+                                    !this.state.showMap ? 'Tap to Show Map' : 'Hide Map'
                                 }
                             </Text>
                         </TouchableOpacity>
@@ -84,25 +92,23 @@ class Card extends React.Component {
                     <View style={[Styles.Location]}>
                         <Text style={[{
                             fontWeight: 'bold',
-                            fontSize: 18
+                            fontSize: 18,
+                            color: 'white'
                         }]}>{location.location.street}, </Text>
                         <Text style={[{
                             fontWeight: 'bold',
-                            fontSize: 18
+                            fontSize: 18,
+                            color: 'white'
                         }]}>{location.location.city}, </Text>
                         <Text style={[{
                             fontWeight: 'bold',
-                            fontSize: 18
+                            fontSize: 18,
+                            color: 'white'
                         }]}>{location.location.state}</Text>
                     </View>
-                    <View>
-                        <TouchableOpacity style={[Styles.SubmitLocationSpecial]}>
-                            <Text style={[{
-                                textAlign: 'center'
-                            }]}>Submit a Special</Text>
-                        </TouchableOpacity>
-                    </View>
-                    <View>
+                    <View style={[{
+                        flex: 1
+                    }]}>
                         <Deals deals={location.deals}/>
                     </View>
                 </View>

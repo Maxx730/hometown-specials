@@ -1,5 +1,6 @@
 import React from 'react';
-import { View, Text, FlatList, TouchableOpacity } from 'react-native';
+import { View, Text, FlatList, TouchableOpacity, Platform } from 'react-native';
+import { Event } from 'expo-analytics';
 
 //Import Styles
 import Styles from '../../lib/Styles';
@@ -11,23 +12,53 @@ class Locations extends React.Component {
     render() {
         const locations = _getDealsForDay(this.props.data,new Date().getDay());
         return(
-            <FlatList data={locations} renderItem={({item,index}) => {
+            <FlatList onScroll={(event) => {
+               this.props.setScrollPosition(event.nativeEvent.contentOffset.y)
+            }} data={locations} renderItem={({item,index}) => {
                 return(
                     <TouchableOpacity onPress={() => {
+                        this.props.analytics.event(new Event(`${item.name}`, 'Open', `${item.name}`))
+                        .then(() => {})
+                        .catch(e => console.log(e.message));
+
                         this.props.setFocused && this.props.setFocused(item)
                     }} style={[Styles.LocationItem,index === 0 && Styles.ItemTop,index === this.props.data.length - 1 && Styles.ItemBottom]}>
-                        <Text style={[{
-                            flex: 1,
-                            textAlignVertical: 'center',
-                            paddingTop: 6
+                        <View style={[{
+                            flex: 1
                         }]}>
-                            {item.name}
-                        </Text>
-                        <Text style={[Styles.DealCount]}>
-                            {
-                                _countDeals(item.deals,new Date().getDay())
-                            }
-                        </Text>
+                            <Text style={[{
+                                flex: 1,
+                                textAlignVertical: 'center',
+                                paddingTop: Platform.OS === 'ios' ? 6 : 0,
+                                fontWeight: 'bold',
+                                fontSize: 18
+                            }]}>
+                                {item.name}
+                            </Text>
+                            <Text style={[{
+                                flex: 1,
+                                textAlignVertical: 'center',
+                                fontSize: 12,
+                                color: '#808080'
+                            }]}>
+                                {`${item.location.street} ${item.location.city}, ${item.location.state}`}
+                            </Text>
+                        </View>
+                        <View style={[{
+                            borderRadius: 32,
+                            backgroundColor: '#7AC149',
+                            borderRadius: 32,
+                            width: 32,
+                            height: 32,
+                            alignSelf: 'center',
+                            justifyContent: 'center'
+                        }]}>
+                            <Text style={[Styles.DealCount]}>
+                                {
+                                    _countDeals(item.deals,new Date().getDay())
+                                }
+                            </Text>
+                        </View>
                     </TouchableOpacity>
                 )
             }} keyExtractor={(item,index) => {return index.toString()}}/>

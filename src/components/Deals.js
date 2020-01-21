@@ -1,5 +1,6 @@
 import React from 'react';
 import { View, Text, FlatList, Image } from 'react-native';
+import { Entypo, Ionicons } from '@expo/vector-icons';
 
 //Import Styles
 import Styles from '../../lib/Styles';
@@ -9,22 +10,19 @@ import { _getSpecials, _getDayOfWeek } from '../../lib/Utils';
 
 class Deals extends React.Component {
     render() {
+        const deals = _getSpecials(this.props.deals, new Date().getDay());
         return(
             <View style={[Styles.Deals]}>
-                <Text style={[{
-                    fontWeight: 'bold',
-                    fontSize: 18,
-                    paddingBottom: 12
-                }]}>
-                    {_getDayOfWeek()} Specials
-                </Text>
-                <FlatList data={_getSpecials(this.props.deals, new Date().getDay())} renderItem={({item, index}) => {
+                <FlatList data={deals} renderItem={({item, index}) => {
                 return(
                     <View style={[Styles.DealItem]}>
                         {
                             this._getIcon(item.type)
                         }
-                        <Text>
+                        <Text style={[{
+                            textAlignVertical: 'center',
+                            paddingLeft: 8
+                        }]}>
                             {
                                 item.description
                             }
@@ -39,9 +37,9 @@ class Deals extends React.Component {
     _getIcon(type) {
         switch(type) {
             case 'food':
-                return <Image style={[Styles.TypeIcon]} source={require('../../assets/food.png')}/>
+                return <Ionicons name={'md-pizza'} size={24}/>
             case 'drink':
-                return <Image style={[Styles.TypeIcon]} source={require('../../assets/drink.png')}/>
+                return <Entypo name={'drink'} size={24}/>
         }
     }
 }

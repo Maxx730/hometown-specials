@@ -1,31 +1,37 @@
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { createAppContainer } from 'react-navigation';
+import { createStackNavigator } from 'react-navigation-stack';
+import { Analytics, Event } from 'expo-analytics';
+
+const analytics = new Analytics('UA-156478860-1');
 
 //Import Views
 import Main from './views/Main';
-import Details from './views/Details';
+import Settings from './views/Settings';
+import EULA from './views/EULA';
 
 //Import Data
 import data from './lib/Data';
 
-class App extends React.Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      locations: data.locations
+const AppNavigator = createStackNavigator({
+  HometownSpecials: {
+    screen: Main,
+    params: {
+      data: data,
+      analytics: analytics
+    },
+  },
+  Settings: {
+    screen: Settings,
+    params: {
+      analytics: analytics
+    }
+  },
+  EULA: {
+    screen: EULA,
+    params: {
+      analytics: analytics
     }
   }
+});
 
-  render() {
-    return(
-      <View style={[{
-        flex: 1
-      }]}>
-        <Main data={this.state.locations}/>
-      </View>
-    );
-  }
-}
-
-export default App;
+export default createAppContainer(AppNavigator);
