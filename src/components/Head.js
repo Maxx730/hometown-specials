@@ -14,7 +14,7 @@ class Head extends React.Component {
 
         this.state = {
             term: '',
-            showSearch: false
+            showSearch: this.props.showSearch
         }
     }
 

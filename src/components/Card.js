@@ -1,7 +1,6 @@
 import React from 'react';
 import { View, Text, Animated, Dimensions, TouchableOpacity } from 'react-native';
-import MapView from 'react-native-maps';
-import { Marker } from 'react-native-maps';
+import openMap from 'react-native-open-maps';
 import { Feather } from '@expo/vector-icons';
 
 //Import Styles
@@ -9,7 +8,7 @@ import Styles from '../../lib/Styles';
 
 //Import Components
 import Deals from './Deals';
-import Submit from './Submit';
+import Hours from './Hours';
 
 class Card extends React.Component {
     constructor(props) {
@@ -57,36 +56,17 @@ class Card extends React.Component {
                 }]}>
                     <View>
                         <TouchableOpacity onPress={() => {
-                            this.setState({
-                                showMap: !this.state.showMap
-                            });
+                            openMap({ query: `${location.name} ${location.location.city}` });
                         }} style={[this.state.showMap ? Styles.HideMap : Styles.ShowMap]}>
                             <Text style={[{
                                 color: 'white',
                                 textAlignVertical: 'center'
                             }]}>
-                                {
-                                    !this.state.showMap ? 'Tap to Show Map' : 'Hide Map'
-                                }
+                                Get Directions
                             </Text>
                         </TouchableOpacity>
                         {
-                            this.state.showMap && <MapView style={[{
-                                width: Dimensions.get('window').width,
-                                height: 200
-                            }]} initialRegion={{
-                                latitude: location.location.lat,
-                                longitude: location.location.long,
-                                latitudeDelta: 0.0005,
-                                longitudeDelta: 0.0005,
-                            }}>
-                                <Marker coordinate={{
-                                    latitude: location.location.lat,
-                                    longitude: location.location.long,
-                                }} title={location.name} description={location.location.street}>
-    
-                                </Marker>
-                            </MapView>
+
                         }
                     </View>
                     <View style={[Styles.Location]}>
@@ -105,6 +85,9 @@ class Card extends React.Component {
                             fontSize: 18,
                             color: 'white'
                         }]}>{location.location.state}</Text>
+                    </View>
+                    <View>
+                        <Hours location={location}/>
                     </View>
                     <View style={[{
                         flex: 1

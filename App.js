@@ -8,6 +8,7 @@ const analytics = new Analytics('UA-156478860-1');
 import Main from './views/Main';
 import Settings from './views/Settings';
 import EULA from './views/EULA';
+import Submit from './views/Submit';
 
 //Import Data
 import data from './lib/Data';
@@ -31,6 +32,9 @@ const AppNavigator = createStackNavigator({
     params: {
       analytics: analytics
     }
+  },
+  Submit: {
+    screen: Submit
   }
 });
 

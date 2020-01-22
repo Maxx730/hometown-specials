@@ -39,12 +39,13 @@ class Main extends React.Component {
 
     componentDidMount() {
         this.state.analytics.hit(new PageHit('Main'))
-        .then(() => console.log("success"))
+        .then(() => {})
         .catch(e => console.log(e.message));
 
         _getPrefs().then(prefs => {
             this.setState({
-                prefs: prefs
+                prefs: prefs,
+                showSearch: prefs.alwaysSearch
             });
         });
     }
@@ -55,7 +56,7 @@ class Main extends React.Component {
                 <StatusBar barStyle="dark-content" />
                 <Head showSearch={this.state.showSearch} refreshPrefs={this._refreshPrefs} navigation={this.props.navigation} data={this.state.data.locations} setSearchData={this._setSearchData}/>
                 <View style={[Styles.Browse]}>
-                    <Locations analytics={this.state.analytics} setScrollPosition={this._setScrollPosition} data={this.state.results.length > 0 ? this.state.results : this.state.data.locations} setFocused={this._setFocused}/>
+                    <Locations onlyShowDeals={this.state.prefs && this.state.prefs.onlyShowDeals} analytics={this.state.analytics} setScrollPosition={this._setScrollPosition} data={this.state.results.length > 0 ? this.state.results : this.state.data.locations} setFocused={this._setFocused}/>
                 </View>
                 {
                     this.state.focused !== null && <Card showMapDefault={this.state.prefs !== null ? this.state.prefs.showMapOpen : false} location={this.state.focused} onClose={this._setFocused}/>

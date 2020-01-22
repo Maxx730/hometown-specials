@@ -20,7 +20,7 @@ class Settings extends React.Component {
     }
     componentDidMount() {
         this.state.analytics.hit(new PageHit('Settings'))
-        .then(() => console.log("success"))
+        .then(() => {})
         .catch(e => console.log(e.message));
 
         _getPrefs().then(result => {
@@ -40,17 +40,34 @@ class Settings extends React.Component {
                                 flex: 1,
                                 textAlignVertical: 'center',
                             }]}>
-                                Show Map Open
+                                Always Show Search
                             </Text>
                             <Switch thumbColor={'#7AC149'}trackColor={{true: '#CEEBBC', false: '#D9D9D9'}} onValueChange={(val) => {
                                 let temp = this.state.prefs;
-                                temp.showMapOpen = !this.state.prefs.showMapOpen;
+                                temp.alwaysSearch = !this.state.prefs.alwaysSearch;
                                 this.setState({
                                     prefs: temp
                                 });
                                 _savePrefs(temp);
                                 this.props.navigation.state.params.refresh();
-                            }} value={this.state.prefs !== null ? this.state.prefs.showMapOpen : false}/>
+                            }} value={this.state.prefs !== null ? this.state.prefs.alwaysSearch : false}/>
+                        </TouchableOpacity>
+                        <TouchableOpacity style={[Styles.SettingsItem]}>
+                            <Text style={[{
+                                flex: 1,
+                                textAlignVertical: 'center',
+                            }]}>
+                                Only show Daily Deals
+                            </Text>
+                            <Switch thumbColor={'#7AC149'}trackColor={{true: '#CEEBBC', false: '#D9D9D9'}} onValueChange={(val) => {
+                                let temp = this.state.prefs;
+                                temp.onlyShowDeals = !this.state.prefs.onlyShowDeals;
+                                this.setState({
+                                    prefs: temp
+                                });
+                                _savePrefs(temp);
+                                this.props.navigation.state.params.refresh();
+                            }} value={this.state.prefs !== null ? this.state.prefs.onlyShowDeals : false}/>
                         </TouchableOpacity>
                         <TouchableOpacity onPress={() => {
                             this.props.navigation.navigate('EULA');
@@ -61,7 +78,22 @@ class Settings extends React.Component {
                             }]}>
                                 Licence Agreement
                             </Text>
-                            <Ionicons name={'ios-arrow-forward'} size={24}/>
+                            <Ionicons style={[{
+                                paddingRight: 16
+                            }]} name={'ios-arrow-forward'} size={24}/>
+                        </TouchableOpacity>
+                        <TouchableOpacity onPress={() => {
+                            
+                        }} style={[Styles.SettingsItem]}>
+                            <Text style={[{
+                                flex: 1,
+                                textAlignVertical: 'center'
+                            }]}>
+                                Submit Special
+                            </Text>
+                            <Ionicons style={[{
+                                paddingRight: 16
+                            }]} name={'ios-arrow-forward'} size={24}/>
                         </TouchableOpacity>
                     </View>
                 }
