@@ -48,8 +48,9 @@ class Locations extends React.Component {
                             borderRadius: 32,
                             backgroundColor: '#7AC149',
                             borderRadius: 32,
-                            width: 32,
-                            height: 32,
+                            padding: 8,
+                            paddingLeft: 14,
+                            paddingRight: 14,
                             alignSelf: 'center',
                             justifyContent: 'center'
                         }]}>

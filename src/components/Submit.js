@@ -8,6 +8,7 @@ import Styles from '../../lib/Styles';
 
 //Import Components
 import Input from './Input';
+import Button from './Button';
 
 //Import Utility Methods
 import { _getDaysOfWeek, _getDayOfWeek } from '../../lib/Utils';
@@ -66,30 +67,7 @@ class Submit extends React.Component {
     render() {
         return(
             <View style={[Styles.Submit]}>
-                <View style={[Styles.Shade]}>
-
-                </View>
-                <Animated.View style={[Styles.Form, {
-                    top: this.state.top
-                }]}>
-                    <View style={[Styles.SubmitHead]}>
-                        <Text style={[{
-                            fontSize: 18,
-                            flex: 1
-                        }]}>
-                            Submit a Special
-                        </Text>
-                        <TouchableOpacity onPress={() => {
-                            Animated.timing(this.state.top,{
-                                toValue: Dimensions.get('window').height,
-                                duration: 250
-                            }).start(() => {
-                                this.props.onClose && this.props.onClose(null);
-                            });
-                        }}>
-                            <Feather name={'x'} size={24}/>
-                        </TouchableOpacity>
-                    </View>
+                <View style={[Styles.Form]}>
                     <View style={[Styles.SubmitContent]}>
                         <Text>
                             Please fill out the information below and we will add this special after review.
@@ -123,8 +101,9 @@ class Submit extends React.Component {
                             style={Pickers}
                         />
                         <Input/>
+                        <Button label={'working'}/>
                     </View>
-                </Animated.View>
+                </View>
             </View>
         );
     }

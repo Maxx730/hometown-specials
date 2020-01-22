@@ -83,7 +83,7 @@ class Settings extends React.Component {
                             }]} name={'ios-arrow-forward'} size={24}/>
                         </TouchableOpacity>
                         <TouchableOpacity onPress={() => {
-                            
+                            this.props.navigation.navigate('Special');
                         }} style={[Styles.SettingsItem]}>
                             <Text style={[{
                                 flex: 1,
