@@ -35,39 +35,39 @@ class Settings extends React.Component {
             <View>
                 {
                     this.state.prefs !== null && <View>
-                        <TouchableOpacity style={[Styles.SettingsItem]}>
-                            <Text style={[{
-                                flex: 1,
-                                textAlignVertical: 'center',
-                            }]}>
-                                Always Show Search
-                            </Text>
-                            <Switch thumbColor={'#7AC149'}trackColor={{true: '#CEEBBC', false: '#D9D9D9'}} onValueChange={(val) => {
-                                let temp = this.state.prefs;
-                                temp.alwaysSearch = !this.state.prefs.alwaysSearch;
-                                this.setState({
-                                    prefs: temp
-                                });
-                                _savePrefs(temp);
-                                this.props.navigation.state.params.refresh();
-                            }} value={this.state.prefs !== null ? this.state.prefs.alwaysSearch : false}/>
-                        </TouchableOpacity>
-                        <TouchableOpacity style={[Styles.SettingsItem]}>
-                            <Text style={[{
-                                flex: 1,
-                                textAlignVertical: 'center',
-                            }]}>
-                                Only show Daily Deals
-                            </Text>
-                            <Switch thumbColor={'#7AC149'}trackColor={{true: '#CEEBBC', false: '#D9D9D9'}} onValueChange={(val) => {
+                        <TouchableOpacity onPress={() => {
                                 let temp = this.state.prefs;
                                 temp.onlyShowDeals = !this.state.prefs.onlyShowDeals;
                                 this.setState({
                                     prefs: temp
                                 });
                                 _savePrefs(temp);
-                                this.props.navigation.state.params.refresh();
-                            }} value={this.state.prefs !== null ? this.state.prefs.onlyShowDeals : false}/>
+                                this.props.navigation.state.params.refresh();                  
+                        }} style={[Styles.SettingsItem]}>
+                            <View style={[{
+                                flex: 1
+                            }]}>
+                                <Text style={[{
+                                    textAlignVertical: 'center',
+                                    fontWeight: 'bold'
+                                }]}>
+                                    Only show Daily Deals
+                                </Text>
+                                <Text style={[{
+                                    fontSize: 12
+                                }]}>Hide locations if they do not have deals for the current day.</Text>
+                            </View>
+                            <View>
+                                <Switch thumbColor={'#7AC149'}trackColor={{true: '#CEEBBC', false: '#D9D9D9'}} onValueChange={(val) => {
+                                        let temp = this.state.prefs;
+                                        temp.onlyShowDeals = !this.state.prefs.onlyShowDeals;
+                                        this.setState({
+                                            prefs: temp
+                                        });
+                                        _savePrefs(temp);
+                                        this.props.navigation.state.params.refresh();
+                                    }} value={this.state.prefs !== null ? this.state.prefs.onlyShowDeals : false}/>
+                            </View>
                         </TouchableOpacity>
                         <TouchableOpacity onPress={() => {
                             this.props.navigation.navigate('EULA');
@@ -79,10 +79,10 @@ class Settings extends React.Component {
                                 Licence Agreement
                             </Text>
                             <Ionicons style={[{
-                                paddingRight: 16
-                            }]} name={'ios-arrow-forward'} size={24}/>
+                                paddingRight: 12
+                            }]} name={'ios-arrow-forward'} color={'#7AC149'} size={24}/>
                         </TouchableOpacity>
-                        <TouchableOpacity onPress={() => {
+                        {/* <TouchableOpacity onPress={() => {
                             this.props.navigation.navigate('Special');
                         }} style={[Styles.SettingsItem]}>
                             <Text style={[{
@@ -92,9 +92,9 @@ class Settings extends React.Component {
                                 Submit Special
                             </Text>
                             <Ionicons style={[{
-                                paddingRight: 16
-                            }]} name={'ios-arrow-forward'} size={24}/>
-                        </TouchableOpacity>
+                                paddingRight: 12
+                            }]} name={'ios-arrow-forward'} color={'#7AC149'} size={24}/>
+                        </TouchableOpacity> */}
                     </View>
                 }
             </View>

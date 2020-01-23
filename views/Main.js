@@ -25,6 +25,7 @@ class Main extends React.Component {
         this._setSearchData = this._setSearchData.bind(this);
         this._refreshPrefs = this._refreshPrefs.bind(this);
         this._setScrollPosition = this._setScrollPosition.bind(this);
+        this._setDay = this._setDay.bind(this);
 
         this.state = {
             focused: null,
@@ -33,7 +34,8 @@ class Main extends React.Component {
             prefs: null,
             lastPos: 0,
             showSearch: false,
-            analytics: this.props.navigation.state.params.analytics
+            analytics: this.props.navigation.state.params.analytics,
+            day: new Date().getDay()
         }
     }
 
@@ -54,12 +56,12 @@ class Main extends React.Component {
         return(
             <View behavior="padding" style={[Styles.Main]}>
                 <StatusBar barStyle="dark-content" />
-                <Head showSearch={this.state.showSearch} refreshPrefs={this._refreshPrefs} navigation={this.props.navigation} data={this.state.data.locations} setSearchData={this._setSearchData}/>
+                <Head analytics={this.state.analytics} day={this.state.day} setDay={this._setDay} showSearch={this.state.showSearch} refreshPrefs={this._refreshPrefs} navigation={this.props.navigation} data={this.state.data.locations} setSearchData={this._setSearchData}/>
                 <View style={[Styles.Browse]}>
-                    <Locations onlyShowDeals={this.state.prefs && this.state.prefs.onlyShowDeals} analytics={this.state.analytics} setScrollPosition={this._setScrollPosition} data={this.state.results.length > 0 ? this.state.results : this.state.data.locations} setFocused={this._setFocused}/>
+                    <Locations day={this.state.day} onlyShowDeals={this.state.prefs && this.state.prefs.onlyShowDeals} analytics={this.state.analytics} setScrollPosition={this._setScrollPosition} data={this.state.results.length > 0 ? this.state.results : this.state.data.locations} setFocused={this._setFocused}/>
                 </View>
                 {
-                    this.state.focused !== null && <Card showMapDefault={this.state.prefs !== null ? this.state.prefs.showMapOpen : false} location={this.state.focused} onClose={this._setFocused}/>
+                    this.state.focused !== null && <Card day={this.state.day} showMapDefault={this.state.prefs !== null ? this.state.prefs.showMapOpen : false} location={this.state.focused} onClose={this._setFocused}/>
                 }
             </View>
         );
@@ -82,6 +84,12 @@ class Main extends React.Component {
             this.setState({
                 prefs: prefs
             });
+        });
+    }
+
+    _setDay(day) {
+        this.setState({
+            day: day
         });
     }
 

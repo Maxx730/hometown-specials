@@ -2,11 +2,14 @@ import React from 'react';
 import { View, Text, TextInput, TouchableOpacity, Image, Dimensions } from 'react-native';
 import { Feather, Ionicons } from '@expo/vector-icons';
 
+//Import Components
+import Days from '../components/Days';
+
 //Import Styles
 import Styles from '../../lib/Styles';
 
 //Import Utility Methods
-import { _getDayOfWeek, _findSpecials } from '../../lib/Utils';
+import { _getDayOfWeek, _findSpecials, getDay } from '../../lib/Utils';
 
 class Head extends React.Component {
     constructor(props) {
@@ -33,43 +36,45 @@ class Head extends React.Component {
                         </Text>
                         <Text style={[Styles.DayOfWeek]}>
                             {
-                                _getDayOfWeek()
+                                getDay(this.props.day)
                             }
                         </Text>
                     </View>
-                    <TouchableOpacity onPress={() => {
-                        this.setState({
-                            showSearch: !this.state.showSearch
-                        });
-                    }}>
-                        <Feather name='menu' color='white' size={24}/>
+                    <TouchableOpacity style={[{
+                                padding: 3,
+                                marginRight: 6
+                            }]} onPress={() => {
+                                this.props.navigation && this.props.navigation.navigate('Settings', {
+                                    refresh: this.props.refreshPrefs
+                                });
+                            }}>
+                                <Ionicons name='md-settings' color={'white'} size={24}/>
                     </TouchableOpacity>
                 </View>
-                {
-                    this.state.showSearch && <View style={[Styles.Search,{
-                        flexDirection: 'row'
-                    }]}>
-                        <TextInput style={[{
-                            flex: 1,
-                            paddingLeft: 18
-                        }]} placeholder={'Search'} value={this.state.term} onChangeText={(value) => {
-                            this.props.setSearchData && this.props.setSearchData(value === '' ? [] : _findSpecials(this.props.data,value));
-                            this.setState({
-                                term: value
-                            });
-                        }}/>
-                        <TouchableOpacity style={[{
-                            padding: 9,
-                            marginRight: 6
-                        }]} onPress={() => {
-                            this.props.navigation && this.props.navigation.navigate('Settings', {
-                                refresh: this.props.refreshPrefs
-                            });
-                        }}>
-                            <Ionicons name='md-settings' color={'#7AC149'} size={32}/>
-                        </TouchableOpacity>
+                <View style={[Styles.Search]}>
+                        <View style={[{
+                            flexDirection: 'row'
+                        }]}>
+                            <Feather name={'search'} size={32} style={[{
+                                padding: 6
+                            }]}/>
+                            <TextInput style={[{
+                                flex: 1,
+                                paddingLeft: 6,
+                                padding: 12
+                            }]} placeholder={'Search'} value={this.state.term} onChangeText={(value) => {
+                                this.props.setSearchData && this.props.setSearchData(value === '' ? [] : _findSpecials(this.props.data,value));
+                                this.setState({
+                                    term: value
+                                });
+                            }}/>
+                        </View>
+                        <View style={[{
+                            alignItems: 'center'
+                        }]}>
+                            <Days analytics={this.props.analytics} setDay={this.props.setDay} selected={this.props.day}/>
+                        </View>
                     </View>
-                }
             </View>
         )
     }

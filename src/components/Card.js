@@ -92,7 +92,7 @@ class Card extends React.Component {
                     <View style={[{
                         flex: 1
                     }]}>
-                        <Deals deals={location.deals}/>
+                        <Deals day={this.props.day} deals={location.deals}/>
                     </View>
                 </View>
             </Animated.View>

@@ -10,7 +10,7 @@ import { _countDeals, _getDealsForDay } from '../../lib/Utils';
 
 class Locations extends React.Component {
     render() {
-        const locations = _getDealsForDay(this.props.data,new Date().getDay(), this.props.onlyShowDeals);
+        const locations = _getDealsForDay(this.props.data,this.props.day, this.props.onlyShowDeals);
         return(
             <FlatList onScroll={(event) => {
                this.props.setScrollPosition(event.nativeEvent.contentOffset.y)
@@ -56,7 +56,7 @@ class Locations extends React.Component {
                         }]}>
                             <Text style={[Styles.DealCount]}>
                                 {
-                                    _countDeals(item.deals,new Date().getDay())
+                                    _countDeals(item.deals,this.props.day)
                                 }
                             </Text>
                         </View>

@@ -101,7 +101,7 @@ class Submit extends React.Component {
                             style={Pickers}
                         />
                         <Input/>
-                        <Button label={'working'}/>
+                        <Button label={'Submit'}/>
                     </View>
                 </View>
             </View>

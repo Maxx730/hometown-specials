@@ -10,26 +10,28 @@ import { _getSpecials, _getDayOfWeek } from '../../lib/Utils';
 
 class Deals extends React.Component {
     render() {
-        const deals = _getSpecials(this.props.deals, new Date().getDay());
+        const deals = _getSpecials(this.props.deals, this.props.day);
         return(
             <View style={[Styles.Deals]}>
-                <FlatList data={deals} renderItem={({item, index}) => {
-                return(
-                    <View style={[Styles.DealItem]}>
-                        {
-                            this._getIcon(item.type)
-                        }
-                        <Text style={[{
-                            textAlignVertical: 'center',
-                            paddingLeft: 8
-                        }]}>
-                            {
-                                item.description
-                            }
-                        </Text>
-                    </View>
-                )
-            }} keyExtractor={(item, index) => { return index.toString() }}/>
+                {
+                    deals.length > 0 ? <FlatList data={deals} renderItem={({item, index}) => {
+                        return(
+                            <View style={[Styles.DealItem]}>
+                                <Text style={[{
+                                    textAlignVertical: 'center',
+                                    paddingLeft: 8
+                                }]}>
+                                    {
+                                        item.description
+                                    }
+                                </Text>
+                            </View>
+                        )
+                    }} keyExtractor={(item, index) => { return index.toString() }}/> : <Text style={[{
+                        textAlign: 'center',
+                        padding: 12
+                    }]}>No Deals Today</Text>
+                }
             </View>
         );
     }
