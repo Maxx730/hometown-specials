@@ -53,14 +53,21 @@ class Head extends React.Component {
                 </View>
                 <View style={[Styles.Search]}>
                         <View style={[{
+                            alignItems: 'center',
+                            borderBottomColor: '#7AC149',
+                            borderBottomWidth: 1,
+                        }]}>
+                            <Days analytics={this.props.analytics} setDay={this.props.setDay} selected={this.props.day}/>
+                        </View>
+                        <View style={[{
                             flexDirection: 'row'
                         }]}>
-                            <Feather name={'search'} size={32} style={[{
-                                padding: 6
+                            <Feather name={'search'} size={24} style={[{
+                                padding: 12
                             }]}/>
                             <TextInput style={[{
                                 flex: 1,
-                                paddingLeft: 6,
+                                paddingLeft: 0,
                                 padding: 12
                             }]} placeholder={'Search'} value={this.state.term} onChangeText={(value) => {
                                 this.props.setSearchData && this.props.setSearchData(value === '' ? [] : _findSpecials(this.props.data,value));
@@ -68,11 +75,6 @@ class Head extends React.Component {
                                     term: value
                                 });
                             }}/>
-                        </View>
-                        <View style={[{
-                            alignItems: 'center'
-                        }]}>
-                            <Days analytics={this.props.analytics} setDay={this.props.setDay} selected={this.props.day}/>
                         </View>
                     </View>
             </View>

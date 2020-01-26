@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, Switch, TouchableOpacity } from 'react-native';
+import { View, Text, Switch, TouchableOpacity, Platform } from 'react-native';
 import { PageHit } from 'expo-analytics';
 import { Feather, Ionicons } from '@expo/vector-icons';
 
@@ -74,7 +74,8 @@ class Settings extends React.Component {
                         }} style={[Styles.SettingsItem]}>
                             <Text style={[{
                                 flex: 1,
-                                textAlignVertical: 'center'
+                                textAlignVertical: 'center',
+                                paddingTop: Platform.OS === 'ios' ? 4 : 0
                             }]}>
                                 Licence Agreement
                             </Text>
