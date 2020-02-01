@@ -11,7 +11,9 @@ class Input extends React.Component {
                 <Text style={[Styles.InputLabel]}>
                     {this.props.label}
                 </Text>
-                <TextInput style={[Styles.Input]} numberOfLines={this.props.lines ? this.props.lines : 1} multiline={this.props.lines > 1}>
+                <TextInput placeholder={this.props.placeholder ? this.props.placeholder : ''} style={[Styles.Input]} numberOfLines={this.props.lines ? this.props.lines : 1} multiline={this.props.lines > 1} onChangeText={(value) => {
+                    this.props.onChange && this.props.onChange(value);
+                }}>
 
                 </TextInput>
             </View>

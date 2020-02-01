@@ -7,7 +7,9 @@ import Styles from '../../lib/Styles';
 class Button extends React.Component {
     render() {
         return(
-            <TouchableOpacity style={[Styles.Button]}>
+            <TouchableOpacity onPress={() => {
+                this.props.onPress && this.props.onPress();
+            }} style={[Styles.Button]}>
                 <Text style={[{
                     color: 'white',
                     fontWeight: 'bold',

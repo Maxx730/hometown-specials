@@ -11,6 +11,15 @@ import { _countDeals, _getDealsForDay } from '../../lib/Utils';
 class Locations extends React.Component {
     render() {
         const locations = _getDealsForDay(this.props.data,this.props.day, this.props.onlyShowDeals);
+        if(locations.length === 0) {
+            return(
+                <View style={[Styles.NoResults]}>
+                    <Text style={[{
+                        color: '#426928'
+                    }]}>Unfortunatly it does not look like we have any data on the location you are looking for.</Text>
+                </View>
+            )
+        } else {
         return(
             <FlatList onScroll={(event) => {
                this.props.setScrollPosition(event.nativeEvent.contentOffset.y)
@@ -64,6 +73,7 @@ class Locations extends React.Component {
                 )
             }} keyExtractor={(item,index) => {return index.toString()}}/>
         );
+        }
     }
 }
 

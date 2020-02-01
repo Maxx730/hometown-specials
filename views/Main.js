@@ -30,7 +30,7 @@ class Main extends React.Component {
         this.state = {
             focused: null,
             data: this.props.navigation.state.params.data,
-            results: [],
+            results: null,
             prefs: null,
             lastPos: 0,
             showSearch: false,
@@ -58,7 +58,7 @@ class Main extends React.Component {
                 <StatusBar barStyle="dark-content" />
                 <Head analytics={this.state.analytics} day={this.state.day} setDay={this._setDay} showSearch={this.state.showSearch} refreshPrefs={this._refreshPrefs} navigation={this.props.navigation} data={this.state.data.locations} setSearchData={this._setSearchData}/>
                 <View style={[Styles.Browse]}>
-                    <Locations day={this.state.day} onlyShowDeals={this.state.prefs && this.state.prefs.onlyShowDeals} analytics={this.state.analytics} setScrollPosition={this._setScrollPosition} data={this.state.results.length > 0 ? this.state.results : this.state.data.locations} setFocused={this._setFocused}/>
+                    <Locations day={this.state.day} onlyShowDeals={this.state.prefs && this.state.prefs.onlyShowDeals} analytics={this.state.analytics} setScrollPosition={this._setScrollPosition} data={this.state.results ? this.state.results : this.state.data.locations} setFocused={this._setFocused}/>
                 </View>
                 {
                     this.state.focused !== null && <Card day={this.state.day} showMapDefault={this.state.prefs !== null ? this.state.prefs.showMapOpen : false} location={this.state.focused} onClose={this._setFocused}/>

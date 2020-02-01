@@ -70,6 +70,20 @@ class Settings extends React.Component {
                             </View>
                         </TouchableOpacity>
                         <TouchableOpacity onPress={() => {
+                            this.props.navigation.navigate('Special');
+                        }} style={[Styles.SettingsItem]}>
+                            <Text style={[{
+                                flex: 1,
+                                textAlignVertical: 'center',
+                                paddingTop: Platform.OS === 'ios' ? 4 : 0
+                            }]}>
+                                Submit Special
+                            </Text>
+                            <Ionicons style={[{
+                                paddingRight: 12
+                            }]} name={'ios-arrow-forward'} color={'#7AC149'} size={24}/>
+                        </TouchableOpacity>
+                        <TouchableOpacity onPress={() => {
                             this.props.navigation.navigate('EULA');
                         }} style={[Styles.SettingsItem]}>
                             <Text style={[{
@@ -83,19 +97,6 @@ class Settings extends React.Component {
                                 paddingRight: 12
                             }]} name={'ios-arrow-forward'} color={'#7AC149'} size={24}/>
                         </TouchableOpacity>
-                        {/* <TouchableOpacity onPress={() => {
-                            this.props.navigation.navigate('Special');
-                        }} style={[Styles.SettingsItem]}>
-                            <Text style={[{
-                                flex: 1,
-                                textAlignVertical: 'center'
-                            }]}>
-                                Submit Special
-                            </Text>
-                            <Ionicons style={[{
-                                paddingRight: 12
-                            }]} name={'ios-arrow-forward'} color={'#7AC149'} size={24}/>
-                        </TouchableOpacity> */}
                     </View>
                 }
             </View>

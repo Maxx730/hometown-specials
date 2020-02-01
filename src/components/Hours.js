@@ -2,7 +2,7 @@ import React from 'react';
 import { View, Text } from 'react-native';
 
 //Import Utility Methods
-import { _getDayOfWeek } from '../../lib/Utils';
+import { getDay } from '../../lib/Utils';
 
 //Import Styling
 import Styles from '../../lib/Styles';
@@ -14,13 +14,13 @@ class Hours extends React.Component {
                 <Text style={[{
                     color: 'white'
                 }]}>
-                    {`Open between ${this.props.location.hours[new Date().getDay()].hours} on `}
+                    {`Open between ${this.props.location.hours[this.props.day].hours} on `}
                 </Text>
                 <Text style={[{
                     color: 'white',
                     fontWeight: 'bold'
                 }]}>
-                    {`${_getDayOfWeek(new Date().getDay())}`}
+                    {`${getDay(this.props.day)}`}
                 </Text>
             </View>
         );

@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, Dimensions, Animated, StyleSheet, TouchableOpacity } from 'react-native';
+import { View, Text, StyleSheet, ActivityIndicator } from 'react-native';
 import RNPickerSelect from 'react-native-picker-select';
 import { Feather } from '@expo/vector-icons';
 
@@ -11,30 +11,29 @@ import Input from './Input';
 import Button from './Button';
 
 //Import Utility Methods
-import { _getDaysOfWeek, _getDayOfWeek } from '../../lib/Utils';
+import { _getDaysOfWeek, _getDayOfWeek, _getLocations } from '../../lib/Utils';
+import { _submitForm } from '../../lib/Network';
 
 const Pickers = StyleSheet.create({
     inputIOS: {
         fontSize: 16,
         paddingVertical: 12,
-        paddingHorizontal: 10,
+        paddingHorizontal: 16,
         borderWidth: 1,
-        borderColor: 'gray',
+        borderColor: 'transparent',
         borderRadius: 4,
         color: 'black',
-        marginTop: 12,
         paddingRight: 30, // to ensure the text is never behind the icon
       },
       inputAndroid: {
         fontSize: 16,
-        paddingHorizontal: 10,
+        paddingHorizontal: 16,
         paddingVertical: 8,
-        borderWidth: 0.5,
-        borderColor: 'purple',
+        borderWidth: 1,
         borderRadius: 8,
-        marginTop: 12,
         color: 'black',
-        paddingRight: 30, // to ensure the text is never behind the icon
+        paddingRight: 30,
+        paddingLeft: 50 // to ensure the text is never behind the icon
       }
 });
 
@@ -42,8 +41,12 @@ class Submit extends React.Component {
     constructor(props) {
         super(props);
 
+        this.setDescription = this.setDescription.bind(this);
+        this.setNewLocation = this.setNewLocation.bind(this);
+        this.submitForm = this.submitForm.bind(this);
+        this.checkForErrors = this.checkForErrors.bind(this);
+
         this.state = {
-            top: new Animated.Value(Dimensions.get('window').height),
             types: [{
                 label: 'Food',
                 value: 'food'
@@ -51,62 +54,173 @@ class Submit extends React.Component {
                 label: 'Drink',
                 value: 'drink'
             }],
+            loading: false,
             days: _getDaysOfWeek(),
-            category: 'food',
-            day: _getDayOfWeek().toLowerCase()
+            locations: [],
+            category: '',
+            location: '',
+            day: '',
+            notListedL: '',
+            description: '',
+            hasError: false,
+            hasSuccess: false,
+            showNew: false,
         }
     }
 
     componentDidMount() {
-        Animated.timing(this.state.top,{
-            toValue: Dimensions.get('window').height / 4,
-            duration: 250
-        }).start();
+        _getLocations().then(locations => {
+            this.setState({
+                locations: locations
+            });
+        })
     }
 
-    render() {
+    submitForm() {
+        if(!this.checkForErrors()) {
+            _submitForm({
+                location: this.state.location,
+                new: this.state.showNew,
+                day: this.state.day,
+                category: this.state.category,
+                description: this.state.description
+            }).then(data => {
+                this.setState({
+                    hasSuccess: true
+                });
+            }).catch(err => {
+                console.log('err');
+            });
+        } else {
+            this.setState({
+                hasError: true
+            });
+        }
+    }
+
+    renderErrorMessage() {
         return(
-            <View style={[Styles.Submit]}>
-                <View style={[Styles.Form]}>
-                    <View style={[Styles.SubmitContent]}>
-                        <Text>
-                            Please fill out the information below and we will add this special after review.
-                        </Text>
-                        <Input/>
+            <View style={[Styles.SubmitError]}>
+                <Text style={[Styles.Error]}>
+                    Please fill out all fields to submit a review, the description cannot be blank.
+                </Text>
+            </View>
+        );
+    }
+
+    renderSuccessMessage() {
+        return(
+            <View style={[Styles.SubmitSuccess]}>
+                <Text style={[Styles.Success]}>Thank you. We will review your submission and update our information.</Text>
+            </View>
+        );
+    }
+
+    setDescription(value) {
+        this.setState({
+            description: value
+        });
+    }
+
+    setNewLocation(value) {
+        this.setState({
+            location: value
+        });
+    }
+
+    renderForm() {
+        return(
+            <View style={[Styles.Form]}>
+            <View style={[Styles.SubmitContent]}>
+                <Text style={[Styles.SubmitSubtext]}>
+                    Please fill out the information below and we will add this special after review.
+                </Text>
+
+                <View style={[Styles.SubmitPickers]}>
+                    <View style={[Styles.Dropdown]}>
                         <RNPickerSelect
                             placeholder={{
-                                label: 'Select a category...'
-                              }}
-                            items={this.state.types}
+                                label: 'Location'
+                            }}
+                            items={this.state.locations}
                             onValueChange={value => {
                                 this.setState({
-
+                                    location: value,
+                                    showNew: value === 'not listed'
                                 });
                             }}
 
                             style={Pickers}
                         />
-
+                    </View>
+                    {this.state.showNew && 
+                        <View style={[Styles.NewLocation]}>
+                            <Input placeholder={'Location Name'} onChange={this.setNewLocation}/>
+                        </View>
+                    }
+                    <View style={[Styles.Dropdown]}>
                         <RNPickerSelect
                             placeholder={{
-                                label: 'Select a category...'
-                              }}
+                                label: 'Special Type'
+                            }}
+                            items={this.state.types}
+                            onValueChange={value => {
+                                this.setState({
+                                    category: value
+                                });
+                            }}
+
+                            style={Pickers}
+                        />
+                    </View>
+
+                    <View style={[Styles.Dropdown]}>
+                        <RNPickerSelect
+                            placeholder={{
+                                label: 'Day(s) of Special'
+                            }}
                             items={this.state.days}
                             onValueChange={value => {
                                 this.setState({
                                     day: value
                                 });
                             }}
-                            value={this.state.day}
                             style={Pickers}
                         />
-                        <Input/>
-                        <Button label={'Submit'}/>
                     </View>
                 </View>
+                <Input label={'Description'} onChange={this.setDescription}/>
+                {
+                    this.state.hasError && this.renderErrorMessage()
+                }
+                <Button onPress={this.submitForm} label={'Submit'}/>
+            </View>
+        </View>
+        );
+    }
+
+    checkForErrors() {
+        if(this.state.category === '' || this.state.day === '' || this.state.location === '' || this.state.description === '') {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    render() {
+        return(
+            <View style={[Styles.Submit]}>
+                <Text style={[{
+                    fontSize: 24,
+                    fontWeight: 'bold'
+                }]}>
+                    Submit Special
+                </Text>
+                {this.state.hasSuccess ? this.renderSuccessMessage() : this.renderForm()}
             </View>
         );
     }
 }
+
 
 export default Submit;

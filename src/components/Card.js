@@ -57,37 +57,29 @@ class Card extends React.Component {
                     <View>
                         <TouchableOpacity onPress={() => {
                             openMap({ query: `${location.name} ${location.location.city}` });
-                        }} style={[this.state.showMap ? Styles.HideMap : Styles.ShowMap]}>
+                        }} style={[Styles.OpenMap]}>
                             <Text style={[{
-                                color: 'white',
-                                textAlignVertical: 'center'
-                            }]}>
-                                Get Directions
-                            </Text>
+                                fontWeight: 'bold',
+                                fontSize: 18,
+                                color: 'white'
+                            }]}>{location.location.street}, </Text>
+                            <Text style={[{
+                                fontWeight: 'bold',
+                                fontSize: 18,
+                                color: 'white'
+                            }]}>{location.location.city}, </Text>
+                            <Text style={[{
+                                fontWeight: 'bold',
+                                fontSize: 18,
+                                color: 'white'
+                            }]}>{location.location.state}</Text>
                         </TouchableOpacity>
                         {
 
                         }
                     </View>
-                    <View style={[Styles.Location]}>
-                        <Text style={[{
-                            fontWeight: 'bold',
-                            fontSize: 18,
-                            color: 'white'
-                        }]}>{location.location.street}, </Text>
-                        <Text style={[{
-                            fontWeight: 'bold',
-                            fontSize: 18,
-                            color: 'white'
-                        }]}>{location.location.city}, </Text>
-                        <Text style={[{
-                            fontWeight: 'bold',
-                            fontSize: 18,
-                            color: 'white'
-                        }]}>{location.location.state}</Text>
-                    </View>
                     <View>
-                        <Hours location={location}/>
+                        <Hours day={this.props.day} location={location}/>
                     </View>
                     <View style={[{
                         flex: 1

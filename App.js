@@ -34,7 +34,10 @@ const AppNavigator = createStackNavigator({
     }
   },
   Special: {
-    screen: Special
+    screen: Special,
+    params: {
+      analytics: analytics
+    }
   }
 });
 

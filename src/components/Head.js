@@ -40,6 +40,13 @@ class Head extends React.Component {
                             }
                         </Text>
                     </View>
+                    <TouchableOpacity style={[Styles.AddSpecialButton]} onPress={() => {
+                            this.props.navigation.navigate('Special')
+                        }}>
+                        <Text style={[Styles.BoldWhite]}>
+                            Submit Special
+                        </Text>
+                    </TouchableOpacity>
                     <TouchableOpacity style={[{
                                 padding: 3,
                                 marginRight: 6
@@ -62,7 +69,7 @@ class Head extends React.Component {
                         <View style={[{
                             flexDirection: 'row'
                         }]}>
-                            <Feather name={'search'} size={24} style={[{
+                            <Feather name={'search'} size={24} color={'#E1E1E1'} style={[{
                                 padding: 12
                             }]}/>
                             <TextInput style={[{
@@ -70,15 +77,35 @@ class Head extends React.Component {
                                 paddingLeft: 0,
                                 padding: 12
                             }]} placeholder={'Search'} value={this.state.term} onChangeText={(value) => {
-                                this.props.setSearchData && this.props.setSearchData(value === '' ? [] : _findSpecials(this.props.data,value));
+                                this.props.setSearchData && this.props.setSearchData(value === '' ? this.props.data : _findSpecials(this.props.data,value));
                                 this.setState({
                                     term: value
                                 });
                             }}/>
+                            {
+                                this.state.term !== '' && <TouchableOpacity onPress={() => {
+                                    this.props.setSearchData && this.props.setSearchData([]);
+                                    this.setState({
+                                        term: ''
+                                    });
+                                }}>
+                                    <Feather name={'x'} size={24} style={[{
+                                        padding: 12,
+                                        marginRight: 6
+                                    }]}/>
+                                </TouchableOpacity>
+                            }
+
                         </View>
                     </View>
             </View>
         )
+    }
+
+    clearSearch() {
+        this.setState({
+            term: ''
+        });
     }
 }
 
