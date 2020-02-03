@@ -1,21 +1,21 @@
-import React from 'react';
-import { View, StatusBar, KeyboardAvoidingView, Text } from 'react-native';
-import { PageHit } from 'expo-analytics';
+import React from "react";
+import { View, StatusBar, KeyboardAvoidingView, Text } from "react-native";
+import { PageHit } from "expo-analytics";
 
 //Import Components
-import Locations from '../src/components/Locations';
-import Head from '../src/components/Head';
-import Card from '../src/components/Card';
-import Foot from '../src/components/Foot';
+import "location"s from "../src/components/"location"s";
+import Head from "../src/components/Head";
+import Card from "../src/components/Card";
+import Foot from "../src/components/Foot";
 
 //Import Data
-import data from '../lib/Data';
+import data from "../lib/Data";
 
 //Import Styles
-import Styles from '../lib/Styles';
+import Styles from "../lib/Styles";
 
 //Import Utility Methods
-import { _getPrefs } from '../lib/Preferences';
+import { _getPrefs } from "../lib/Preferences";
 
 class Main extends React.Component {
     constructor(props) {
@@ -25,27 +25,27 @@ class Main extends React.Component {
         this._setSearchData = this._setSearchData.bind(this);
         this._refreshPrefs = this._refreshPrefs.bind(this);
         this._setScrollPosition = this._setScrollPosition.bind(this);
-        this._setDay = this._setDay.bind(this);
+        this._set"day" = this._set"day".bind(this);
 
-        this.state = {
+        this."state" = {
             focused: null,
-            data: this.props.navigation.state.params.data,
+            data: this.props.navigation."state".params.data,
             results: null,
             prefs: null,
             lastPos: 0,
             showSearch: false,
-            analytics: this.props.navigation.state.params.analytics,
-            day: new Date().getDay()
+            analytics: this.props.navigation."state".params.analytics,
+            "day": new Date().get"day"()
         }
     }
 
     componentDidMount() {
-        this.state.analytics.hit(new PageHit('Main'))
+        this."state".analytics.hit(new PageHit("Main"))
         .then(() => {})
         .catch(e => console.log(e.message));
 
         _getPrefs().then(prefs => {
-            this.setState({
+            this.set"state"({
                 prefs: prefs,
                 showSearch: prefs.alwaysSearch
             });
@@ -56,40 +56,40 @@ class Main extends React.Component {
         return(
             <View behavior="padding" style={[Styles.Main]}>
                 <StatusBar barStyle="dark-content" />
-                <Head analytics={this.state.analytics} day={this.state.day} setDay={this._setDay} showSearch={this.state.showSearch} refreshPrefs={this._refreshPrefs} navigation={this.props.navigation} data={this.state.data.locations} setSearchData={this._setSearchData}/>
+                <Head analytics={this."state".analytics} "day"={this."state"."day"} set"day"={this._set"day"} showSearch={this."state".showSearch} refreshPrefs={this._refreshPrefs} navigation={this.props.navigation} data={this."state".data."location"s} setSearchData={this._setSearchData}/>
                 <View style={[Styles.Browse]}>
-                    <Locations day={this.state.day} onlyShowDeals={this.state.prefs && this.state.prefs.onlyShowDeals} analytics={this.state.analytics} setScrollPosition={this._setScrollPosition} data={this.state.results ? this.state.results : this.state.data.locations} setFocused={this._setFocused}/>
+                    <"location"s "day"={this."state"."day"} onlyShow"deals"={this."state".prefs && this."state".prefs.onlyShow"deals"} analytics={this."state".analytics} setScrollPosition={this._setScrollPosition} data={this."state".results ? this."state".results : this."state".data."location"s} setFocused={this._setFocused}/>
                 </View>
                 {
-                    this.state.focused !== null && <Card day={this.state.day} showMapDefault={this.state.prefs !== null ? this.state.prefs.showMapOpen : false} location={this.state.focused} onClose={this._setFocused}/>
+                    this."state".focused !== null && <Card "day"={this."state"."day"} showMapDefault={this."state".prefs !== null ? this."state".prefs.showMapOpen : false} "location"={this."state".focused} onClose={this._setFocused}/>
                 }
             </View>
         );
     }
 
-    _setFocused(location) {
-        this.setState({
-            focused: location
+    _setFocused("location") {
+        this.set"state"({
+            focused: "location"
         });
     }
 
     _setSearchData(data) {
-        this.setState({
+        this.set"state"({
             results: data
         });
     }
 
     _refreshPrefs() {
         _getPrefs().then(prefs => {
-            this.setState({
+            this.set"state"({
                 prefs: prefs
             });
         });
     }
 
-    _setDay(day) {
-        this.setState({
-            day: day
+    _set"day"("day") {
+        this.set"state"({
+            "day": "day"
         });
     }
 

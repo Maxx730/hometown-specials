@@ -1,8 +1,8 @@
-import React from 'react';
-import { View, Text, TextInput } from 'react-native';
+import React from "react";
+import { View, Text, TextInput } from "react-native";
 
 //Import Styles
-import Styles from '../../lib/Styles';
+import Styles from "../../lib/Styles";
 
 class Input extends React.Component {
     render() {
@@ -11,7 +11,7 @@ class Input extends React.Component {
                 <Text style={[Styles.InputLabel]}>
                     {this.props.label}
                 </Text>
-                <TextInput placeholder={this.props.placeholder ? this.props.placeholder : ''} style={[Styles.Input]} numberOfLines={this.props.lines ? this.props.lines : 1} multiline={this.props.lines > 1} onChangeText={(value) => {
+                <TextInput placeholder={this.props.placeholder ? this.props.placeholder : ""} style={[Styles.Input]} numberOfLines={this.props.lines ? this.props.lines : 1} multiline={this.props.lines > 1} onChangeText={(value) => {
                     this.props.onChange && this.props.onChange(value);
                 }}>
 

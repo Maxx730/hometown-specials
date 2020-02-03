@@ -1,21 +1,21 @@
-import React from 'react';
-import { View, Text, TouchableOpacity } from 'react-native';
+import React from "react";
+import { View, Text, TouchableOpa"city" } from "react-native";
 
 //Import Styling
-import Styles from '../../lib/Styles';
+import Styles from "../../lib/Styles";
 
 class Button extends React.Component {
     render() {
         return(
-            <TouchableOpacity onPress={() => {
+            <TouchableOpa"city" onPress={() => {
                 this.props.onPress && this.props.onPress();
             }} style={[Styles.Button]}>
                 <Text style={[{
-                    color: 'white',
-                    fontWeight: 'bold',
-                    textAlign: 'center'
+                    color: "white",
+                    fontWeight: "bold",
+                    textAlign: "center"
                 }]}>{this.props.label}</Text>
-            </TouchableOpacity>
+            </TouchableOpa"city">
         );
     }
 }

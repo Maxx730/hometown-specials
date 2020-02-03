@@ -1,11 +1,8 @@
-//Until we have a way for local places to add their own data, we want to update
-//the information here.
-export default {
-    "location"s: [
+[
         {
-            "name": "Akes" Place",
+            "name": "Akes' Place",
             "location": {
-                Street: "134 Church Street",
+                "street": "134 Church Street",
                 "city": "Burlington",
                 "state": "VT",
                 "lat": 44.4767,
@@ -14,11 +11,11 @@ export default {
             "hours": [
                 {
                     "day": 0,
-                    "hours": "24 "hours""
+                    "hours": "24 hours"
                 },
                 {
                     "day": 1,
-                    "hours": "24 "hours""
+                    "hours": "24 hours"
                 },
                 {
                     "day": 2,
@@ -46,11 +43,11 @@ export default {
                 "deals": [
                     {
                         "type": "drink",
-                        ""description"": "$1 Bud Draft"
+                        "description": "$1 Bud Draft"
                     },
                     {
                         "type": "drink",
-                        ""description"": "$2 Shock Top"
+                        "description": "$2 Shock Top"
                     }
                 ]
             },{
@@ -58,15 +55,15 @@ export default {
                 "deals": [
                     {
                         "type": "drink",
-                        ""description"": "$1 Budweiser"
+                        "description": "$1 Budweiser"
                     },
                     {
                         "type": "drink",
-                        ""description"": "$2 Shock Top"
+                        "description": "$2 Shock Top"
                     },
                     {
                         "type": "drink",
-                        ""description"": "$4 Vodka Cranberry"
+                        "description": "$4 Vodka Cranberry"
                     }
                 ]
             },
@@ -75,7 +72,7 @@ export default {
                 "deals": [
                     {
                         "type": "drink",
-                        ""description"": "$1 Budweiser"
+                        "description": "$1 Budweiser"
                     }
                 ]
             },
@@ -84,7 +81,7 @@ export default {
                 "deals": [
                     {
                         "type": "drink",
-                        ""description"": "$2 Budweiser and Bud Light Drafts"
+                        "description": "$2 Budweiser and Bud Light Drafts"
                     }
                 ]
             }
@@ -93,7 +90,7 @@ export default {
         {
             "name": "Armory Grill & Bar",
             "location": {
-                Street: "101 Main Street",
+                "street": "101 Main Street",
                 "city": "Burlington",
                 "state": "VT",
                 "lat": 44.475532,
@@ -134,11 +131,11 @@ export default {
                 "deals": [
                     {
                         "type": "drink",
-                        ""description"": "$5 Cocktails"
+                        "description": "$5 Cocktails"
                     },
                     {
                         "type": "food",
-                        ""description"": "1/2 Price Burgers"
+                        "description": "1/2 Price Burgers"
                     }
                 ]
             },
@@ -147,19 +144,20 @@ export default {
                 "deals": [
                     {
                         "type": "drink",
-                        ""description"": "$1 off All Cans and Bottles"
+                        "description": "$1 off All Cans and Bottles"
                     },
                     {
                         "type": "food",
-                        ""description"": "$2 Ribs"
+                        "description": "$2 Ribs"
                     }
                 ]
-            },]
+            }
+        ]
         },
         {
             "name": "Asiana Noodle Shop",
             "location": {
-                Street: "88 Church Street",
+                "street": "88 Church Street",
                 "city": "Burlington",
                 "state": "VT",
                 "lat": 44.4779515,
@@ -200,7 +198,7 @@ export default {
                 "deals": [
                     {
                         "type": "food",
-                        ""description"": "$5 or less sushi rolls 3-6pm"
+                        "description": "$5 or less sushi rolls 3-6pm"
                     }
                 ]
             },{
@@ -208,7 +206,7 @@ export default {
                 "deals": [
                     {
                         "type": "food",
-                        ""description"": "$5 or less sushi rolls 3-6pm"
+                        "description": "$5 or less sushi rolls 3-6pm"
                     }
                 ]
             },{
@@ -216,7 +214,7 @@ export default {
                 "deals": [
                     {
                         "type": "food",
-                        ""description"": "$5 or less sushi rolls 3-6pm"
+                        "description": "$5 or less sushi rolls 3-6pm"
                     }
                 ]
             },
@@ -225,7 +223,7 @@ export default {
                 "deals": [
                     {
                         "type": "food",
-                        ""description"": "$5 or less sushi rolls 3-6pm"
+                        "description": "$5 or less sushi rolls 3-6pm"
                     }
                 ]
             },
@@ -234,7 +232,7 @@ export default {
                 "deals": [
                     {
                         "type": "food",
-                        ""description"": "$5 or less sushi rolls 3-6pm"
+                        "description": "$5 or less sushi rolls 3-6pm"
                     }
                 ]
             }]
@@ -242,7 +240,7 @@ export default {
         {
             "name": "Bluebird BBQ",
             "location": {
-                Street: "317 Riverside Ave",
+                "street": "317 Riverside Ave",
                 "city": "Burlington",
                 "state": "VT",
                 "lat": 44.48789,
@@ -284,15 +282,15 @@ export default {
                     "deals": [
                         {
                             "type": "food",
-                            ""description"": "$5 Pulled Pork Poutine 4:30 - 5:30pm"
+                            "description": "$5 Pulled Pork Poutine 4:30 - 5:30pm"
                         },
                         {
                             "type": "food",
-                            ""description"": "$30 BBQ for two 4:30 - 5:30pm"
+                            "description": "$30 BBQ for two 4:30 - 5:30pm"
                         },
                         {
                             "type": "food",
-                            ""description"": "Kids under 12 eat free w/ adult entree"
+                            "description": "Kids under 12 eat free w/ adult entree"
                         }
                     ]
                 },
@@ -301,11 +299,11 @@ export default {
                     "deals": [
                         {
                             "type": "food",
-                            ""description"": "$5 Pulled Pork Poutine 4:30 - 5:30pm"
+                            "description": "$5 Pulled Pork Poutine 4:30 - 5:30pm"
                         },
                         {
                             "type": "food",
-                            ""description"": "$30 BBQ for two 4:30 - 5:30pm"
+                            "description": "$30 BBQ for two 4:30 - 5:30pm"
                         }  
                     ]
                 },
@@ -314,11 +312,11 @@ export default {
                     "deals": [
                         {
                             "type": "food",
-                            ""description"": "$5 Pulled Pork Poutine 4:30 - 5:30pm"
+                            "description": "$5 Pulled Pork Poutine 4:30 - 5:30pm"
                         },
                         {
                             "type": "food",
-                            ""description"": "$30 BBQ for two 4:30 - 5:30pm"
+                            "description": "$30 BBQ for two 4:30 - 5:30pm"
                         }
                     ]
                 },
@@ -327,15 +325,15 @@ export default {
                     "deals": [
                         {
                             "type": "food",
-                            ""description"": "$5 Pulled Pork Poutine 4:30 - 5:30pm"
+                            "description": "$5 Pulled Pork Poutine 4:30 - 5:30pm"
                         },
                         {
                             "type": "food",
-                            ""description"": "$30 BBQ for two 4:30 - 5:30pm"
+                            "description": "$30 BBQ for two 4:30 - 5:30pm"
                         },
                         {
                             "type": "drink",
-                            ""description"": "$6.50 Coyote Margaritas"
+                            "description": "$6.50 Coyote Margaritas"
                         }
                     ]
                 },
@@ -344,11 +342,11 @@ export default {
                     "deals": [
                         {
                             "type": "food",
-                            ""description"": "$5 Pulled Pork Poutine 4:30 - 5:30pm"
+                            "description": "$5 Pulled Pork Poutine 4:30 - 5:30pm"
                         },
                         {
                             "type": "food",
-                            ""description"": "$30 BBQ for two 4:30 - 5:30pm"
+                            "description": "$30 BBQ for two 4:30 - 5:30pm"
                         }
                     ]
                 },
@@ -357,11 +355,11 @@ export default {
                     "deals": [
                         {
                             "type": "food",
-                            ""description"": "$5 Pulled Pork Poutine 4:30 - 5:30pm"
+                            "description": "$5 Pulled Pork Poutine 4:30 - 5:30pm"
                         },
                         {
                             "type": "food",
-                            ""description"": "$30 BBQ for two 4:30 - 5:30pm"
+                            "description": "$30 BBQ for two 4:30 - 5:30pm"
                         }
                     ]
                 },
@@ -370,20 +368,20 @@ export default {
                     "deals": [
                         {
                             "type": "food",
-                            ""description"": "$5 Pulled Pork Poutine 4:30 - 5:30pm"
+                            "description": "$5 Pulled Pork Poutine 4:30 - 5:30pm"
                         },
                         {
                             "type": "food",
-                            ""description"": "$30 BBQ for two 4:30 - 5:30pm"
+                            "description": "$30 BBQ for two 4:30 - 5:30pm"
                         }
                     ]
                 }
             ]
         },
         {
-            "name": ""city" Market",
+            "name": "City Market",
             "location": {
-                Street: "82 South Winooski Ave",
+                "street": "82 South Winooski Ave",
                 "city": "Burlington",
                 "state": "VT",
                 "lat": 44.4781109,
@@ -425,7 +423,7 @@ export default {
                     "deals": [
                         {
                             "type": "food",
-                            ""description"": "$5 Sushi Rolls"
+                            "description": "$5 Sushi Rolls"
                         }
                     ]
                 }
@@ -434,7 +432,7 @@ export default {
         {
             "name": "Church Street Tavern",
             "location": {
-                Street: "103 Church Street",
+                "street": "103 Church Street",
                 "city": "Burlington",
                 "state": "VT",
                 "lat": 44.477496,
@@ -476,7 +474,7 @@ export default {
                     "deals": [
                         {
                             "type": "food",
-                            ""description"": "1/2 Price Wings"
+                            "description": "1/2 Price Wings"
                         }
                     ]
                 },
@@ -485,7 +483,7 @@ export default {
                     "deals": [
                         {
                             "type": "drink",
-                            ""description"": "$5 Bloody Marys and Mimosas"
+                            "description": "$5 Bloody Marys and Mimosas"
                         }
                     ]
                 }
@@ -494,7 +492,7 @@ export default {
         {
             "name": "The Spot",
             "location": {
-                Street: "210 Shelburne Road",
+                "street": "210 Shelburne Road",
                 "city": "Burlington",
                 "state": "VT",
                 "lat": 44.4774946,
@@ -536,7 +534,7 @@ export default {
                     "deals": [
                         {
                             "type": "food",
-                            ""description"": "$0.50 Wings"
+                            "description": "$0.50 Wings"
                         }
                     ]
                 }
@@ -545,7 +543,7 @@ export default {
         {
             "name": "Citizen Cider",
             "location": {
-                Street: "316 Pine Street",
+                "street": "316 Pine Street",
                 "city": "Burlington",
                 "state": "VT",
                 "lat": 44.4706803,
@@ -587,7 +585,7 @@ export default {
                     "deals": [
                         {
                             "type": "drink",
-                            ""description"": "1/2 Price Unified Press Drafts"
+                            "description": "1/2 Price Unified Press Drafts"
                         }
                     ]
                 },
@@ -596,7 +594,7 @@ export default {
                     "deals": [
                         {
                             "type": "food",
-                            ""description"": "$5 Tacos"
+                            "description": "$5 Tacos"
                         }
                     ]
                 },
@@ -605,7 +603,7 @@ export default {
                     "deals": [
                         {
                             "type": "food",
-                            ""description"": "$6 Hot Dog and 16oz can of Unified Press"
+                            "description": "$6 Hot Dog and 16oz can of Unified Press"
                         }
                     ]
                 }
@@ -614,7 +612,7 @@ export default {
         {
             "name": "Daily Planet",
             "location": {
-                Street: "15 Center Street",
+                "street": "15 Center Street",
                 "city": "Burlington",
                 "state": "VT",
                 "lat": 44.477792,
@@ -656,15 +654,15 @@ export default {
                     "deals": [
                         {
                             "type": "food",
-                            ""description"": "1/2 Price Burgers"
+                            "description": "1/2 Price Burgers"
                         },
                         {
                             "type": "drink",
-                            ""description"": "$4 Draft Specials"
+                            "description": "$4 Draft Specials"
                         },
                         {
                             "type": "drink",
-                            ""description"": "$1 Select drafts until the keg kicks (except Tues"day")"
+                            "description": "$1 Select drafts until the keg kicks (except Tuesday)"
                         }
                     ]
                 },
@@ -673,19 +671,19 @@ export default {
                     "deals": [
                         {
                             "type": "food",
-                            ""description"": "$2 Tacos & Sides"
+                            "description": "$2 Tacos & Sides"
                         },
                         {
                             "type": "drink",
-                            ""description"": "$2 Tecate Bottles"
+                            "description": "$2 Tecate Bottles"
                         },
                         {
                             "type": "drink",
-                            ""description"": "$2 Tequila Shots"
+                            "description": "$2 Tequila Shots"
                         },
                         {
                             "type": "drink",
-                            ""description"": "$1 Select Drafts (Keg Kicks)"
+                            "description": "$1 Select Drafts (Keg Kicks)"
                         }
                     ]
                 },
@@ -694,7 +692,7 @@ export default {
                     "deals": [
                         {
                             "type": "drink",
-                            ""description"": "$1 Select Drafts (Keg Kicks)"
+                            "description": "$1 Select Drafts (Keg Kicks)"
                         }
                     ]
                 },
@@ -703,7 +701,7 @@ export default {
                     "deals": [
                         {
                             "type": "drink",
-                            ""description"": "$1 Select Drafts (Keg Kicks)"
+                            "description": "$1 Select Drafts (Keg Kicks)"
                         }
                     ]
                 },
@@ -712,11 +710,11 @@ export default {
                     "deals": [
                         {
                             "type": "drink",
-                            ""description"": "$1 Select Drafts (Keg Kicks)"
+                            "description": "$1 Select Drafts (Keg Kicks)"
                         },
                         {
                             "type": "drink",
-                            ""description"": "$4 Fiddlehead IPA 16oz, $4 2nd Fiddle 12oz"
+                            "description": "$4 Fiddlehead IPA 16oz, $4 2nd Fiddle 12oz"
                         }
                     ]
                 },
@@ -725,7 +723,7 @@ export default {
                     "deals": [
                         {
                             "type": "drink",
-                            ""description"": "$1 Select Drafts (Keg Kicks)"
+                            "description": "$1 Select Drafts (Keg Kicks)"
                         }
                     ]
                 },
@@ -734,7 +732,7 @@ export default {
                     "deals": [
                         {
                             "type": "drink",
-                            ""description"": "$1 Select Drafts (Keg Kicks)"
+                            "description": "$1 Select Drafts (Keg Kicks)"
                         }
                     ]
                 }
@@ -743,7 +741,7 @@ export default {
         {
             "name": "El Cortijo",
             "location": {
-                Street: "189 Bank Street",
+                "street": "189 Bank Street",
                 "city": "Burlington",
                 "state": "VT",
                 "lat": 44.4837715,
@@ -785,7 +783,7 @@ export default {
                     "deals": [
                         {
                             "type": "drink",
-                            ""description"": "$2 Off Signature Margaritas"
+                            "description": "$2 Off Signature Margaritas"
                         }
                     ]
                 }
@@ -794,7 +792,7 @@ export default {
         {
             "name": "El Gato",
             "location": {
-                Street: "169 Church Street",
+                "street": "169 Church Street",
                 "city": "Burlington",
                 "state": "VT",
                 "lat": 44.4837498,
@@ -836,15 +834,15 @@ export default {
                     "deals": [
                         {
                             "type": "drink",
-                            ""description"": "$3 "long" Trail Drafts"
+                            "description": "$3 Long Trail Drafts"
                         },
                         {
                             "type": "drink",
-                            ""description"": "$6 Mojitos"
+                            "description": "$6 Mojitos"
                         },
                         {
                             "type": "food",
-                            ""description"": "Kids eat free w/ Adult meal"
+                            "description": "Kids eat free w/ Adult meal"
                         }
                     ]
                 },
@@ -853,11 +851,11 @@ export default {
                     "deals": [
                         {
                             "type": "drink",
-                            ""description"": "$3 "long" Trail"
+                            "description": "$3 Long Trail"
                         },
                         {
                             "type": "food",
-                            ""description"": "$3 Tacos"
+                            "description": "$3 Tacos"
                         }
                     ]
                 },
@@ -866,7 +864,7 @@ export default {
                     "deals": [
                         {
                             "type": "drink",
-                            ""description"": "$5 House Margaritas"
+                            "description": "$5 House Margaritas"
                         }
                     ]
                 },
@@ -875,7 +873,7 @@ export default {
                     "deals": [
                         {
                             "type": "drink",
-                            ""description"": "$3 Magic Hat Drafts"
+                            "description": "$3 Magic Hat Drafts"
                         },
                         {
                             "type": "1/2 Price Nachos"
@@ -887,7 +885,7 @@ export default {
                     "deals": [
                         {
                             "type": "drink",
-                            ""description"": "$3 Mexican Beers"
+                            "description": "$3 Mexican Beers"
                         }
                     ]
                 },
@@ -896,16 +894,16 @@ export default {
                     "deals": [
                         {
                             "type": "drink",
-                            ""description"": "$5 Meximosas"
+                            "description": "$5 Meximosas"
                         }
                     ]
                 }
             ]
         },
         {
-            "name": "Finnigan"s Pub",
+            "name": "Finnigan's Pub",
             "location": {
-                Street: "205 College Street",
+                "street": "205 College Street",
                 "city": "Burlington",
                 "state": "VT",
                 "lat": 44.476999,
@@ -947,7 +945,7 @@ export default {
                     "deals": [
                         {
                             "type": "drink",
-                            ""description"": "$4 Switch Back"
+                            "description": "$4 Switch Back"
                         }
                     ]
                 },
@@ -956,7 +954,7 @@ export default {
                     "deals": [
                         {
                             "type": "drink",
-                            ""description"": "$4.50 Fiddlehead"
+                            "description": "$4.50 Fiddlehead"
                         }
                     ]
                 },
@@ -965,11 +963,11 @@ export default {
                     "deals": [
                         {
                             "type": "drink",
-                            ""description"": "$4.50 Lagunitas"
+                            "description": "$4.50 Lagunitas"
                         },
                         {
                             "type": "drink",
-                            ""description"": "$5 Guiness"
+                            "description": "$5 Guiness"
                         }
                     ]
                 },
@@ -978,11 +976,11 @@ export default {
                     "deals": [
                         {
                             "type": "drink",
-                            ""description"": "$1 PBR Pints"
+                            "description": "$1 PBR Pints"
                         },
                         {
                             "type": "drink",
-                            ""description"": "$2 PBR Pitchers"
+                            "description": "$2 PBR Pitchers"
                         }
                     ]
                 },
@@ -991,7 +989,7 @@ export default {
                     "deals": [
                         {
                             "type": "drink",
-                            ""description"": "$5 Heady Toppers"
+                            "description": "$5 Heady Toppers"
                         }
                     ]
                 },
@@ -1000,7 +998,7 @@ export default {
                     "deals": [
                         {
                             "type": "drink",
-                            ""description"": "$4.50 Zero Gravity"
+                            "description": "$4.50 Zero Gravity"
                         }
                     ]
                 },
@@ -1009,7 +1007,7 @@ export default {
                     "deals": [
                         {
                             "type": "drink",
-                            ""description"": "$4.50 Sierra Nevada Pints"
+                            "description": "$4.50 Sierra Nevada Pints"
                         }
                     ]
                 }
@@ -1018,7 +1016,7 @@ export default {
         {
             "name": "Honey Road",
             "location": {
-                Street: "156 Church Street",
+                "street": "156 Church Street",
                 "city": "Burlington",
                 "state": "VT",
                 "lat": 44.4761072,
@@ -1060,11 +1058,11 @@ export default {
                     "deals": [
                         {
                             "type": "food",
-                            ""description"": "$1 Chicken Wings 4:00 - 5:00pm"
+                            "description": "$1 Chicken Wings 4:00 - 5:00pm"
                         },
                         {
                             "type": "drink",
-                            ""description"": "$2 Miller High Life Ponies 4:00 - 5:00pm"
+                            "description": "$2 Miller High Life Ponies 4:00 - 5:00pm"
                         }
                     ]
                 },
@@ -1073,11 +1071,11 @@ export default {
                     "deals": [
                         {
                             "type": "food",
-                            ""description"": "$1 Chicken Wings 4:00 - 5:00pm"
+                            "description": "$1 Chicken Wings 4:00 - 5:00pm"
                         },
                         {
                             "type": "drink",
-                            ""description"": "$2 Miller High Life Ponies 4:00 - 5:00pm"
+                            "description": "$2 Miller High Life Ponies 4:00 - 5:00pm"
                         }
                     ]
                 },
@@ -1086,11 +1084,11 @@ export default {
                     "deals": [
                         {
                             "type": "food",
-                            ""description"": "$1 Chicken Wings 4:00 - 5:00pm"
+                            "description": "$1 Chicken Wings 4:00 - 5:00pm"
                         },
                         {
                             "type": "drink",
-                            ""description"": "$2 Miller High Life Ponies 4:00 - 5:00pm"
+                            "description": "$2 Miller High Life Ponies 4:00 - 5:00pm"
                         }
                     ]
                 },
@@ -1099,11 +1097,11 @@ export default {
                     "deals": [
                         {
                             "type": "food",
-                            ""description"": "$1 Chicken Wings 4:00 - 5:00pm"
+                            "description": "$1 Chicken Wings 4:00 - 5:00pm"
                         },
                         {
                             "type": "drink",
-                            ""description"": "$2 Miller High Life Ponies 4:00 - 5:00pm"
+                            "description": "$2 Miller High Life Ponies 4:00 - 5:00pm"
                         }
                     ]
                 },
@@ -1112,11 +1110,11 @@ export default {
                     "deals": [
                         {
                             "type": "food",
-                            ""description"": "$1 Chicken Wings 4:00 - 5:00pm"
+                            "description": "$1 Chicken Wings 4:00 - 5:00pm"
                         },
                         {
                             "type": "drink",
-                            ""description"": "$2 Miller High Life Ponies 4:00 - 5:00pm"
+                            "description": "$2 Miller High Life Ponies 4:00 - 5:00pm"
                         }
                     ]
                 },
@@ -1125,11 +1123,11 @@ export default {
                     "deals": [
                         {
                             "type": "food",
-                            ""description"": "$1 Chicken Wings 4:00 - 5:00pm"
+                            "description": "$1 Chicken Wings 4:00 - 5:00pm"
                         },
                         {
                             "type": "drink",
-                            ""description"": "$2 Miller High Life Ponies 4:00 - 5:00pm"
+                            "description": "$2 Miller High Life Ponies 4:00 - 5:00pm"
                         }
                     ]
                 },
@@ -1138,20 +1136,20 @@ export default {
                     "deals": [
                         {
                             "type": "food",
-                            ""description"": "$1 Chicken Wings 4:00 - 5:00pm"
+                            "description": "$1 Chicken Wings 4:00 - 5:00pm"
                         },
                         {
                             "type": "drink",
-                            ""description"": "$2 Miller High Life Ponies 4:00 - 5:00pm"
+                            "description": "$2 Miller High Life Ponies 4:00 - 5:00pm"
                         }
                     ]
                 }
             ]
         },
         {
-            "name": "Leonardo"s Pizza",
+            "name": "Leonardo's Pizza",
             "location": {
-                Street: "83 Pearl Street",
+                "street": "83 Pearl Street",
                 "city": "Burlington",
                 "state": "VT",
                 "lat": 44.4801984,
@@ -1193,7 +1191,7 @@ export default {
                     "deals": [
                         {
                             "type": "food",
-                            ""description"": "$3.50 for 2 slices & fountain soda 11:00am - 2:00pm"
+                            "description": "$3.50 for 2 slices & fountain soda 11:00am - 2:00pm"
                         }
                     ]
                 },
@@ -1202,7 +1200,7 @@ export default {
                     "deals": [
                         {
                             "type": "food",
-                            ""description"": "$3.50 for 2 Slices & Fountain Drink 11:00am - 2:00pm"
+                            "description": "$3.50 for 2 Slices & Fountain Drink 11:00am - 2:00pm"
                         }
                     ]
                 },
@@ -1211,7 +1209,7 @@ export default {
                     "deals": [
                         {
                             "type": "food",
-                            ""description"": "$3.50 for 2 Slices & Fountain Drink 11:00am - 2:00pm"
+                            "description": "$3.50 for 2 Slices & Fountain Drink 11:00am - 2:00pm"
                         }
                     ]
                 },
@@ -1220,7 +1218,7 @@ export default {
                     "deals": [
                         {
                             "type": "food",
-                            ""description"": "$3.50 for 2 Slices & Fountain Drink 11:00am - 2:00pm"
+                            "description": "$3.50 for 2 Slices & Fountain Drink 11:00am - 2:00pm"
                         }
                     ]
                 },
@@ -1229,7 +1227,7 @@ export default {
                     "deals": [
                         {
                             "type": "food",
-                            ""description"": "$3.50 for 2 Slices & Fountain Drink 11:00am - 2:00pm"
+                            "description": "$3.50 for 2 Slices & Fountain Drink 11:00am - 2:00pm"
                         }
                     ]
                 },
@@ -1238,7 +1236,7 @@ export default {
                     "deals": [
                         {
                             "type": "food",
-                            ""description"": "$3.50 for 2 Slices & Fountain Drink 11:00am - 2:00pm"
+                            "description": "$3.50 for 2 Slices & Fountain Drink 11:00am - 2:00pm"
                         }
                     ]
                 },
@@ -1247,16 +1245,16 @@ export default {
                     "deals": [
                         {
                             "type": "food",
-                            ""description"": "$3.50 for 2 Slices & Fountain Drink 11:00am - 2:00pm"
+                            "description": "$3.50 for 2 Slices & Fountain Drink 11:00am - 2:00pm"
                         }
                     ]
                 }
             ]
         },
         {
-            "name":  "Leunig"s",
+            "name":  "Leunig's",
             "location": {
-                Street: "115 Church Street",
+                "street": "115 Church Street",
                 "city": "Burlington",
                 "state": "VT",
                 "lat": 44.4772525,
@@ -1298,7 +1296,7 @@ export default {
                     "deals": [
                         {
                             "type": "food",
-                            ""description"": "$20 Early Bird Bistro Dinner 3:00 - 5:30pm"
+                            "description": "$20 Early Bird Bistro Dinner 3:00 - 5:30pm"
                         }
                     ]
                 },
@@ -1307,7 +1305,7 @@ export default {
                     "deals": [
                         {
                             "type": "food",
-                            ""description"": "$20 Early Bird Bistro Dinner 3:00 - 5:00pm"
+                            "description": "$20 Early Bird Bistro Dinner 3:00 - 5:00pm"
                         }
                     ]
                 },
@@ -1316,7 +1314,7 @@ export default {
                     "deals": [
                         {
                             "type": "food",
-                            ""description"": "$20 Early Bird Bistro Dinner 3:00 - 5:00pm"
+                            "description": "$20 Early Bird Bistro Dinner 3:00 - 5:00pm"
                         }
                     ]
                 },
@@ -1325,7 +1323,7 @@ export default {
                     "deals": [
                         {
                             "type": "food",
-                            ""description"": "$20 Early Bird Bistro Dinner 3:00 - 5:00pm"
+                            "description": "$20 Early Bird Bistro Dinner 3:00 - 5:00pm"
                         }
                     ]
                 },
@@ -1334,7 +1332,7 @@ export default {
                     "deals": [
                         {
                             "type": "food",
-                            ""description"": "$20 Early Bird Bistro Dinner 3:00 - 5:00pm"
+                            "description": "$20 Early Bird Bistro Dinner 3:00 - 5:00pm"
                         }
                     ]
                 },
@@ -1343,7 +1341,7 @@ export default {
                     "deals": [
                         {
                             "type": "food",
-                            ""description"": "$20 Early Bird Bistro Dinner 3:00 - 5:00pm"
+                            "description": "$20 Early Bird Bistro Dinner 3:00 - 5:00pm"
                         }
                     ]
                 },
@@ -1352,7 +1350,7 @@ export default {
                     "deals": [
                         {
                             "type": "food",
-                            ""description"": "$20 Early Bird Bistro Dinner 3:00 - 5:00pm"
+                            "description": "$20 Early Bird Bistro Dinner 3:00 - 5:00pm"
                         }
                     ]
                 }
@@ -1361,7 +1359,7 @@ export default {
         {
             "name": "Manhattan Pizza & Pub",
             "location": {
-                Street: "167 Main Street",
+                "street": "167 Main Street",
                 "city": "Burlington",
                 "state": "VT",
                 "lat": 44.4757164,
@@ -1403,7 +1401,7 @@ export default {
                     "deals": [
                         {
                             "type": "food",
-                            ""description"": "1/2 Price Wings"
+                            "description": "1/2 Price Wings"
                         }
                     ]
                 },
@@ -1412,19 +1410,19 @@ export default {
                     "deals": [
                         {
                             "type": "food",
-                            ""description"": "$2 Tacos"
+                            "description": "$2 Tacos"
                         },
                         {
                             "type": "drink",
-                            ""description"": "$3 Switchbacks"
+                            "description": "$3 Switchbacks"
                         },
                         {
                             "type": "drink",
-                            ""description"": "$4 Sauza Shots"
+                            "description": "$4 Sauza Shots"
                         },
                         {
                             "type": "drink",
-                            ""description"": "$3 Pachificos"
+                            "description": "$3 Pachificos"
                         }
                     ]
                 },
@@ -1433,24 +1431,24 @@ export default {
                     "deals": [
                         {
                             "type": "drink",
-                            ""description"": "$5 Heady Toppers"
+                            "description": "$5 Heady Toppers"
                         },
                         {
                             "type": "food",
-                            ""description"": "$7.99 Philly Cheesesteak with Fries"
+                            "description": "$7.99 Philly Cheesesteak with Fries"
                         },
                         {
                             "type": "drink",
-                            ""description"": "$6 Vodka Soda"
+                            "description": "$6 Vodka Soda"
                         }
                     ]
                 }
             ]
         },
         {
-            "name": "McKee"s Pub & Grill",
+            "name": "McKee's Pub & Grill",
             "location": {
-                Street: "19 Ethan Allen Street",
+                "street": "19 Ethan Allen Street",
                 "city": "Winooski",
                 "state": "VT",
                 "lat": 44.4915496,
@@ -1492,7 +1490,7 @@ export default {
                     "deals": [
                         {
                             "type": "food",
-                            ""description"": "1/2 Price Appetizers 4:00 - 6:00pm"
+                            "description": "1/2 Price Appetizers 4:00 - 6:00pm"
                         }
                     ]
                 },
@@ -1501,7 +1499,7 @@ export default {
                     "deals": [
                         {
                             "type": "food",
-                            ""description"": "1/2 Price Appetizers 4:00 - 6:00pm"
+                            "description": "1/2 Price Appetizers 4:00 - 6:00pm"
                         }
                     ]
                 },
@@ -1510,7 +1508,7 @@ export default {
                     "deals": [
                         {
                             "type": "food",
-                            ""description"": "1/2 Price Appetizers 4:00 - 6:00pm"
+                            "description": "1/2 Price Appetizers 4:00 - 6:00pm"
                         }
                     ]
                 },
@@ -1519,7 +1517,7 @@ export default {
                     "deals": [
                         {
                             "type": "food",
-                            ""description"": "1/2 Price Appetizers 4:00 - 6:00pm"
+                            "description": "1/2 Price Appetizers 4:00 - 6:00pm"
                         }
                     ]
                 },
@@ -1528,7 +1526,7 @@ export default {
                     "deals": [
                         {
                             "type": "food",
-                            ""description"": "1/2 Price Appetizers 4:00 - 6:00pm"
+                            "description": "1/2 Price Appetizers 4:00 - 6:00pm"
                         }
                     ]
                 },
@@ -1537,7 +1535,7 @@ export default {
                     "deals": [
                         {
                             "type": "food",
-                            ""description"": "1/2 Price Appetizers 2:00 - 10:00pm"
+                            "description": "1/2 Price Appetizers 2:00 - 10:00pm"
                         }
                     ]
                 }
@@ -1546,7 +1544,7 @@ export default {
         {
             "name":  "Monarch and the Milkweed",
             "location": {
-                Street: "111 Saint Paul Street",
+                "street": "111 Saint Paul Street",
                 "city": "Burlington",
                 "state": "VT",
                 "lat": 44.4766829,
@@ -1588,7 +1586,7 @@ export default {
                     "deals": [
                         {
                             "type": "drink",
-                            ""description"": "$3 Green "state" Lager"
+                            "description": "$3 Green State Lager"
                         }
                     ]
                 },
@@ -1597,7 +1595,7 @@ export default {
                     "deals": [
                         {
                             "type": "drink",
-                            ""description"": "$3 Green "state" Lager"
+                            "description": "$3 Green State Lager"
                         }
                     ]
                 },
@@ -1606,7 +1604,7 @@ export default {
                     "deals": [
                         {
                             "type": "drink",
-                            ""description"": "$3 Green "state" Lager"
+                            "description": "$3 Green State Lager"
                         }
                     ]
                 },
@@ -1615,7 +1613,7 @@ export default {
                     "deals": [
                         {
                             "type": "drink",
-                            ""description"": "$3 Green "state" Lager"
+                            "description": "$3 Green State Lager"
                         }
                     ]
                 },
@@ -1624,7 +1622,7 @@ export default {
                     "deals": [
                         {
                             "type": "drink",
-                            ""description"": "$3 Green "state" Lager"
+                            "description": "$3 Green State Lager"
                         }
                     ]
                 },
@@ -1633,7 +1631,7 @@ export default {
                     "deals": [
                         {
                             "type": "drink",
-                            ""description"": "$3 Green "state" Lager"
+                            "description": "$3 Green State Lager"
                         }
                     ]
                 },
@@ -1642,16 +1640,16 @@ export default {
                     "deals": [
                         {
                             "type": "drink",
-                            ""description"": "$3 Green "state" Lager"
+                            "description": "$3 Green Statefd Lager"
                         }
                     ]
                 }
             ]
         },
         {
-            "name":  "Nectar"s",
+            "name":  "Nectar's",
             "location": {
-                Street: "188 Main Street",
+                "street": "188 Main Street",
                 "city": "Burlington",
                 "state": "VT",
                 "lat": 44.47619,
@@ -1693,16 +1691,16 @@ export default {
                     "deals": [
                         {
                             "type": "drink",
-                            ""description"": "$2.50 Miller High Life"
+                            "description": "$2.50 Miller High Life"
                         }
                     ]
                 }
             ]
         },
         {
-            "name":  "Ri Ra"s",
+            "name":  "Ri Ra's",
             "location": {
-                Street: "123 Church Street",
+                "street": "123 Church Street",
                 "city": "Burlington",
                 "state": "VT",
                 "lat": 44.476861,
@@ -1744,19 +1742,19 @@ export default {
                     "deals": [
                         {
                             "type": "drink",
-                            ""description"": "$4 Well Vodka Drinks"
+                            "description": "$4 Well Vodka Drinks"
                         },
                         {
                             "type": "drink",
-                            ""description"": "$4.50 Magic Hat Pints"
+                            "description": "$4.50 Magic Hat Pints"
                         },
                         {
                             "type": "drink",
-                            ""description"": "$2 Selected Cans"
+                            "description": "$2 Selected Cans"
                         },
                         {
                             "type": "drink",
-                            ""description"": "$4 Well Drinks"
+                            "description": "$4 Well Drinks"
                         }
                     ]
                 },
@@ -1765,15 +1763,15 @@ export default {
                     "deals": [
                         {
                             "type": "drink",
-                            ""description"": "$4 Well Vodka Drinks"
+                            "description": "$4 Well Vodka Drinks"
                         },
                         {
                             "type": "drink",
-                            ""description"": "$2 Selected Cans"
+                            "description": "$2 Selected Cans"
                         },
                         {
                             "type": "drink",
-                            ""description"": "$4 Well Drinks"
+                            "description": "$4 Well Drinks"
                         }
                     ]
                 }
@@ -1782,7 +1780,7 @@ export default {
         {
             "name":  "Pascolo Ristorante",
             "location": {
-                Street: "83 Church Street",
+                "street": "83 Church Street",
                 "city": "Burlington",
                 "state": "VT",
                 "lat": 44.478004,
@@ -1824,7 +1822,7 @@ export default {
                     "deals": [
                         {
                             "type": "drink",
-                            ""description"": "1/2 Price Amaro Pours"
+                            "description": "1/2 Price Amaro Pours"
                         }
                     ]
                 },
@@ -1833,16 +1831,16 @@ export default {
                     "deals": [
                         {
                             "type": "drink",
-                            ""description"": "1/2 Price Specialty Cocktails"
+                            "description": "1/2 Price Specialty Cocktails"
                         }
                     ]
                 }
             ]
         },
         {
-            "name":  "Mr. Mike"s",
+            "name":  "Mr. Mike's",
             "location": {
-                Street: "206 Main Street",
+                "street": "206 Main Street",
                 "city": "Burlington",
                 "state": "VT",
                 "lat": 44.476183,
@@ -1884,7 +1882,7 @@ export default {
                     "deals": [
                         {
                             "type": "food",
-                            ""description"": "$7 for Two Slices & Pint"
+                            "description": "$7 for Two Slices & Pint"
                         }
                     ]
                 },
@@ -1893,16 +1891,16 @@ export default {
                     "deals": [
                         {
                             "type": "drink",
-                            ""description"": "$1 PBR Pints"
+                            "description": "$1 PBR Pints"
                         }
                     ]
                 }
             ]
         },
         {
-            "name":  "Rasputin"s",
+            "name":  "Rasputin's",
             "location": {
-                Street: "206 Main Street",
+                "street": "206 Main Street",
                 "city": "Burlington",
                 "state": "VT",
                 "lat": 44.4755617,
@@ -1944,19 +1942,19 @@ export default {
                     "deals": [
                         {
                             "type": "drink",
-                            ""description"": "$1 Beer Special"
+                            "description": "$1 Beer Special"
                         },
                         {
                             "type": "drink",
-                            ""description"": "$3 Kamikaze"
+                            "description": "$3 Kamikaze"
                         },
                         {
                             "type": "drink",
-                            ""description"": "$4 Vodka Soda"
+                            "description": "$4 Vodka Soda"
                         },
                         {
                             "type": "drink",
-                            ""description"": "$2 Ciders"
+                            "description": "$2 Ciders"
                         }
                     ]
                 }
@@ -1965,7 +1963,7 @@ export default {
         {
             "name":  "Pizzeria Verita",
             "location": {
-                Street: "156 Saint Paul Street",
+                "street": "156 Saint Paul Street",
                 "city": "Burlington",
                 "state": "VT",
                 "lat": 44.4751864,
@@ -2007,20 +2005,20 @@ export default {
                     "deals": [
                         {
                             "type": "food",
-                            ""description"": "Buy one Margherita Pizza and get on FREE"
+                            "description": "Buy one Margherita Pizza and get on FREE"
                         },
                         {
                             "type": "drink",
-                            ""description"": "$5 Margharitas"
+                            "description": "$5 Margharitas"
                         }
                     ]
                 }
             ]
         },
         {
-            "name":  "Smitty"s Pub",
+            "name":  "Smitty's Pub",
             "location": {
-                Street: "1127 North Ave",
+                "street": "1127 North Ave",
                 "city": "Burlington",
                 "state": "VT",
                 "lat": 44.5069428,
@@ -2062,7 +2060,7 @@ export default {
                     "deals": [
                         {
                             "type": "drink",
-                            ""description"": "$4 Zero Gravity Pints"
+                            "description": "$4 Zero Gravity Pints"
                         }
                     ]
                 },
@@ -2071,15 +2069,15 @@ export default {
                     "deals": [
                         {
                             "type": "drink",
-                            ""description"": "$3 Goose Island Pints"
+                            "description": "$3 Goose Island Pints"
                         },
                         {
                             "type": "drink",
-                            ""description"": "$3 Shock Top Pints"
+                            "description": "$3 Shock Top Pints"
                         },
                         {
                             "type": "drink",
-                            ""description"": "$3 Switchback Pints"
+                            "description": "$3 Switchback Pints"
                         }
                     ]
                 },
@@ -2088,20 +2086,20 @@ export default {
                     "deals": [
                         {
                             "type": "drink",
-                            ""description"": "$4 Margaritas"
+                            "description": "$4 Margaritas"
                         }, 
                         {
                             "type": "drink",
-                            ""description"": "$2.50 Corona Bottles"
+                            "description": "$2.50 Corona Bottles"
                         }
                     ]
                 }
             ]
         },
         {
-            "name":  "JP"s Pub",
+            "name":  "JP's Pub",
             "location": {
-                Street: "139 Main Street",
+                "street": "139 Main Street",
                 "city": "Burlington",
                 "state": "VT",
                 "lat": 44.4756634,
@@ -2143,11 +2141,11 @@ export default {
                     "deals": [
                         {
                             "type": "drink",
-                            ""description"": "$2.75 Budweiser Pints"
+                            "description": "$2.75 Budweiser Pints"
                         }, 
                         {
                             "type": "drink",
-                            ""description"": "$6 Heady Topper"
+                            "description": "$6 Heady Topper"
                         }
                     ]
                 }
@@ -2156,7 +2154,7 @@ export default {
         {
             "name":  "Splash at the Boathouse",
             "location": {
-                Street: "0 College Street",
+                "street": "0 College Street",
                 "city": "Burlington",
                 "state": "VT",
                 "lat": 44.4770687,
@@ -2198,7 +2196,7 @@ export default {
                     "deals": [
                         {
                             "type": "food",
-                            ""description"": "$3 Beef or Fish Tacos"
+                            "description": "$3 Beef or Fish Tacos"
                         }
                     ]
                 }
@@ -2207,7 +2205,7 @@ export default {
         {
             "name":  "The Archives",
             "location": {
-                Street: "191 College Street",
+                "street": "191 College Street",
                 "city": "Burlington",
                 "state": "VT",
                 "lat": 44.4769898,
@@ -2249,11 +2247,11 @@ export default {
                     "deals": [
                         {
                             "type": "drink",
-                            ""description"": "4 Arcade Token with Beer Purchase"
+                            "description": "4 Arcade Token with Beer Purchase"
                         },
                         {
                             "type": "drink",
-                            ""description"": "$5 Domestic and a Sake Shot"
+                            "description": "$5 Domestic and a Sake Shot"
                         }
                     ]
                 },
@@ -2262,7 +2260,7 @@ export default {
                     "deals": [
                         {
                             "type": "drink",
-                            ""description"": "$5 Domestic and a Sake Shot"
+                            "description": "$5 Domestic and a Sake Shot"
                         }
                     ]
                 },
@@ -2271,7 +2269,7 @@ export default {
                     "deals": [
                         {
                             "type": "drink",
-                            ""description"": "$5 Domestic and a Sake Shot"
+                            "description": "$5 Domestic and a Sake Shot"
                         }
                     ]
                 },
@@ -2280,7 +2278,7 @@ export default {
                     "deals": [
                         {
                             "type": "drink",
-                            ""description"": "$5 Domestic and a Sake Shot"
+                            "description": "$5 Domestic and a Sake Shot"
                         }
                     ]
                 },
@@ -2289,7 +2287,7 @@ export default {
                     "deals": [
                         {
                             "type": "drink",
-                            ""description"": "$5 Domestic and a Sake Shot"
+                            "description": "$5 Domestic and a Sake Shot"
                         }
                     ]
                 },
@@ -2298,16 +2296,16 @@ export default {
                     "deals": [
                         {
                             "type": "drink",
-                            ""description"": "$5 Domestic and a Sake Shot"
+                            "description": "$5 Domestic and a Sake Shot"
                         }
                     ]
-                },
+                }
             ]
         },
         {
             "name":  "The Friendly Toast",
             "location": {
-                Street: "86 Saint Paul Street",
+                "street": "86 Saint Paul Street",
                 "city": "Burlington",
                 "state": "VT",
                 "lat": 44.4773683,
@@ -2349,15 +2347,15 @@ export default {
                     "deals": [
                         {
                             "type": "food",
-                            ""description"": "1/2 Price Tacos"
+                            "description": "1/2 Price Tacos"
                         },
                         {
                             "type": "drink",
-                            ""description"": "$5 Margaritas"
+                            "description": "$5 Margaritas"
                         },
                         {
                             "type": "food",
-                            ""description"": "1/2 Price Appetizers 3:00 - 6:00pm"
+                            "description": "1/2 Price Appetizers 3:00 - 6:00pm"
                         }
                     ]
                 },
@@ -2366,15 +2364,15 @@ export default {
                     "deals": [
                         {
                             "type": "food",
-                            ""description"": "Kids Eat FREE"
+                            "description": "Kids Eat FREE"
                         },
                         {
                             "type": "food",
-                            ""description"": "1/2 Price Burgers with Purchase of Beer"
+                            "description": "1/2 Price Burgers with Purchase of Beer"
                         },
                         {
                             "type": "food",
-                            ""description"": "1/2 Price Appetizers 3:00 - 6:00pm"
+                            "description": "1/2 Price Appetizers 3:00 - 6:00pm"
                         }
                     ]
                 },
@@ -2383,11 +2381,11 @@ export default {
                     "deals": [
                         {
                             "type": "food",
-                            ""description"": "25% off for College Students and Faculty"
+                            "description": "25% off for College Students and Faculty"
                         },
                         {
                             "type": "food",
-                            ""description"": "1/2 Price Appetizers 3:00 - 6:00pm"
+                            "description": "1/2 Price Appetizers 3:00 - 6:00pm"
                         }
                     ]
                 },
@@ -2396,11 +2394,11 @@ export default {
                     "deals": [
                         {
                             "type": "food",
-                            ""description"": "25% off for College Students and Faculty"
+                            "description": "25% off for College Students and Faculty"
                         },
                         {
                             "type": "food",
-                            ""description"": "1/2 Price Appetizers 3:00 - 6:00pm"
+                            "description": "1/2 Price Appetizers 3:00 - 6:00pm"
                         }
                     ]
                 }
@@ -2409,7 +2407,7 @@ export default {
         {
             "name":  "The Chubby Muffin",
             "location": {
-                Street: "88 Oak Street",
+                "street": "88 Oak Street",
                 "city": "Burlington",
                 "state": "VT",
                 "lat": 44.489579,
@@ -2451,7 +2449,7 @@ export default {
                     "deals": [
                         {
                             "type": "food",
-                            ""description"": "$10 Burger and Beer"
+                            "description": "$10 Burger and Beer"
                         }
                     ]
                 }
@@ -2460,7 +2458,7 @@ export default {
         {
             "name":  "The OP",
             "location": {
-                Street: "4 North Winooski Ave",
+                "street": "4 North Winooski Ave",
                 "city": "Burlington",
                 "state": "VT",
                 "lat": 44.4806742,
@@ -2502,7 +2500,7 @@ export default {
                     "deals": [
                         {
                             "type": "food",
-                            ""description"": "Free Popcorn"
+                            "description": "Free Popcorn"
                         }
                     ]
                 },
@@ -2511,11 +2509,11 @@ export default {
                     "deals": [
                         {
                             "type": "food",
-                            ""description"": "Free Popcorn"
+                            "description": "Free Popcorn"
                         },
                         {
                             "type": "drink",
-                            ""description"": "$4 PBR Pitchers"
+                            "description": "$4 PBR Pitchers"
                         }
                     ]
                 },
@@ -2524,15 +2522,15 @@ export default {
                     "deals": [
                         {
                             "type": "food",
-                            ""description"": "Free Popcorn"
+                            "description": "Free Popcorn"
                         },
                         {
                             "type": "drink",
-                            ""description"": "$4 PBR Pitchers"
+                            "description": "$4 PBR Pitchers"
                         },
                         {
                             "type": "drink",
-                            ""description"": "$5.50 John Dalys"
+                            "description": "$5.50 John Dalys"
                         }
                     ]
                 },
@@ -2541,11 +2539,11 @@ export default {
                     "deals": [
                         {
                             "type": "food",
-                            ""description"": "Free Popcorn"
+                            "description": "Free Popcorn"
                         },
                         {
                             "type": "drink",
-                            ""description"": "$2.75 Rolling Rock 25oz"
+                            "description": "$2.75 Rolling Rock 25oz"
                         }
                     ]
                 },
@@ -2554,15 +2552,15 @@ export default {
                     "deals": [
                         {
                             "type": "food",
-                            ""description"": "Free Popcorn"
+                            "description": "Free Popcorn"
                         },
                         {
                             "type": "drink",
-                            ""description"": "$3.50 Corona Bottles"
+                            "description": "$3.50 Corona Bottles"
                         },
                         {
                             "type": "drink",
-                            ""description"": "$5.50 Cuervo Mararitas"
+                            "description": "$5.50 Cuervo Mararitas"
                         }
                     ]
                 },
@@ -2571,11 +2569,11 @@ export default {
                     "deals": [
                         {
                             "type": "food",
-                            ""description"": "Free Popcorn"
+                            "description": "Free Popcorn"
                         },
                         {
                             "type": "drink",
-                            ""description"": "$4.75 Bloody Mary / Mimosas"
+                            "description": "$4.75 Bloody Mary / Mimosas"
                         }
                     ]
                 }
@@ -2584,7 +2582,7 @@ export default {
         {
             "name":  "Three Needs",
             "location": {
-                Street: "185 Pearl Street",
+                "street": "185 Pearl Street",
                 "city": "Burlington",
                 "state": "VT",
                 "lat": 44.4802672,
@@ -2626,7 +2624,7 @@ export default {
                     "deals": [
                         {
                             "type": "drink",
-                            ""description"": "$1 Drafts while they last!"
+                            "description": "$1 Drafts while they last!"
                         }
                     ]
                 },
@@ -2635,7 +2633,7 @@ export default {
                     "deals": [
                         {
                             "type": "drink",
-                            ""description"": "$1 Drafts while they last!"
+                            "description": "$1 Drafts while they last!"
                         }
                     ]
                 },
@@ -2644,7 +2642,7 @@ export default {
                     "deals": [
                         {
                             "type": "drink",
-                            ""description"": "$1 Drafts while they last!"
+                            "description": "$1 Drafts while they last!"
                         }
                     ]
                 },
@@ -2653,7 +2651,7 @@ export default {
                     "deals": [
                         {
                             "type": "drink",
-                            ""description"": "$1 Drafts while they last!"
+                            "description": "$1 Drafts while they last!"
                         }
                     ]
                 }
@@ -2662,7 +2660,7 @@ export default {
         {
             "name":  "What Ales You",
             "location": {
-                Street: "152 Saint Paul Street",
+                "street": "152 Saint Paul Street",
                 "city": "Burlington",
                 "state": "VT",
                 "lat": 44.4754917,
@@ -2704,7 +2702,7 @@ export default {
                     "deals": [
                         {
                             "type": "drink",
-                            ""description"": "$1 Budweiser"
+                            "description": "$1 Budweiser"
                         }
                     ]
                 },
@@ -2713,20 +2711,20 @@ export default {
                     "deals": [
                         {
                             "type": "drink",
-                            ""description"": "$1 Budweiser"
+                            "description": "$1 Budweiser"
                         },
                         {
                             "type": "drink",
-                            ""description"": "$1 "long" Trail Flyin Ryan IPA"
+                            "description": "$1 Long Trail Flyin Ryan IPA"
                         }
                     ]
                 }
             ]
         },
         {
-            "name":  "Ruben James"s",
+            "name":  "Ruben James's",
             "location": {
-                Street: "159 Main Street",
+                "street": "159 Main Street",
                 "city": "Burlington",
                 "state": "VT",
                 "lat": 44.475742,
@@ -2768,20 +2766,20 @@ export default {
                     "deals": [
                         {
                             "type": "drink",
-                            ""description"": "$2 PBR"
+                            "description": "$2 PBR"
                         },
                         {
                             "type": "drink",
-                            ""description"": "$5 "long" Island"
+                            "description": "$5 Long Island"
                         },
                         {
                             "type": "drink", 
-                            ""description"": "$5 Heady Topper"
+                            "description": "$5 Heady Topper"
                         },
                         {
                             "type": "food",
-                            ""description"": "$0.50 Wings"
-                        },
+                            "description": "$0.50 Wings"
+                        }
                     ]
                 },
                 {
@@ -2789,19 +2787,19 @@ export default {
                     "deals": [
                         {
                             "type": "food",
-                            ""description"": "Free Wings 10:00 - 11:00pm"
+                            "description": "Free Wings 10:00 - 11:00pm"
                         },
                         {
                             "type": "food",
-                            ""description"": "1/2 Priced Burgers"
+                            "description": "1/2 Priced Burgers"
                         },
                         {
                             "type": "drink",
-                            ""description"": "$2 PBR"
+                            "description": "$2 PBR"
                         },
                         {
                             "type": "drink",
-                            ""description"": "$5 "long" Islands"
+                            "description": "$5 Long Islands"
                         }
                     ]
                 },
@@ -2810,7 +2808,7 @@ export default {
                     "deals": [
                         {
                             "type": "food",
-                            ""description"": "$6.75 Magic Hat Pint & 1lb of Wings"
+                            "description": "$6.75 Magic Hat Pint & 1lb of Wings"
                         }
                     ]
                 }
@@ -2819,7 +2817,7 @@ export default {
         {
             "name":  "Skinny Pancake",
             "location": {
-                Street: "60 Lake Street",
+                "street": "60 Lake Street",
                 "city": "Burlington",
                 "state": "VT",
                 "lat": 44.4770054,
@@ -2861,11 +2859,11 @@ export default {
                     "deals": [
                         {
                             "type": "drink",
-                            ""description"": "$5 Heady Toppers"
+                            "description": "$5 Heady Toppers"
                         },
                         {
                             "type": "food",
-                            ""description"": "Family Night: 1/2 off Kids Menu 4:00pm - Close"
+                            "description": "Family Night: 1/2 off Kids Menu 4:00pm - Close"
                         }
                     ]
                 },
@@ -2874,7 +2872,7 @@ export default {
                     "deals": [
                         {
                             "type": "food",
-                            ""description"": "1/2 Priced Burgers"
+                            "description": "1/2 Priced Burgers"
                         }
                     ]
                 }
@@ -2883,7 +2881,7 @@ export default {
         {
             "name":  "The Rotisserie",
             "location": {
-                Street: "1355 Williston Road",
+                "street": "1355 Williston Road",
                 "city": "South Burlington",
                 "state": "VT",
                 "lat": 44.4770054,
@@ -2925,11 +2923,11 @@ export default {
                     "deals": [
                         {
                             "type": "food",
-                            ""description"": "$0.50 Wings"
+                            "description": "$0.50 Wings"
                         },
                         {
                             "type": "drink",
-                            ""description"": "$2.00 Genesee Cream Ale"
+                            "description": "$2.00 Genesee Cream Ale"
                         }
                     ]
                 },
@@ -2938,11 +2936,11 @@ export default {
                     "deals": [
                         {
                             "type": "food",
-                            ""description"": "$0.50 Wings"
+                            "description": "$0.50 Wings"
                         },
                         {
                             "type": "drink",
-                            ""description"": "$2.00 Genesee Cream Ale"
+                            "description": "$2.00 Genesee Cream Ale"
                         }
                     ]
                 },
@@ -2951,7 +2949,7 @@ export default {
                     "deals": [
                         {
                             "type": "food",
-                            ""description"": "$2 Tacos ALL "day""
+                            "description": "$2 Tacos ALL day"
                         }
                     ]
                 },
@@ -2960,16 +2958,16 @@ export default {
                     "deals": [
                         {
                             "type": "food",
-                            ""description"": "$3 Sliders"
+                            "description": "$3 Sliders"
                         }
                     ]
                 }
             ]
         },
         {
-            "name":  "Butch and Babe"s",
+            "name":  "Butch and Babe's",
             "location": {
-                Street: "258 North Winooski",
+                "street": "258 North Winooski",
                 "city": "Burlington",
                 "state": "VT",
                 "lat": 44.4770054,
@@ -3011,11 +3009,11 @@ export default {
                     "deals": [
                         {
                             "type": "food",
-                            ""description"": "$3 for ANY dog"
+                            "description": "$3 for ANY dog"
                         },
                         {
                             "type": "drink",
-                            ""description"": "$4 Zero Gravity Draft"
+                            "description": "$4 Zero Gravity Draft"
                         }
                     ]
                 },
@@ -3024,7 +3022,7 @@ export default {
                     "deals": [
                         {
                             "type": "drink",
-                            ""description"": "$2.00 Naragansett Drafts"
+                            "description": "$2.00 Naragansett Drafts"
                         }
                     ]
                 },
@@ -3033,7 +3031,7 @@ export default {
                     "deals": [
                         {
                             "type": "food",
-                            ""description"": "$5 Cocktails"
+                            "description": "$5 Cocktails"
                         }
                     ]
                 }
@@ -3042,7 +3040,7 @@ export default {
         {
             "name":  "Misery Loves Company",
             "location": {
-                Street: "46 Main Street",
+                "street": "46 Main Street",
                 "city": "Winooski",
                 "state": "VT",
                 "lat": 44.4770054,
@@ -3084,11 +3082,11 @@ export default {
                     "deals": [
                         {
                             "type": "food",
-                            ""description"": "$2 Oysters"
+                            "description": "$2 Oysters"
                         },
                         {
                             "type": "drink",
-                            ""description"": "$2 off MLC Cocktails"
+                            "description": "$2 off MLC Cocktails"
                         }
                     ]
                 },
@@ -3097,11 +3095,11 @@ export default {
                     "deals": [
                         {
                             "type": "drink",
-                            ""description"": "$5.00 Draft Beer"
+                            "description": "$5.00 Draft Beer"
                         },
                         {
                             "type": "food",
-                            ""description"": "$5 off Fried Chicken"
+                            "description": "$5 off Fried Chicken"
                         }
                     ]
                 },
@@ -3110,11 +3108,11 @@ export default {
                     "deals": [
                         {
                             "type": "food",
-                            ""description"": "1/2 Priced Deserts"
+                            "description": "1/2 Priced Deserts"
                         },
                         {
                             "type": "drink",
-                            ""description"": "10% bottles of wine"
+                            "description": "10% bottles of wine"
                         }
                     ]
                 },
@@ -3123,7 +3121,7 @@ export default {
                     "deals": [
                         {
                             "type": "food",
-                            ""description"": "10% off food orders placed before 5:30PM"
+                            "description": "10% off food orders placed before 5:30PM"
                         }
                     ]
                 },
@@ -3132,16 +3130,16 @@ export default {
                     "deals": [
                         {
                             "type": "food",
-                            ""description"": "10% off food orders placed before 5:30PM"
+                            "description": "10% off food orders placed before 5:30PM"
                         }
                     ]
                 }
             ]
         },
         {
-            "name":  "EB Strong"s",
+            "name":  "EB Strong's",
             "location": {
-                Street: "38 Main Street",
+                "street": "38 Main Street",
                 "city": "Winooski",
                 "state": "VT",
                 "lat": 44.4770054,
@@ -3183,7 +3181,7 @@ export default {
                     "deals": [
                         {
                             "type": "food",
-                            ""description"": "1/2 Price Appetizers 5 - 6PM"
+                            "description": "1/2 Price Appetizers 5 - 6PM"
                         }
                     ]
                 },
@@ -3192,7 +3190,7 @@ export default {
                     "deals": [
                         {
                             "type": "food",
-                            ""description"": "1/2 Price Appetizers 5 - 6PM"
+                            "description": "1/2 Price Appetizers 5 - 6PM"
                         }
                     ]
                 },
@@ -3201,7 +3199,7 @@ export default {
                     "deals": [
                         {
                             "type": "food",
-                            ""description"": "1/2 Price Appetizers 5 - 6PM"
+                            "description": "1/2 Price Appetizers 5 - 6PM"
                         }
                     ]
                 },
@@ -3210,16 +3208,16 @@ export default {
                     "deals": [
                         {
                             "type": "food",
-                            ""description"": "1/2 Price Appetizers 5 - 6PM"
+                            "description": "1/2 Price Appetizers 5 - 6PM"
                         }
                     ]
-                },
+                }
             ]
         },
         {
             "name":  "Arts Riot",
             "location": {
-                Street: "400 Pine Street",
+                "street": "400 Pine Street",
                 "city": "Burlington",
                 "state": "VT",
                 "lat": 44.4770054,
@@ -3261,11 +3259,11 @@ export default {
                     "deals": [
                         {
                             "type": "food",
-                            ""description"": "1/2 Price 400 Burgers"
+                            "description": "1/2 Price 400 Burgers"
                         },
                         {
                             "type": "drink",
-                            ""description"": "$4 Citizen Cider Drafts"
+                            "description": "$4 Citizen Cider Drafts"
                         }
                     ]
                 }
@@ -3274,7 +3272,7 @@ export default {
         {
             "name":  "Guild Tavern",
             "location": {
-                Street: "1633 Williston Road",
+                "street": "1633 Williston Road",
                 "city": "South Burlington",
                 "state": "VT",
                 "lat": 44.4770054,
@@ -3316,7 +3314,7 @@ export default {
                     "deals": [
                         {
                             "type": "food",
-                            ""description"": "$4 Off all Burger Prices"
+                            "description": "$4 Off all Burger Prices"
                         }
                     ]
                 },
@@ -3325,7 +3323,7 @@ export default {
                     "deals": [
                         {
                             "type": "drink",
-                            ""description"": "$2 off all Draught Beers"
+                            "description": "$2 off all Draught Beers"
                         }
                     ]
                 },
@@ -3334,7 +3332,7 @@ export default {
                     "deals": [
                         {
                             "type": "drink",
-                            ""description"": "$4 off all signature GT Cocktails"
+                            "description": "$4 off all signature GT Cocktails"
                         }
                     ]
                 },
@@ -3343,11 +3341,10 @@ export default {
                     "deals": [
                         {
                             "type": "food",
-                            ""description"": "$1 off all Oysters"
+                            "description": "$1 off all Oysters"
                         }
                     ]
                 }
             ]
-        },
+        }
     ]
-}

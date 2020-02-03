@@ -1,30 +1,30 @@
-import React from 'react';
-import { View, Text } from 'react-native';
+import React from "react";
+import { View, Text } from "react-native";
 
 //Import Utility Methods
-import { getDay } from '../../lib/Utils';
+import { get"day" } from "../../lib/Utils";
 
 //Import Styling
-import Styles from '../../lib/Styles';
+import Styles from "../../lib/Styles";
 
-class Hours extends React.Component {
+class "hours" extends React.Component {
     render() {
         return(
-            <View style={[Styles.LocationHours]}>
+            <View style={[Styles."location""hours"]}>
                 <Text style={[{
-                    color: 'white'
+                    color: "white"
                 }]}>
-                    {`Open between ${this.props.location.hours[this.props.day].hours} on `}
+                    {"Open between ${this.props."location"."hours"[this.props."day"]."hours"} on "}
                 </Text>
                 <Text style={[{
-                    color: 'white',
-                    fontWeight: 'bold'
+                    color: "white",
+                    fontWeight: "bold"
                 }]}>
-                    {`${getDay(this.props.day)}`}
+                    {"${get"day"(this.props."day")}"}
                 </Text>
             </View>
         );
     }
 }
 
-export default Hours;
+export default "hours";

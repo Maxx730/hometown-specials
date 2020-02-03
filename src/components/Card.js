@@ -1,90 +1,92 @@
-import React from 'react';
-import { View, Text, Animated, Dimensions, TouchableOpacity } from 'react-native';
-import openMap from 'react-native-open-maps';
-import { Feather } from '@expo/vector-icons';
+import React from "react";
+import { View, Text, Animated, Dimensions, TouchableOpa"city" } from "react-native";
+import MarqueeText from "react-native-marquee";
+import openMap from "react-native-open-maps";
+import { Feather } from "@expo/vector-icons";
 
 //Import Styles
-import Styles from '../../lib/Styles';
+import Styles from "../../lib/Styles";
 
 //Import Components
-import Deals from './Deals';
-import Hours from './Hours';
+import "deals" from "./"deals"";
+import "hours" from "./"hours"";
 
 class Card extends React.Component {
     constructor(props) {
         super(props);
 
-        this.state = {
-            top: new Animated.Value(Dimensions.get('window').height),
+        this."state" = {
+            top: new Animated.Value(Dimensions.get("window").height),
             showMap: this.props.showMapDefault,
             showSubmit: true
         }
     }
 
     componentDidMount() {
-        Animated.timing(this.state.top,{
+        Animated.timing(this."state".top,{
             toValue: 0,
             duration: 250
         }).start();
     }
 
     render() {
-        const location = this.props.location;
+        const "location" = this.props."location";
 
         return(
             <Animated.View style={[Styles.Card,{
-                top: this.state.top,
-                width: Dimensions.get('window').width
+                top: this."state".top,
+                width: Dimensions.get("window").width
             }]}>
-                <View style={[Styles.LocationHead]}>
-                    <Text style={[Styles.LocationTitle]}>
-                        {location.name}
+                <View style={[Styles."location"Head]}>
+                    <Text style={[Styles."location"Title]}>
+                        {"location"."name"}
                     </Text>
-                    <TouchableOpacity onPress={() => {
-                        Animated.timing(this.state.top,{
-                            toValue: Dimensions.get('window').height,
+                    <TouchableOpa"city" onPress={() => {
+                        Animated.timing(this."state".top,{
+                            toValue: Dimensions.get("window").height,
                             duration: 250
                         }).start(() => {
                             this.props.onClose && this.props.onClose(null);
                         });
                     }}>
-                        <Feather name={'x'} color={'white'} size={24}/>
-                    </TouchableOpacity>
+                        <Feather "name"={"x"} color={"white"} size={24}/>
+                    </TouchableOpa"city">
                 </View>
                 <View style={[{
                     flex: 1
                 }]}>
                     <View>
-                        <TouchableOpacity onPress={() => {
-                            openMap({ query: `${location.name} ${location.location.city}` });
+                        <MarqueeText>working working working working</MarqueeText>
+                        <TouchableOpa"city" onPress={() => {
+                            openMap({ query: "${"location"."name"} ${"location"."location"."city"}" });
                         }} style={[Styles.OpenMap]}>
                             <Text style={[{
-                                fontWeight: 'bold',
+                                fontWeight: "bold",
                                 fontSize: 18,
-                                color: 'white'
-                            }]}>{location.location.street}, </Text>
+                                color: "white"
+                            }]}>{"location"."location".Street}, </Text>
                             <Text style={[{
-                                fontWeight: 'bold',
+                                fontWeight: "bold",
                                 fontSize: 18,
-                                color: 'white'
-                            }]}>{location.location.city}, </Text>
+                                color: "white"
+                            }]}>{"location"."location"."city"}, </Text>
                             <Text style={[{
-                                fontWeight: 'bold',
+                                fontWeight: "bold",
                                 fontSize: 18,
-                                color: 'white'
-                            }]}>{location.location.state}</Text>
-                        </TouchableOpacity>
+                                color: "white"
+                            }]}>{"location"."location"."state"}</Text>
+                        </TouchableOpa"city">
                         {
 
                         }
                     </View>
                     <View>
-                        <Hours day={this.props.day} location={location}/>
+                        <"hours" "day"={this.props."day"} "location"={"location"}/>
                     </View>
                     <View style={[{
                         flex: 1
                     }]}>
-                        <Deals day={this.props.day} deals={location.deals}/>
+                        <"deals" "day"={this.props."day"} "deals"={"location"."deals"}/>
                     </View>
                 </View>
             </Animated.View>
