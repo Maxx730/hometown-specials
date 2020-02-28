@@ -1,27 +1,32 @@
 import React from 'react';
-import { View, Text } from 'react-native';
-
-//Import Utility Methods
-import { getDay } from '../../lib/Utils';
+import { View, Text, FlatList, ScrollView } from 'react-native';
 
 //Import Styling
 import Styles from '../../lib/Styles';
+
+//Import Utils
+import { getDay } from '../../lib/Utils';
 
 class Hours extends React.Component {
     render() {
         return(
             <View style={[Styles.LocationHours]}>
                 <Text style={[{
-                    color: 'white'
-                }]}>
-                    {`Open between ${this.props.location.hours[this.props.day].hours} on `}
-                </Text>
-                <Text style={[{
-                    color: 'white',
-                    fontWeight: 'bold'
-                }]}>
-                    {`${getDay(this.props.day)}`}
-                </Text>
+                    fontWeight: 'bold',
+                    fontSize: 18
+                }]}>Hours</Text>
+                <ScrollView style={[Styles.HoursList]}>
+                    {this.props.hours.map((item,index) => {
+                        return(
+                            <View style={[Styles.HoursItem]} key={`hour-${index}`}>
+                                <Text style={[{
+                                    fontWeight: 'bold'
+                                }]}>{getDay(item.day)}</Text>
+                                <Text>{item.hours}</Text>
+                            </View>
+                        )
+                    })}
+                </ScrollView>
             </View>
         );
     }

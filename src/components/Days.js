@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, TouchableOpacity } from 'react-native';
+import { View, Text, TouchableOpacity, Animated } from 'react-native';
 import { Event } from 'expo-analytics';
 
 //Import Styles
@@ -17,26 +17,56 @@ const _days = [
 ]
 
 class Days extends React.Component {
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            height: new Animated.Value(0)
+        }
+    }
+
+    componentDidMount() {
+        this._animateDown();
+    }
+
     render() {
         return(
-            <View style={[Styles.Days]}>
+            <Animated.View style={[Styles.Days,{
+                height: this.state.height
+            }]}>
                 {
                     _days.map((day, index) => {
                         return <TouchableOpacity onPress={() => {
-                            this.props.setDay && this.props.setDay(index);
-                            this.props.analytics.event(new Event('Day', 'Change', getDay(day)))
-                            .then(() => {})
-                            .catch(e => console.log(e.message));
-                        }} key={`day-item-${day}`} style={[Styles.DayItem,index === this.props.selected && {
-                            borderBottomWidth: 2,
-                            borderBottomColor: '#7AC149'
-                        }]}>
-                            <Text>{day}</Text>
+                            // this.props.setDay && this.props.setDay(index);
+                            // this.props.analytics.event(new Event('Day', 'Change', getDay(day)))
+                            // .then(() => {})
+                            // .catch(e => console.log(e.message));
+                            this._animateUp(() => {
+                                this.props.onDaySelected(index);
+                            });
+                        }} key={`day-item-${day}`} style={[Styles.DayItem]}>
+                            <Text style={[index === this.props.selected && Styles.DaySelected]}>{day}</Text>
                         </TouchableOpacity>
                     })
                 }
-            </View>
+            </Animated.View>
         );
+    }
+
+    _animateDown() {
+        Animated.spring(this.state.height,{
+            toValue: 48,
+            velocity: 5,
+            tension: 10,
+            friction: 4,
+        }).start();
+    }
+
+    _animateUp(onFinish) {
+        Animated.timing(this.state.height,{
+            toValue: 0,
+            duration: 150
+        }).start(onFinish);
     }
 }
 

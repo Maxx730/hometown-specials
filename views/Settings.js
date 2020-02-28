@@ -15,19 +15,19 @@ class Settings extends React.Component {
 
         this.state = {
             prefs: null,
-            analytics: this.props.navigation.state.params.analytics
+            analytics: null
         }
     }
     componentDidMount() {
-        this.state.analytics.hit(new PageHit('Settings'))
-        .then(() => {})
-        .catch(e => console.log(e.message));
+        // this.state.analytics.hit(new PageHit('Settings'))
+        // .then(() => {})
+        // .catch(e => console.log(e.message));
 
-        _getPrefs().then(result => {
-            this.setState({
-                prefs: result
-            });
-        });
+        // _getPrefs().then(result => {
+        //     this.setState({
+        //         prefs: result
+        //     });
+        // });
     }
 
     render() {

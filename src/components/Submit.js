@@ -1,7 +1,7 @@
 import React from 'react';
-import { View, Text, StyleSheet, ActivityIndicator } from 'react-native';
+import { View, Text, StyleSheet, ActivityIndicator, Picker } from 'react-native';
 import RNPickerSelect from 'react-native-picker-select';
-import { Feather } from '@expo/vector-icons';
+import { AntDesign } from '@expo/vector-icons';
 
 //Import Styles
 import Styles from '../../lib/Styles';
@@ -21,16 +21,16 @@ const Pickers = StyleSheet.create({
         paddingHorizontal: 16,
         borderWidth: 1,
         borderColor: 'transparent',
-        borderRadius: 4,
+        borderRadius: 100,
         color: 'black',
         paddingRight: 30, // to ensure the text is never behind the icon
       },
       inputAndroid: {
         fontSize: 16,
-        paddingHorizontal: 16,
+        paddingHorizontal: 160,
         paddingVertical: 8,
         borderWidth: 1,
-        borderRadius: 8,
+        borderRadius: 100,
         color: 'black',
         paddingRight: 30,
         paddingLeft: 50 // to ensure the text is never behind the icon
@@ -135,60 +135,7 @@ class Submit extends React.Component {
                 <Text style={[Styles.SubmitSubtext]}>
                     Please fill out the information below and we will add this special after review.
                 </Text>
-
-                <View style={[Styles.SubmitPickers]}>
-                    <View style={[Styles.Dropdown]}>
-                        <RNPickerSelect
-                            placeholder={{
-                                label: 'Location'
-                            }}
-                            items={this.state.locations}
-                            onValueChange={value => {
-                                this.setState({
-                                    location: value,
-                                    showNew: value === 'not listed'
-                                });
-                            }}
-
-                            style={Pickers}
-                        />
-                    </View>
-                    {this.state.showNew && 
-                        <View style={[Styles.NewLocation]}>
-                            <Input placeholder={'Location Name'} onChange={this.setNewLocation}/>
-                        </View>
-                    }
-                    <View style={[Styles.Dropdown]}>
-                        <RNPickerSelect
-                            placeholder={{
-                                label: 'Special Type'
-                            }}
-                            items={this.state.types}
-                            onValueChange={value => {
-                                this.setState({
-                                    category: value
-                                });
-                            }}
-
-                            style={Pickers}
-                        />
-                    </View>
-
-                    <View style={[Styles.Dropdown]}>
-                        <RNPickerSelect
-                            placeholder={{
-                                label: 'Day(s) of Special'
-                            }}
-                            items={this.state.days}
-                            onValueChange={value => {
-                                this.setState({
-                                    day: value
-                                });
-                            }}
-                            style={Pickers}
-                        />
-                    </View>
-                </View>
+                {this.renderLocationPicker()}
                 <Input label={'Description'} onChange={this.setDescription}/>
                 {
                     this.state.hasError && this.renderErrorMessage()
@@ -205,6 +152,29 @@ class Submit extends React.Component {
         } else {
             return false;
         }
+    }
+
+    renderLocationPicker() {
+        return(
+            <View>
+                <Text style={[{
+                    fontWeight: 'bold',
+                    marginLeft: 8
+                }]}>Location</Text>
+                <Picker style={[{}]}  
+                        selectedValue={this.state.location}  
+                        onValueChange={(itemValue, itemPosition) =>  {
+                            this.setState({
+                                location: itemValue
+                            })
+                        }}  
+                    >
+                    {this.state.locations.map(location => {
+                        return <Picker.Item label={location.label} value={location.label} /> 
+                    })} 
+                </Picker> 
+            </View>
+        )
     }
 
     render() {

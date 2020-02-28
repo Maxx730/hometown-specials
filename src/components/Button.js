@@ -9,7 +9,7 @@ class Button extends React.Component {
         return(
             <TouchableOpacity onPress={() => {
                 this.props.onPress && this.props.onPress();
-            }} style={[Styles.Button]}>
+            }} style={[Styles.Button, this.props.round && Styles.ButtonRound, this.props.right && Styles.ButtonRight, this.props.left && Styles.ButtonLeft]}>
                 <Text style={[{
                     color: 'white',
                     fontWeight: 'bold',

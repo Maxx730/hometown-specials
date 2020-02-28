@@ -20,6 +20,9 @@ const AppNavigator = createStackNavigator({
       data: data,
       analytics: analytics
     },
+    navigationOptions: {
+      headerShown: false
+    }
   },
   Settings: {
     screen: Settings,

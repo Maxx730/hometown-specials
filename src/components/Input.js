@@ -8,14 +8,15 @@ class Input extends React.Component {
     render() {
         return(
             <View>
-                <Text style={[Styles.InputLabel]}>
-                    {this.props.label}
-                </Text>
-                <TextInput placeholder={this.props.placeholder ? this.props.placeholder : ''} style={[Styles.Input]} numberOfLines={this.props.lines ? this.props.lines : 1} multiline={this.props.lines > 1} onChangeText={(value) => {
-                    this.props.onChange && this.props.onChange(value);
-                }}>
+                {this.props.label && <Text>{this.props.label}</Text>}
+                <View style={[Styles.Input]}>
+                    {this.props.icon && this.props.icon}
+                    <TextInput placeholder={this.props.placeholder ? this.props.placeholder : ''} style={[Styles.InnerValue]} numberOfLines={this.props.lines ? this.props.lines : 1} multiline={this.props.lines > 1} onChangeText={(value) => {
+                        this.props.onChange && this.props.onChange(value);
+                    }}>
 
-                </TextInput>
+                    </TextInput>
+                </View>
             </View>
         );
     }

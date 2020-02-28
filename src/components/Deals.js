@@ -13,13 +13,19 @@ class Deals extends React.Component {
         const deals = _getSpecials(this.props.deals, this.props.day);
         return(
             <View style={[Styles.Deals]}>
+                <Text style={[Styles.DealsTitle]}>Today's Specials</Text>
                 {
-                    deals.length > 0 ? <FlatList data={deals} renderItem={({item, index}) => {
+                    true ? <FlatList data={deals} renderItem={({item, index}) => {
                         return(
                             <View style={[Styles.DealItem]}>
                                 <Text style={[{
-                                    textAlignVertical: 'center',
-                                    paddingLeft: 8
+                                    textTransform: 'capitalize',
+                                    fontWeight: 'bold'
+                                }]}>
+                                    {item.type}
+                                </Text>
+                                <Text style={[{
+                                    textAlignVertical: 'center'
                                 }]}>
                                     {
                                         item.description
