@@ -3,17 +3,17 @@ import { View, Text, TouchableOpacity, Animated } from 'react-native';
 import { Event } from 'expo-analytics';
 
 //Import Styles
-import Styles from '../../lib/Styles';
-import { getDay } from '../../lib/Utils';
+import Styles from "../../lib/Styles";
+import { getDay } from "../../lib/Utils";
 
 const _days = [
-    'Sun',
-    'Mon',
-    'Tue',
-    'Wed',
-    'Thu',
-    'Fri',
-    'Sat'
+    "Sun",
+    "Mon",
+    "Tue",
+    "Wed",
+    "Thu",
+    "Fri",
+    "Sat"
 ]
 
 class Days extends React.Component {

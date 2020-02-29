@@ -2,7 +2,7 @@ import React from 'react';
 import { View, Text, FlatList, ScrollView } from 'react-native';
 
 //Import Styling
-import Styles from '../../lib/Styles';
+import Styles from "../../lib/Styles";
 
 //Import Utils
 import { getDay } from '../../lib/Utils';

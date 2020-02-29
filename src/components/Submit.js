@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, StyleSheet, ActivityIndicator, Picker } from 'react-native';
+import { View, Text, StyleSheet, ActivityIndicator, Picker, ScrollView } from 'react-native';
 import RNPickerSelect from 'react-native-picker-select';
 import { AntDesign } from '@expo/vector-icons';
 
@@ -9,6 +9,7 @@ import Styles from '../../lib/Styles';
 //Import Components
 import Input from './Input';
 import Button from './Button';
+import Tabs from './Tabs';
 
 //Import Utility Methods
 import { _getDaysOfWeek, _getDayOfWeek, _getLocations } from '../../lib/Utils';
@@ -47,15 +48,7 @@ class Submit extends React.Component {
         this.checkForErrors = this.checkForErrors.bind(this);
 
         this.state = {
-            types: [{
-                label: 'Food',
-                value: 'food'
-            },{
-                label: 'Drink',
-                value: 'drink'
-            }],
             loading: false,
-            days: _getDaysOfWeek(),
             locations: [],
             category: '',
             location: '',
@@ -129,21 +122,36 @@ class Submit extends React.Component {
     }
 
     renderForm() {
-        return(
-            <View style={[Styles.Form]}>
-            <View style={[Styles.SubmitContent]}>
-                <Text style={[Styles.SubmitSubtext]}>
-                    Please fill out the information below and we will add this special after review.
-                </Text>
-                {this.renderLocationPicker()}
-                <Input label={'Description'} onChange={this.setDescription}/>
-                {
-                    this.state.hasError && this.renderErrorMessage()
-                }
-                <Button onPress={this.submitForm} label={'Submit'}/>
-            </View>
-        </View>
-        );
+        if(this.state.showNew) {
+            return(
+                <View style={[Styles.Form]}>
+                    <View>
+                        <Input placeholder={'New Location Name'} onChange={this.setDescription}/>
+                    </View>
+                    <View style={[{
+                        marginTop: 16
+                    }]}>
+                        {this.renderDayPicker()}
+                        {this.renderTypePicker()}
+                    </View>
+                </View>
+            );
+        } else {
+            return(
+                <View style={[Styles.Form]}>
+                    <View style={[Styles.SubmitContent]}>
+                        {this.renderLocationPicker()}
+                        {this.renderDayPicker()}
+                        {this.renderTypePicker()}
+                        {this.renderDescription()}
+                        {
+                            this.state.hasError && this.renderErrorMessage()
+                        }
+                        <Button round onPress={this.submitForm} label={'Submit'}/>
+                    </View>
+                </View>
+            );            
+        }
     }
 
     checkForErrors() {
@@ -152,6 +160,42 @@ class Submit extends React.Component {
         } else {
             return false;
         }
+    }
+
+    renderDescription() {
+        return(
+            <View>
+                <Text style={[{
+                    padding: 8
+                }]}>
+                    Please be as descriptive as possible to make sure we can verify the authenticity of this special.
+                </Text>
+                <Input placeholder={'Description'} onChange={this.setDescription}/>
+            </View>
+        )
+    }
+
+    renderDayPicker() {
+        return(
+            <View>
+                <Text style={[{
+                    fontWeight: 'bold',
+                    marginLeft: 8
+                }]}>Day</Text>
+                <Picker style={[{}]}  
+                        selectedValue={this.state.location}  
+                        onValueChange={(itemValue, itemPosition) =>  {
+                            this.setState({
+                                location: itemValue
+                            })
+                        }}  
+                    >
+                    {_getDaysOfWeek().map(day => {
+                        return <Picker.Item label={day.label} value={day.value} /> 
+                    })} 
+                </Picker> 
+            </View>
+        )
     }
 
     renderLocationPicker() {
@@ -177,16 +221,60 @@ class Submit extends React.Component {
         )
     }
 
+    renderTypePicker() {
+        return(
+            <View>
+                <Text style={[{
+                    fontWeight: 'bold',
+                    marginLeft: 8
+                }]}>Special Type</Text>
+                <Picker style={[{}]}  
+                        selectedValue={this.state.location}  
+                        onValueChange={(itemValue, itemPosition) =>  {
+                            this.setState({
+                                location: itemValue
+                            })
+                        }}  
+                    >
+                    <Picker.Item label={'Food'} value={'food'} /> 
+                    <Picker.Item label={'Drink'} value={'drink'} /> 
+                    <Picker.Item label={'Other'} value={'other'} /> 
+                </Picker> 
+            </View>
+        )
+    }
+
     render() {
         return(
             <View style={[Styles.Submit]}>
-                <Text style={[{
-                    fontSize: 24,
-                    fontWeight: 'bold'
-                }]}>
-                    Submit Special
-                </Text>
-                {this.state.hasSuccess ? this.renderSuccessMessage() : this.renderForm()}
+                    <View style={[{
+                        borderBottomWidth: 1,
+                        borderBottomColor: '#000000'
+                    }]}>
+                        <Text style={[{
+                            textAlign: 'center',
+                            fontWeight: 'bold',
+                            padding: 12
+                        }]}>Submit a Special</Text>
+                        <Tabs tabs={[{
+                            label: 'Current',
+                            callback: () => {
+                                this.setState({
+                                    showNew: false
+                                });
+                            }
+                        },{
+                            label: 'New Location',
+                            callback: () => {
+                                this.setState({
+                                    showNew: true
+                                });
+                            }
+                        }]}/>
+                    </View>
+                    <ScrollView>
+                        {this.state.hasSuccess ? this.renderSuccessMessage() : this.renderForm()}
+                    </ScrollView>
             </View>
         );
     }

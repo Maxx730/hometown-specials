@@ -3,13 +3,13 @@ import { View, Text, TouchableOpacity, Animated } from 'react-native';
 import { AntDesign } from '@expo/vector-icons';
 
 //Import Components
-import Days from '../components/Days';
+import Days from "../components/Days";
 
 //Import Styles
-import Styles from '../../lib/Styles';
+import Styles from "../../lib/Styles";
 
 //Import Utility Methods
-import { _getDayOfWeek, _findSpecials, getDay } from '../../lib/Utils';
+import { _getDayOfWeek, _findSpecials, getDay} from "../../lib/Utils";
 
 class Head extends React.Component {
     constructor(props) {
@@ -45,8 +45,8 @@ class Head extends React.Component {
     }
 
     clearSearch() {
-        this.setState({
-            term: ''
+        this.setstate({
+            term: ""
         });
     }
 

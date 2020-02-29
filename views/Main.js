@@ -1,6 +1,8 @@
 import React from 'react';
-import { View, StatusBar, Text, Platform } from 'react-native';
+import { View, StatusBar, Text, Platform, TouchableOpacity } from 'react-native';
 import { PageHit } from 'expo-analytics';
+import { Entypo } from '@expo/vector-icons';
+import openMap from "react-native-open-maps";
 
 //Import Components
 import Locations from '../src/components/Locations';
@@ -15,10 +17,10 @@ import Deals from '../src/components/Deals';
 import Hours from '../src/components/Hours';
 
 //Import Data
-import data from '../lib/Data';
+import data from "../lib/Data";
 
 //Import Styles
-import Styles from '../lib/Styles';
+import Styles from "../lib/Styles";
 
 //Import Utility Methods
 import { _getPrefs } from '../lib/Preferences';
@@ -56,7 +58,7 @@ class Main extends React.Component {
     }
 
     componentDidMount() {
-        this.state.analytics.hit(new PageHit('Main'))
+        this.state.analytics.hit(new PageHit("Main"))
         .then(() => {})
         .catch(e => console.log(e.message));
 
@@ -74,14 +76,31 @@ class Main extends React.Component {
                 {this.state.showModal && this._renderModal()}
                 {Platform.OS === 'ios' && <StatusBar barStyle="dark-content" />}
                 <View style={[Styles.Browse]}>
-                    {this._renderNavigationLocation()}
                     <View style={[{
+                        elevation: 6,
                         backgroundColor: '#FFFFFF',
-                        borderTopColor: '#000000',
-                        borderTopWidth: 1
+                        paddingBottom: 12,
+                        height: 144,
+                        justifyContent: 'flex-end'
                     }]}>
-                        <Navbar location={this.state.location} setNavigationLocation={this._setNavigationLocation}/>
+                        {this.state.location === 'list' && <Head day={this.state.day} setDay={this._setDay}/>}
+                        <Tabs tabs={[{
+                            label: 'Today',
+                            callback: () => {
+                                this.setState({
+                                    location: 'list'
+                                });
+                            }
+                        },{
+                            label: 'Search',
+                            callback: () => {
+                                this.setState({
+                                    location: 'search'
+                                });
+                            }
+                        }]}/>
                     </View>
+                    {this._renderNavigationLocation()}
                 </View>
             </View>
         );
@@ -92,15 +111,28 @@ class Main extends React.Component {
             <Modal title={'Details'} onClose={() => {
                 this.setState({
                     focused: null,
-                    showModal: false
+                    showModal: false,
+                    showHours: false
                 });
             }}>
                 <View style={[Styles.ModalAdress]}>
-                    <Text style={[{
-                        fontWeight: 'bold',
-                        fontSize: 18
-                    }]}>{this.state.focused.name}</Text>
-                    <Text>{this.state.focused.location.street}, {this.state.focused.location.city}</Text>
+                    <View style={[{
+                        flex: 1
+                    }]}>
+                        <Text style={[{
+                            fontWeight: 'bold',
+                            fontSize: 18
+                        }]}>{this.state.focused.name}</Text>
+                        <Text>{this.state.focused.location.street}, {this.state.focused.location.city}</Text>
+                    </View>
+                    <TouchableOpacity onPress={() => {
+                        openMap({ query: `${this.state.focused.name} ${this.state.focused.location.city}` });
+                    }} style={[{
+                        alignItems: 'center',
+                        padding: 8
+                    }]}>
+                        <Entypo name={'map'} size={24}/>
+                    </TouchableOpacity>
                 </View>
                 <View style={[Styles.ModalTabs]}>
                     <Tabs tabs={[{
@@ -119,8 +151,13 @@ class Main extends React.Component {
                         }
                     }]}/>
                 </View>
+                <View>
+                    <Head day={this.state.day} setDay={this._setDay}/>
+                </View>
                 <View style={[Styles.ModalContent]}>
-                    {this.state.showHours ? <Hours hours={this.state.focused.hours}/> : <View><Head day={this.state.day} setDay={this._setDay}/><Deals deals={this.state.focused.deals} day={this.state.day}/></View>}
+                    {this.state.showHours ? <Hours hours={this.state.focused.hours}/> : <View style={[{
+                        flex: 1
+                    }]}><Deals deals={this.state.focused.deals} location={this.state.focused} day={this.state.day}/></View>}
                 </View>
             </Modal>
         );
@@ -171,24 +208,16 @@ class Main extends React.Component {
 
     _renderNavigationLocation() {
         switch(this.state.location) {
-            case 'settings':
+            case 'search':
                 return <View style={[{
                     flex: 1
-                }]}><Settings/></View>
-            case 'submit':
-                return <View style={[Styles.Submit]}><Submit/></View>
+                }]}>
+                    <Search data={this.state.data}/>
+                </View>
             default: 
                 return <View style={[{
                     flex: 1
-                }]}><View style={[{
-                    borderBottomWidth: 1,
-                    backgroundColor: '#FFFFFF',
-                    paddingTop: 24
-                }]}><Head day={this.state.day} setDay={this._setDay}/><Tabs tabs={[{
-                    label: 'Today'
-                },{
-                    label: 'All'
-                }]}/></View><Locations day={this.state.day} onlyShowDeals={this.state.prefs && this.state.prefs.onlyShowDeals} analytics={this.state.analytics} setScrollPosition={this._setScrollPosition} data={this.state.results ? this.state.results : this.state.data.locations} setFocused={this._setFocused}/></View>
+                }]}><Locations day={this.state.day} onlyShowDeals={this.state.prefs && this.state.prefs.onlyShowDeals} analytics={this.state.analytics} setScrollPosition={this._setScrollPosition} data={this.state.results ? this.state.results : this.state.data.locations} setFocused={this._setFocused}/></View>
         }
     }
 }

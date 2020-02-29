@@ -1,8 +1,8 @@
-import React from 'react';
-import { View, Text, TouchableOpacity } from 'react-native';
+import React from "react";
+import { View, Text, TouchableOpacity } from "react-native";
 
 //Import Styling
-import Styles from '../../lib/Styles';
+import Styles from "../../lib/Styles";
 
 class Button extends React.Component {
     render() {
@@ -11,9 +11,9 @@ class Button extends React.Component {
                 this.props.onPress && this.props.onPress();
             }} style={[Styles.Button, this.props.round && Styles.ButtonRound, this.props.right && Styles.ButtonRight, this.props.left && Styles.ButtonLeft]}>
                 <Text style={[{
-                    color: 'white',
-                    fontWeight: 'bold',
-                    textAlign: 'center'
+                    color: "white",
+                    fontWeight: "bold",
+                    textAlign: "center"
                 }]}>{this.props.label}</Text>
             </TouchableOpacity>
         );

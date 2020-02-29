@@ -4,28 +4,31 @@ import { LinearGradient } from 'expo-linear-gradient';
 import { Event } from 'expo-analytics';
 
 //Import Styles
-import Styles from '../../lib/Styles';
+import Styles from "../../lib/Styles";
 
 //Import Utilities
-import { _countDeals, _getDealsForDay } from '../../lib/Utils';
+import { _countDeals, _getDealsForDay } from "../../lib/Utils";
 
 class Locations extends React.Component {
     render() {
-        const locations = _getDealsForDay(this.props.data,this.props.day, this.props.onlyShowDeals);
+        const locations = _getDealsForDay(this.props.data,this.props.day, this.props.onlyShowDeals || false);
         if(locations.length === 0) {
             return(
                 <View style={[Styles.NoResults]}>
                     <Text style={[{
-                        color: '#426928'
-                    }]}>Unfortunatly it does not look like we have any data on the location you are looking for.</Text>
+                        color: "#426928"
+                    }]}>Unfortunatly it does not look like we have any data on the "location" you are looking for.</Text>
                 </View>
             )
         } else {
         return(
-            <View style={[Styles.LocationList]}>
-                <FlatList onScroll={(event) => {
-                this.props.setScrollPosition(event.nativeEvent.contentOffset.y)
-                }} data={locations} renderItem={({item,index}) => {
+            <View style={[Styles.LocationList,{
+
+            }]}>
+                <FlatList
+                style={[{
+                  
+                }]} data={locations} renderItem={({item,index}) => {
                     return(
                         <TouchableOpacity onPress={() => {
                             // this.props.analytics.event(new Event(`${item.name}`, 'Open', `${item.name}`))
