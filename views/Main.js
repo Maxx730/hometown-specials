@@ -36,8 +36,6 @@ class Main extends React.Component {
 
         this._setFocused = this._setFocused.bind(this);
         this._setSearchData = this._setSearchData.bind(this);
-        this._refreshPrefs = this._refreshPrefs.bind(this);
-        this._setScrollPosition = this._setScrollPosition.bind(this);
         this._setDay = this._setDay.bind(this);
         this._setNavigationLocation = this._setNavigationLocation.bind(this);
         this._toggleModal = this._toggleModal.bind(this);
@@ -46,44 +44,46 @@ class Main extends React.Component {
             focused: null,
             data: this.props.navigation.state.params.data,
             results: null,
-            prefs: null,
-            lastPos: 0,
             showSearch: false,
             analytics: this.props.navigation.state.params.analytics,
             day: new Date().getDay(),
             location: 'list',
             showModal: false,
-            showHours: false
+            showHours: false,
+            showAllInfo: false
         }
-    }
-
-    componentDidMount() {
-        this.state.analytics.hit(new PageHit("Main"))
-        .then(() => {})
-        .catch(e => console.log(e.message));
-
-        _getPrefs().then(prefs => {
-            this.setState({
-                prefs: prefs,
-                showSearch: prefs.alwaysSearch
-            });
-        });
     }
 
     render() {
         return(
             <View behavior="padding" style={[Styles.Main]}>
-                {this.state.showModal && this._renderModal()}
+                {this.state.showModal && this._renderModal({
+                    title: 'Details',
+                    content: this._getModal(this.state.showAllInfo),
+                    onClose: () => {
+                        this.setState({
+                            focused: null,
+                            showModal: false,
+                            showHours: false,
+                            showAllInfo: false
+                        });
+                    }
+                })}
                 {Platform.OS === 'ios' && <StatusBar barStyle="dark-content" />}
                 <View style={[Styles.Browse]}>
                     <View style={[{
                         elevation: 6,
                         backgroundColor: '#FFFFFF',
                         paddingBottom: 12,
-                        height: 144,
+                        paddingTop: 24,
                         justifyContent: 'flex-end'
                     }]}>
-                        {this.state.location === 'list' && <Head day={this.state.day} setDay={this._setDay}/>}
+                        {this.state.location === 'list' ? <Head day={this.state.day} setDay={this._setDay}/> : <Text style={[{
+                            fontWeight: 'bold',
+                            textAlign: 'center',
+                            padding: 12,
+                            fontSize: 16
+                        }]}>Find Locations</Text>}
                         <Tabs tabs={[{
                             label: 'Today',
                             callback: () => {
@@ -106,15 +106,11 @@ class Main extends React.Component {
         );
     }
 
-    _renderModal() {
+    _getModal() {
         return(
-            <Modal title={'Details'} onClose={() => {
-                this.setState({
-                    focused: null,
-                    showModal: false,
-                    showHours: false
-                });
-            }}>
+            <View style={[{
+                flex: 1
+            }]}>
                 <View style={[Styles.ModalAdress]}>
                     <View style={[{
                         flex: 1
@@ -152,21 +148,32 @@ class Main extends React.Component {
                     }]}/>
                 </View>
                 <View>
-                    <Head day={this.state.day} setDay={this._setDay}/>
+                    {!this.state.showAllInfo && <Head day={this.state.day} setDay={this._setDay}/>}
                 </View>
                 <View style={[Styles.ModalContent]}>
                     {this.state.showHours ? <Hours hours={this.state.focused.hours}/> : <View style={[{
                         flex: 1
-                    }]}><Deals deals={this.state.focused.deals} location={this.state.focused} day={this.state.day}/></View>}
+                    }]}><Deals deals={this.state.focused.deals} showAllDeals={this.state.showAllInfo ? true : false} location={this.state.focused} day={this.state.day}/></View>}
                 </View>
+            </View>
+        )
+    }
+
+    _renderModal(modal) {
+        return(
+            <Modal title={modal.title} onClose={() => {
+                modal.onClose && modal.onClose();
+            }}>
+                {modal.content}
             </Modal>
         );
     }
 
-    _setFocused(location) {
+    _setFocused(location, showAllInfo) {
         this.setState({
             focused: location,
-            showModal: true
+            showModal: true,
+            showAllInfo: showAllInfo ? true : false
         });
     }
 
@@ -182,14 +189,6 @@ class Main extends React.Component {
         });
     }
 
-    _refreshPrefs() {
-        _getPrefs().then(prefs => {
-            this.setState({
-                prefs: prefs
-            });
-        });
-    }
-
     _setDay(day) {
         this.setState({
             day: day
@@ -202,22 +201,20 @@ class Main extends React.Component {
         });
     }
 
-    _setScrollPosition(value) {
-
-    }
-
     _renderNavigationLocation() {
         switch(this.state.location) {
             case 'search':
                 return <View style={[{
                     flex: 1
                 }]}>
-                    <Search data={this.state.data}/>
+                    <Search data={this.state.data} setFocused={this._setFocused}/>
                 </View>
             default: 
                 return <View style={[{
                     flex: 1
-                }]}><Locations day={this.state.day} onlyShowDeals={this.state.prefs && this.state.prefs.onlyShowDeals} analytics={this.state.analytics} setScrollPosition={this._setScrollPosition} data={this.state.results ? this.state.results : this.state.data.locations} setFocused={this._setFocused}/></View>
+                }]}>
+                    <Locations day={this.state.day} onlyShowDeals={true} analytics={this.state.analytics} data={this.state.results ? this.state.results : this.state.data.locations} setFocused={this._setFocused}/>
+                </View>
         }
     }
 }

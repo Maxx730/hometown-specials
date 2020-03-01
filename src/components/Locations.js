@@ -11,7 +11,7 @@ import { _countDeals, _getDealsForDay } from "../../lib/Utils";
 
 class Locations extends React.Component {
     render() {
-        const locations = _getDealsForDay(this.props.data,this.props.day, this.props.onlyShowDeals || false);
+        const locations = _getDealsForDay(this.props.data, this.props.day, this.props.onlyShowDeals || false);
         if(locations.length === 0) {
             return(
                 <View style={[Styles.NoResults]}>
@@ -31,10 +31,6 @@ class Locations extends React.Component {
                 }]} data={locations} renderItem={({item,index}) => {
                     return(
                         <TouchableOpacity onPress={() => {
-                            // this.props.analytics.event(new Event(`${item.name}`, 'Open', `${item.name}`))
-                            // .then(() => {})
-                            // .catch(e => console.log(e.message));
-
                             this.props.setFocused && this.props.setFocused(item)
                         }} style={[Styles.LocationItem,index === 0 && Styles.ItemTop,index === this.props.data.length - 1 && Styles.ItemBottom]}>
                             <View style={[{
@@ -69,7 +65,7 @@ class Locations extends React.Component {
                             }]}>
                                 <Text style={[Styles.DealCount]}>
                                     {
-                                        _countDeals(item.deals,this.props.day)
+                                        this.props.onlyShowDeals && _countDeals(item.deals,this.props.day)
                                     }
                                 </Text>
                             </View>

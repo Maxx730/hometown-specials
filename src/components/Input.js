@@ -10,7 +10,7 @@ class Input extends React.Component {
             <View>
                 {this.props.label && <Text>{this.props.label}</Text>}
                 <View style={[Styles.Input, this.props.icon && {
-                    paddingLeft: 18
+                    paddingLeft: 18,
                 }]}>
                     {this.props.icon && this.props.icon}
                     <TextInput placeholder={this.props.placeholder ? this.props.placeholder : ''} style={[Styles.InnerValue]} numberOfLines={this.props.lines ? this.props.lines : 1} multiline={this.props.lines > 1} onChangeText={(value) => {
