@@ -28,7 +28,9 @@ class Deals extends React.Component {
     renderDailyDeals(deals) {
         return deals.map((item, index) => {
             return(
-                <View style={[Styles.DealItem]} key={`deal-${index}`}>
+                <View style={[Styles.DealItem, index === (deals.length - 1) && {
+                    borderBottomWidth: 0
+                }]} key={`deal-${index}`}>
                     <View style={[Styles.DealInformation]}>
                         <Text style={[{
                             textTransform: 'capitalize',
@@ -57,7 +59,9 @@ class Deals extends React.Component {
     renderAllDeals(deals) {
         return deals.map((item, index) => {
             return(
-                <View style={[Styles.DealItem]} key={`deal-${index}`}>
+                <View style={[Styles.DealItem, index === (deals.length - 1) && {
+                    borderBottomWidth: 0
+                }]} key={`deal-${index}`}>
                     <View style={[Styles.DealInformation]}>
                         <View style={[{
                             flexDirection: 'row'

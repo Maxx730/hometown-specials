@@ -18,17 +18,6 @@ class Settings extends React.Component {
             analytics: null
         }
     }
-    componentDidMount() {
-        // this.state.analytics.hit(new PageHit('Settings'))
-        // .then(() => {})
-        // .catch(e => console.log(e.message));
-
-        // _getPrefs().then(result => {
-        //     this.setState({
-        //         prefs: result
-        //     });
-        // });
-    }
 
     render() {
         return(
