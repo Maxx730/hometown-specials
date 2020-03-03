@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, StatusBar, Text, Platform, TouchableOpacity } from 'react-native';
 import { PageHit } from 'expo-analytics';
-import { Entypo } from '@expo/vector-icons';
+import { Entypo, Feather } from '@expo/vector-icons';
 import openMap from "react-native-open-maps";
 
 //Import Components
@@ -84,21 +84,31 @@ class Main extends React.Component {
                         justifyContent: 'flex-end'
                     }]}>
                         {this.state.location === 'list' && <Head day={this.state.day} setDay={this._setDay}/>}
-                        <Tabs tabs={[{
-                            label: 'Today',
-                            callback: () => {
-                                this.setState({
-                                    location: 'list'
-                                });
-                            }
-                        },{
-                            label: 'Search',
-                            callback: () => {
-                                this.setState({
-                                    location: 'search'
-                                });
-                            }
-                        }]}/>
+                        <View style={[{
+                            flexDirection: 'row'
+                        }]}>
+                            <View style={[Styles.TabIcon]}>
+
+                            </View>
+                            <Tabs tabs={[{
+                                label: 'Today',
+                                callback: () => {
+                                    this.setState({
+                                        location: 'list'
+                                    });
+                                }
+                            },{
+                                label: 'Search',
+                                callback: () => {
+                                    this.setState({
+                                        location: 'search'
+                                    });
+                                }
+                            }]}/>
+                            <TouchableOpacity style={[Styles.TabIcon]}>
+                                <Feather name={'settings'} size={32}/>
+                            </TouchableOpacity>
+                        </View>
                     </View>
                     {this._renderNavigationLocation()}
                 </View>
