@@ -22,23 +22,21 @@ class Search extends React.Component {
     }
 
     render() {
-        const specials = _findSpecials(this.props.data.locations,this.state.searchTerm);
+        const specials = _findSpecials(this.props.data.locations,this.props.term);
         return(
-            <View>
-                <View style={[Styles.SearchView]}>
-                    <Input icon={<AntDesign name={'search1'} size={24}/>} placeholder={`Search`} onChange={(value) => {
-                        this.setState({
-                            searchTerm: value
-                        })
-                    }}/>
-                </View>
+            <View style={[{
+                flex: 1,
+                flexDirection: 'column'
+            }]}>
                 <View style={[{
-                   height: 100
+                   flex: 1
                 }]}>
                     <View style={[{
                         flex: 1
                     }]}>
-                        <Locations day={0} data={specials}/>
+                        <Locations day={0} data={specials} onlyShowDeals={false} setFocused={(location) => {
+                            this.props.setFocused && this.props.setFocused(location, true);
+                        }}/>
                     </View>
                 </View>
             </View>
