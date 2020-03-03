@@ -23,7 +23,9 @@ class Modal extends React.Component {
 
     render() {
         return(
-            <View>
+            <View style={[{
+                position: 'absolute'
+            }]}>
                 <Animated.View style={[Styles.ModalMask, {
                     opacity: this.state.opacity
                 }]}>

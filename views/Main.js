@@ -59,18 +59,6 @@ class Main extends React.Component {
     render() {
         return(
             <View behavior="padding" style={[Styles.Main]}>
-                {this.state.showModal && this._renderModal({
-                    title: 'Details',
-                    content: this._getModal(this.state.showAllInfo),
-                    onClose: () => {
-                        this.setState({
-                            focused: null,
-                            showModal: false,
-                            showHours: false,
-                            showAllInfo: false
-                        });
-                    }
-                })}
                 {Platform.OS === 'ios' && <StatusBar barStyle="dark-content" />}
                 <View style={[Styles.Browse]}>
                     <View style={[{
@@ -78,7 +66,12 @@ class Main extends React.Component {
                         backgroundColor: '#FFFFFF',
                         paddingBottom: 12,
                         paddingTop: 24,
-                        justifyContent: 'flex-end'
+                        justifyContent: 'flex-end',
+                        shadowColor: '#000',
+                        shadowOffset: { width: 0, height: 0 },
+                        shadowOpacity: 0.4,
+                        shadowRadius: 5,
+                        zIndex: 9999
                     }]}>
                         {this.state.location === 'list' ? <Head day={this.state.day} setDay={this._setDay}/> : <View style={[Styles.SearchView]}>
                             <Input icon={<AntDesign name={'search1'} size={24}/>} placeholder={`Search`} onChange={(value) => {
@@ -90,9 +83,9 @@ class Main extends React.Component {
                         <View style={[{
                             flexDirection: 'row'
                         }]}>
-                            <View style={[Styles.TabIcon]}>
-
-                            </View>
+                            <TouchableOpacity style={[Styles.TabIcon]}>
+                                <Feather name={'edit'} size={32}/>
+                            </TouchableOpacity>
                             <Tabs tabs={[{
                                 label: 'Today',
                                 callback: () => {
@@ -116,6 +109,18 @@ class Main extends React.Component {
                         </View>
                     </View>
                     {this._renderNavigationLocation()}
+                    {this.state.showModal && this._renderModal({
+                        title: 'Details',
+                        content: this._getModal(this.state.showAllInfo),
+                        onClose: () => {
+                            this.setState({
+                                focused: null,
+                                showModal: false,
+                                showHours: false,
+                                showAllInfo: false
+                            });
+                        }
+                    })}
                 </View>
             </View>
         );
@@ -164,7 +169,7 @@ class Main extends React.Component {
                             openMap({ query: `${this.state.focused.name} ${this.state.focused.location.city}` });
                         }} style={[{
                             alignItems: 'center',
-                            padding: 8
+
                         }]}>
                             <Entypo name={'map'} size={24}/>
                         </TouchableOpacity>
