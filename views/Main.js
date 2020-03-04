@@ -16,6 +16,7 @@ import Submit from '../src/components/Submit';
 import Deals from '../src/components/Deals';
 import Hours from '../src/components/Hours';
 import Input from '../src/components/Input';
+import Toast from '../src/components/Toast';
 
 //Import Data
 import data from "../lib/Data";
@@ -25,7 +26,7 @@ import Styles from "../lib/Styles";
 
 //Import Utility Methods
 import { _getPrefs } from '../lib/Preferences';
-import { _getSpecials } from '../lib/Utils';
+import { _getSpecials, getDay } from '../lib/Utils';
 
 //Import Screens
 import Search from './Search';
@@ -52,7 +53,8 @@ class Main extends React.Component {
             showModal: false,
             showHours: false,
             showAllInfo: false,
-            searchTerm: ''
+            searchTerm: '',
+            toasting: false
         }
     }
 
@@ -60,6 +62,24 @@ class Main extends React.Component {
         return(
             <View behavior="padding" style={[Styles.Main]}>
                 {Platform.OS === 'ios' && <StatusBar barStyle="dark-content" />}
+                {this.state.toasting && <Toast message={getDay(this.state.day)} onComplete={() => {
+                    this.setState({
+                        toasting: false
+                    });
+                }}/>}
+
+                {(this.state.showModal && Platform.OS === 'android') && this._renderModal({
+                        title: 'Details',
+                        content: this._getModal(this.state.showAllInfo),
+                        onClose: () => {
+                            this.setState({
+                                focused: null,
+                                showModal: false,
+                                showHours: false,
+                                showAllInfo: false
+                            });
+                        }
+                })}
                 <View style={[Styles.Browse]}>
                     <View style={[{
                         elevation: 6,
@@ -71,7 +91,6 @@ class Main extends React.Component {
                         shadowOffset: { width: 0, height: 0 },
                         shadowOpacity: 0.4,
                         shadowRadius: 5,
-                        zIndex: 9999
                     }]}>
                         {this.state.location === 'list' ? <Head day={this.state.day} setDay={this._setDay}/> : <View style={[Styles.SearchView]}>
                             <Input icon={<AntDesign name={'search1'} size={24}/>} placeholder={`Search`} onChange={(value) => {
@@ -83,7 +102,9 @@ class Main extends React.Component {
                         <View style={[{
                             flexDirection: 'row'
                         }]}>
-                            <TouchableOpacity style={[Styles.TabIcon]}>
+                            <TouchableOpacity style={[Styles.TabIcon]} onPress={() => {
+                                this.props.navigation.navigate('Submit')
+                            }}>
                                 <Feather name={'edit'} size={32}/>
                             </TouchableOpacity>
                             <Tabs tabs={[{
@@ -109,7 +130,7 @@ class Main extends React.Component {
                         </View>
                     </View>
                     {this._renderNavigationLocation()}
-                    {this.state.showModal && this._renderModal({
+                    {(this.state.showModal && Platform.OS === 'ios') && this._renderModal({
                         title: 'Details',
                         content: this._getModal(this.state.showAllInfo),
                         onClose: () => {
@@ -219,7 +240,8 @@ class Main extends React.Component {
 
     _setDay(day) {
         this.setState({
-            day: day
+            day: day,
+            toasting: true
         });
     }
 

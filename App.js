@@ -9,6 +9,7 @@ import Main from "./views/Main";
 import Settings from "./views/Settings";
 import EULA from "./views/EULA";
 import Special from "./views/Special";
+import Submit from "./views/Submit";
 
 //Import Data
 import data from "./lib/Data";
@@ -40,6 +41,12 @@ const AppNavigator = createStackNavigator({
     screen: Special,
     params: {
       analytics: analytics
+    }
+  },
+  Submit: {
+    screen: Submit,
+    params: {
+      
     }
   }
 });

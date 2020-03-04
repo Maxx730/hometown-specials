@@ -31,6 +31,15 @@ class Search extends React.Component {
                 <View style={[{
                    flex: 1
                 }]}>
+                    {
+                        this.props.term === '' && <Text style={[{
+                            backgroundColor: '#000000',
+                            color: '#FFFFFF',
+                            textAlign: 'center',
+                            padding: 6
+                        }]}>All Locations</Text>
+                    }
+
                     <View style={[{
                         flex: 1
                     }]}>
