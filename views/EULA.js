@@ -11,7 +11,7 @@ class EULA extends React.Component {
             analytics: this.props.navigation.state.params.analytics
         }
     }
-    
+
     componentDidMount() {
         this.state.analytics.hit(new PageHit("EULA"))
         .then(() => console.log("success"))
@@ -22,7 +22,8 @@ class EULA extends React.Component {
         return(
             <ScrollView style={[{
                 padding: 16,
-                marginBottom: 24
+                marginBottom: 24,
+                backgroundColor: '#FFFFFF'
             }]}>
                 <HTML html={`<h2>End-User License Agreement (EULA) of <span class="app_name">Hometown Specials</span></h2>
 <p>This End-User License Agreement ("EULA") is a legal agreement between you and <span class="company_name">Kinghorn Apps</span></p>

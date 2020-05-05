@@ -1,5 +1,6 @@
 import React from 'react';
 import { View, Text, FlatList, TouchableOpacity, Platform, Dimensions } from 'react-native';
+import { Feather } from "@expo/vector-icons";
 import { LinearGradient } from 'expo-linear-gradient';
 import { Event } from 'expo-analytics';
 
@@ -27,7 +28,7 @@ class Locations extends React.Component {
             }]}>
                 <FlatList
                 style={[{
-                  
+
                 }]} data={locations} renderItem={({item,index}) => {
                     return(
                         <TouchableOpacity onPress={() => {
@@ -36,15 +37,26 @@ class Locations extends React.Component {
                             <View style={[{
                                 flex: 1
                             }]}>
-                                <Text style={[{
-                                    flex: 1,
-                                    textAlignVertical: 'center',
-                                    paddingTop: Platform.OS === 'ios' ? 6 : 0,
-                                    fontWeight: 'bold',
-                                    fontSize: 18
-                                }]}>
-                                    {item.name}
-                                </Text>
+                                <View style={{
+                                    flexDirection: 'row'
+                                }}>
+                                    <Text style={[{
+                                        textAlignVertical: 'center',
+                                        paddingTop: Platform.OS === 'ios' ? 6 : 0,
+                                        fontWeight: 'bold',
+                                        fontSize: 18
+                                    }]}>
+                                        {item.name}
+                                    </Text>
+                                    <View style={{
+                                        paddingLeft: 6,
+                                        paddingTop: 8,
+                                        flexDirection: 'row'
+                                    }}>
+                                        {item.delivering && <Feather name={'truck'}/>}
+                                        {item.takeout && <View style={{marginLeft: 3}}><Feather name={'shopping-bag'}/></View>}
+                                    </View>
+                                </View>
                                 <Text style={[{
                                     flex: 1,
                                     textAlignVertical: 'center',

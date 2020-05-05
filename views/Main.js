@@ -25,8 +25,10 @@ import data from "../lib/Data";
 import Styles from "../lib/Styles";
 
 //Import Utility Methods
-import { _getPrefs } from '../lib/Preferences';
+import { _getPrefs, _savePrefs, _setDefaults, _cacheLocations, _getCache, _clearCache } from '../lib/Preferences';
 import { _getSpecials, getDay } from '../lib/Utils';
+import {_getCachedData, _saveCacheData, _hasCachedData, _deleteCache} from "../lib/Storage";
+import * as Network from '../lib/Network';
 
 //Import Screens
 import Search from './Search';
@@ -41,6 +43,7 @@ class Main extends React.Component {
         this._setDay = this._setDay.bind(this);
         this._setNavigationLocation = this._setNavigationLocation.bind(this);
         this._toggleModal = this._toggleModal.bind(this);
+        this._savePrefs = this._savePrefs.bind(this);
 
         this.state = {
             focused: null,
@@ -54,9 +57,41 @@ class Main extends React.Component {
             showHours: false,
             showAllInfo: false,
             searchTerm: '',
-            toasting: false
+            toasting: false,
+            prefs: null,
+            loading: true
         }
     }
+
+    //Grab the data from the backend server.
+    componentDidMount() {
+        _hasCachedData().then(proceed => {
+            if (proceed) {
+                _getCachedData().then(data => {
+                    _getPrefs().then(prefs => {
+                        this.setState({
+                            prefs: prefs,
+                            loading: false,
+                            locations: data
+                        });
+                    });
+                });
+            } else {
+                Network._getLocations().then(locations => {
+                    _saveCacheData(JSON.stringify({lastCached: new Date(), locations: locations})).then(() => {
+                        _getPrefs().then(prefs => {
+                            this.setState({
+                                prefs: prefs,
+                                loading: false,
+                                locations: locations
+                            });
+                        });
+                    });
+                });
+            }
+        })
+    }
+
 
     render() {
         return(
@@ -92,7 +127,8 @@ class Main extends React.Component {
                         shadowOpacity: 0.4,
                         shadowRadius: 5,
                     }]}>
-                        {this.state.location === 'list' ? <Head day={this.state.day} setDay={this._setDay}/> : <View style={[Styles.SearchView]}>
+                        {this.state.loading && <Text>Loading!!!!</Text>}
+                        {this.state.location === 'list' ? <Head addPadding={true} day={this.state.day} setDay={this._setDay}/> : <View style={[Styles.SearchView]}>
                             <Input icon={<AntDesign name={'search1'} size={24}/>} placeholder={`Search`} onChange={(value) => {
                                 this.setState({
                                     searchTerm: value
@@ -123,7 +159,16 @@ class Main extends React.Component {
                                 }
                             }]}/>
                             <TouchableOpacity onPress={() => {
-                                this.props.navigation.navigate('Settings')
+                                this.props.navigation.navigate('Settings', {
+                                    prefs: this.state.prefs,
+                                    save: (prefs) => {
+                                        return new Promise(resolve => {
+                                            this._savePrefs(prefs).then(prefs => {
+                                                resolve(prefs)
+                                            });
+                                        });
+                                    }
+                                });
                             }} style={[Styles.TabIcon]}>
                                 <Feather name={'settings'} size={32}/>
                             </TouchableOpacity>
@@ -161,6 +206,12 @@ class Main extends React.Component {
                             fontSize: 18
                         }]}>{this.state.focused.name}</Text>
                         <Text>{this.state.focused.location.street}, {this.state.focused.location.city}</Text>
+                    </View>
+                    <View style={{
+                        flexDirection: 'row'
+                    }}>
+                        {this.state.focused.delivering && <Feather size={24} name={'truck'}/>}
+                        {this.state.focused.takeout && <Feather size={24} name={'shopping-bag'}/>}
                     </View>
                 </View>
                 <View style={[Styles.ModalTabs],{
@@ -259,13 +310,25 @@ class Main extends React.Component {
                 }]}>
                     <Search term={this.state.searchTerm} data={this.state.data} setFocused={this._setFocused}/>
                 </View>
-            default: 
+            default:
                 return <View style={[{
                     flex: 1
                 }]}>
                     <Locations day={this.state.day} onlyShowDeals={true} analytics={this.state.analytics} data={this.state.results ? this.state.results : this.state.data.locations} setFocused={this._setFocused}/>
                 </View>
         }
+    }
+
+    _savePrefs(prefs) {
+        return new Promise((resolve, reject) => {
+            _savePrefs(prefs).then(result => {
+                this.setState({
+                    prefs: result
+                });
+
+                resolve(result);
+            });
+        });
     }
 }
 

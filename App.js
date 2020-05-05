@@ -46,9 +46,10 @@ const AppNavigator = createStackNavigator({
   Submit: {
     screen: Submit,
     params: {
-      
+
     }
   }
 });
 
 export default createAppContainer(AppNavigator);
+

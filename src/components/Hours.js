@@ -11,10 +11,6 @@ class Hours extends React.Component {
     render() {
         return(
             <View style={[Styles.LocationHours]}>
-                <Text style={[{
-                    fontWeight: 'bold',
-                    fontSize: 18
-                }]}>Hours</Text>
                 <ScrollView style={[Styles.HoursList]}>
                     {this.props.hours.map((item,index) => {
                         return(

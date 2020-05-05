@@ -1,26 +1,29 @@
 import React from "react";
 import { View, Text, FlatList, TouchableOpacity, ScrollView, Dimensions } from "react-native";
-import { Entypo, Ionicons } from "@expo/vector-icons";
+import { Entypo, Ionicons, Feather } from "@expo/vector-icons";
+import Button from './Button';
 
 //Import Styles
 import Styles from "../../lib/Styles";
 
-//Import Util Methods 
+//Import Util Methods
 import { _getSpecials, _getDayOfWeek, shareDeal, getAllSpecials, getDay } from "../../lib/Utils";
 
 class Deals extends React.Component {
     render() {
         const deals = this.props.showAllDeals ? getAllSpecials(this.props.deals) : _getSpecials(this.props.deals, this.props.day);
         return(
-            <View style={[Styles.Deals]}>
-                {!this.props.showAllDeals && <Text style={[Styles.DealsTitle]}>Today's Specials</Text>}
-                <ScrollView style={[{
+            <View style={{
+                flex: 1
+            }}>
+                {deals.length === 0 ? this.renderZeroDeals() : <ScrollView style={[{
                     marginTop: this.props.showAllDeals ? 12 : 0
                 }]}>
                     {
                         this.props.showAllDeals ? this.renderAllDeals(deals) : this.renderDailyDeals(deals)
                     }
-                </ScrollView>
+                </ScrollView>}
+
             </View>
         );
     }
@@ -46,6 +49,9 @@ class Deals extends React.Component {
                             }
                         </Text>
                     </View>
+                    <TouchableOpacity>
+                        <Feather size={24} name={'thumbs-up'}/>
+                    </TouchableOpacity>
                     <TouchableOpacity onPress={() => {
                         shareDeal(`${this.props.location.name}`,`${this.props.location.name} - ${this.props.location.location.street}, ${this.props.location.location.city} ${this.props.location.location.state} - ${item.description}`)
                     }} style={[Styles.DealShare]}>
@@ -98,6 +104,38 @@ class Deals extends React.Component {
             case "drink":
                 return <Entypo name={"drink"} size={24}/>
         }
+    }
+
+    renderZeroDeals() {
+        return(
+            <View style={[Styles.ZeroDeals]}>
+                <View style={{
+                    flexDirection: 'row',
+                    padding: 16
+                }}>
+                    <View style={{
+                        justifyContent: 'center',
+                    }}>
+                        <Feather  name={'alert-circle'} size={36}/>
+                    </View>
+                    <View style={{
+                        padding: 12,
+                        flex: 1
+                    }}>
+                        <Text>
+                            Unfortunately it doesn't look like there are any deals on {getDay(this.props.day)}.
+                        </Text>
+                    </View>
+                </View>
+                <View>
+                    <TouchableOpacity>
+                        <Button round label={'Tap to Submit'}>
+
+                        </Button>
+                    </TouchableOpacity>
+                </View>
+            </View>
+        )
     }
 }
 

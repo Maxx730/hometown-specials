@@ -29,7 +29,11 @@ class Head extends React.Component {
     render() {
         return(
             <View>
-                <TouchableOpacity style={[Styles.Head]} onPress={this._toggleShowFilters}>
+                <TouchableOpacity style={[this.props.addPadding && Styles.Head,!this.props.addPadding && {
+                    flexDirection: 'row',
+                    justifyContent: 'center',
+                    paddingTop: 16
+                }]} onPress={this._toggleShowFilters}>
                     <Text style={[Styles.Title]}>{getDay(this.props.day)}</Text>
                     <Animated.View style={[Styles.DayToggleIcon,{
                         transform:[{
@@ -51,7 +55,7 @@ class Head extends React.Component {
     }
 
     _toggleShowFilters() {
-        this.setState({ 
+        this.setState({
             showFilter: !this.state.showFilter
         });
     }
