@@ -1,9 +1,12 @@
 import React from 'react';
 import { View, Text, Animated, Dimensions, TouchableOpacity } from 'react-native';
-import { AntDesign } from '@expo/vector-icons';
+import { Feather } from '@expo/vector-icons';
 
 //Import Styling
 import Styles from '../../lib/Styles';
+
+//Import Componets
+import Button from './Button';
 
 class Modal extends React.Component {
     constructor(props) {
@@ -13,7 +16,7 @@ class Modal extends React.Component {
 
         this.state = {
             opacity: new Animated.Value(0),
-            fromTop: new Animated.Value(Dimensions.get('window').height)
+            fromTop: new Animated.Value(0)
         }
     }
 
@@ -29,21 +32,31 @@ class Modal extends React.Component {
                 <Animated.View style={[Styles.ModalMask, {
                     opacity: this.state.opacity
                 }]}>
+                    <View style={[{
+                        flex: 2
+                    }]}>
+
+                    </View>
                     <Animated.View style={[Styles.Modal,{
-                        top: this.state.fromTop
+                        flex: this.state.fromTop
                     }]}>
                         <View style={[Styles.ModalHead]}>
                             <Text style={[Styles.ModalTitle]}>
                                 {this.props.title}
                             </Text>
                         </View>
-                        <View style={[Styles.ModalBody]}>
+                        <View style={[Styles.ModalBody, {
+
+                        }]}>
                             {this.props.children}
                         </View>
-                        <TouchableOpacity onPress={this._slideClosed} style={[Styles.CloseButton]}>
-                                <Text style={[Styles.CenterText]}>Close</Text>
-                        </TouchableOpacity>
+                        {this._renderActions()}
                     </Animated.View> 
+                    <View style={[{
+                        flex: 2
+                    }]}>
+
+                    </View>
                 </Animated.View>               
             </View>
         );
@@ -51,7 +64,7 @@ class Modal extends React.Component {
 
     _slideOpen() {
         Animated.timing(this.state.fromTop,{
-            toValue: 100,
+            toValue: this.props.weight ? this.props.weight : 1,
             duration: 250
         }).start();
 
@@ -62,15 +75,50 @@ class Modal extends React.Component {
     }
 
     _slideClosed() {
-        Animated.timing(this.state.fromTop,{
-            toValue: Dimensions.get('window').height,
-            duration: 250
-        }).start();
 
         Animated.timing(this.state.opacity,{
             toValue: 0,
             duration: 150
         }).start(this.props.onClose && this.props.onClose);
+    }
+
+    _renderActions() {
+        if(this.props.buttons && this.props.buttons.length > 0) {
+            return(
+                <View style={[{
+                    flexDirection: 'row'
+                }]}>
+                    {this.props.buttons.map((button, index) => {
+                        return(
+                            <TouchableOpacity key={`button-${index}`} onPress={button.isCancel ? this._slideClosed : () => {
+                                button.press && button.press();
+                                this._slideClosed();
+                            }} style={[Styles.CloseButton,{
+                                flex: 1
+                            }]}>
+                                    <Text style={[{
+                                        textAlign: 'center',
+                                        fontWeight: 'bold'
+                                    }]}>{button.label}</Text>
+                            </TouchableOpacity>
+                        );
+                    })}
+                </View>
+            );
+        } else {
+            return(
+                <View style={[{
+
+                }]}>
+                    <TouchableOpacity onPress={this._slideClosed} style={[Styles.CloseButton,{
+                    }]}>
+                        <Text style={[{
+                            textAlign: 'center'
+                        }]}>Close</Text>
+                    </TouchableOpacity>
+                </View>
+            );
+        }
     }
 }
 

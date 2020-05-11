@@ -2,6 +2,8 @@ import React from "react";
 import { View, Text, FlatList, TouchableOpacity, ScrollView, Dimensions } from "react-native";
 import { Entypo, Ionicons, Feather } from "@expo/vector-icons";
 import Button from './Button';
+import Counter from './Counter';
+import TextTicker from 'react-native-text-ticker'
 
 //Import Styles
 import Styles from "../../lib/Styles";
@@ -41,22 +43,22 @@ class Deals extends React.Component {
                         }]}>
                             {item.type}
                         </Text>
-                        <Text style={[{
-                            textAlignVertical: 'center'
-                        }]}>
-                            {
-                                item.description
-                            }
-                        </Text>
+                        <View style={{
+                                marginRight: 12
+                            }}>
+                            <TextTicker duration={6000}>
+                                {
+                                    item.description
+                                }
+                            </TextTicker>
+                        </View>
                     </View>
-                    <TouchableOpacity>
-                        <Feather size={24} name={'thumbs-up'}/>
-                    </TouchableOpacity>
-                    <TouchableOpacity onPress={() => {
+                    <Counter/>
+                    {/* <TouchableOpacity onPress={() => {
                         shareDeal(`${this.props.location.name}`,`${this.props.location.name} - ${this.props.location.location.street}, ${this.props.location.location.city} ${this.props.location.location.state} - ${item.description}`)
                     }} style={[Styles.DealShare]}>
                         <Entypo name={'share'} size={24}/>
-                    </TouchableOpacity>
+                    </TouchableOpacity> */}
                 </View>
             )
         });
@@ -79,13 +81,11 @@ class Deals extends React.Component {
                                 {getDay(item.day)}
                             </Text>
                         </View>
-                        <Text style={[{
-                            textAlignVertical: 'center'
-                        }]}>
+                        <TextTicker style={{ fontSize: 24 }} duration={3000}>
                             {
                                 item.deal.description
                             }
-                        </Text>
+                        </TextTicker>
                     </View>
                     <TouchableOpacity onPress={() => {
                         shareDeal(`${this.props.location.name}`,`${this.props.location.name} - ${this.props.location.location.street}, ${this.props.location.location.city} ${this.props.location.location.state} - ${item.description}`)

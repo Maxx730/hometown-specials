@@ -48,14 +48,6 @@ class Locations extends React.Component {
                                     }]}>
                                         {item.name}
                                     </Text>
-                                    <View style={{
-                                        paddingLeft: 6,
-                                        paddingTop: 8,
-                                        flexDirection: 'row'
-                                    }}>
-                                        {item.delivering && <Feather name={'truck'}/>}
-                                        {item.takeout && <View style={{marginLeft: 3}}><Feather name={'shopping-bag'}/></View>}
-                                    </View>
                                 </View>
                                 <Text style={[{
                                     flex: 1,
@@ -73,8 +65,19 @@ class Locations extends React.Component {
                                 paddingLeft: 14,
                                 paddingRight: 14,
                                 alignSelf: 'center',
-                                justifyContent: 'center'
+                                justifyContent: 'center',
+                                flexDirection: 'row'
                             }]}>
+                                <View style={{
+                                    paddingRight: 6,
+                                        flexDirection: 'row',
+                                        justifyContent: 'center',
+                                        alignContent: 'center',
+                                        alignItems: 'center'
+                                }}>
+                                        {item.delivering && <Feather size={24} name={'truck'}/>}
+                                        {item.takeout && <View style={{marginLeft: 6}}><Feather size={24} name={'shopping-bag'}/></View>}
+                                </View>
                                 <Text style={[Styles.DealCount]}>
                                     {
                                         this.props.onlyShowDeals && _countDeals(item.deals,this.props.day)

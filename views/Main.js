@@ -58,6 +58,7 @@ class Main extends React.Component {
             showAllInfo: false,
             searchTerm: '',
             toasting: false,
+            toastMessage: '',
             prefs: null,
             loading: true
         }
@@ -97,7 +98,7 @@ class Main extends React.Component {
         return(
             <View behavior="padding" style={[Styles.Main]}>
                 {Platform.OS === 'ios' && <StatusBar barStyle="dark-content" />}
-                {this.state.toasting && <Toast message={getDay(this.state.day)} onComplete={() => {
+                {this.state.toasting && <Toast message={this.state.toastMessage} onComplete={() => {
                     this.setState({
                         toasting: false
                     });
@@ -161,12 +162,22 @@ class Main extends React.Component {
                             <TouchableOpacity onPress={() => {
                                 this.props.navigation.navigate('Settings', {
                                     prefs: this.state.prefs,
+                                    setDefaults: () => {
+                                        return new Promise(resolve => {
+                                            _setDefaults().then(prefs => {
+                                                resolve(prefs)
+                                            })
+                                        });
+                                    },
                                     save: (prefs) => {
                                         return new Promise(resolve => {
                                             this._savePrefs(prefs).then(prefs => {
                                                 resolve(prefs)
                                             });
                                         });
+                                    },
+                                    refresh: () => {
+                                        this._requestData();
                                     }
                                 });
                             }} style={[Styles.TabIcon]}>
@@ -199,7 +210,7 @@ class Main extends React.Component {
             }]}>
                 <View style={[Styles.ModalAdress]}>
                     <View style={[{
-                        flex: 1
+
                     }]}>
                         <Text style={[{
                             fontWeight: 'bold',
@@ -261,7 +272,7 @@ class Main extends React.Component {
 
     _renderModal(modal) {
         return(
-            <Modal title={modal.title} onClose={() => {
+            <Modal weight={this.state.modalWeight ? this.state.modalWeight : 1} title={modal.title} growBody={true} onClose={() => {
                 modal.onClose && modal.onClose();
             }}>
                 {modal.content}
@@ -273,7 +284,8 @@ class Main extends React.Component {
         this.setState({
             focused: location,
             showModal: true,
-            showAllInfo: showAllInfo ? true : false
+            showAllInfo: showAllInfo ? true : false,
+            modalWeight: 8
         });
     }
 
@@ -292,7 +304,8 @@ class Main extends React.Component {
     _setDay(day) {
         this.setState({
             day: day,
-            toasting: true
+            toasting: true,
+            toastMessage: `Changed to ${getDay(day)}`
         });
     }
 
@@ -327,6 +340,18 @@ class Main extends React.Component {
                 });
 
                 resolve(result);
+            });
+        });
+    }
+
+    _requestData() {
+        Network._getLocations().then(locations => {
+            this.setState({
+                data:{
+                    locations: locations
+                },
+                toasting: true,
+                toastMessage: 'Refreshing information...'
             });
         });
     }
