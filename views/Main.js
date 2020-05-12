@@ -281,12 +281,7 @@ class Main extends React.Component {
     }
 
     _setFocused(location, showAllInfo) {
-        this.setState({
-            focused: location,
-            showModal: true,
-            showAllInfo: showAllInfo ? true : false,
-            modalWeight: 8
-        });
+        this.props.navigation.navigate('Details');
     }
 
     _toggleModal() {
