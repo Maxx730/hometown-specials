@@ -9,7 +9,7 @@ class Tabs extends React.Component {
         super(props);
 
         this.state = {
-            right: new Animated.Value((Dimensions.get('window').width / 4) + 8),
+            right: new Animated.Value((Dimensions.get('window').width / 4) + 32),
             left: new Animated.Value(3)
         }
     }
@@ -44,14 +44,14 @@ class Tabs extends React.Component {
         }).start();
 
         Animated.timing(this.state.left, {
-            toValue: (Dimensions.get('window').width / 4) + 8,
+            toValue: (Dimensions.get('window').width / 4) + 32,
             duration: 150
         }).start(callback);
     }
 
     _toLeft(callback) {
         Animated.timing(this.state.right, {
-            toValue: (Dimensions.get('window').width / 4) + 8,
+            toValue: (Dimensions.get('window').width / 4) + 32,
             duration: 150
         }).start();
 

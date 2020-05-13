@@ -1,6 +1,7 @@
 import { createAppContainer } from "react-navigation";
 import { createStackNavigator } from "react-navigation-stack";
 import { Analytics, Event } from "expo-analytics";
+import { Text } from 'react-native';
 
 const analytics = new Analytics("UA-156478860-1");
 
@@ -21,9 +22,6 @@ const AppNavigator = createStackNavigator({
     params: {
       data: data,
       analytics: analytics
-    },
-    navigationOptions: {
-      headerShown: false
     }
   },
   Settings: {
@@ -54,6 +52,11 @@ const AppNavigator = createStackNavigator({
     screen: Details,
     params: {
       analytics: analytics
+    },
+    navigationOptions: ({ navigation }) => {
+      return {
+        title: navigation.getParam('Title', 'Default Title'),
+      };
     }
   }
 });

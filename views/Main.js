@@ -281,7 +281,11 @@ class Main extends React.Component {
     }
 
     _setFocused(location, showAllInfo) {
-        this.props.navigation.navigate('Details');
+        this.props.navigation.navigate('Details',{
+            location: location,
+            day: this.state.day,
+            Title: location.name
+        });
     }
 
     _toggleModal() {
@@ -341,12 +345,15 @@ class Main extends React.Component {
 
     _requestData() {
         Network._getLocations().then(locations => {
-            this.setState({
-                data:{
-                    locations: locations
-                },
-                toasting: true,
-                toastMessage: 'Refreshing information...'
+            //Next save this data into the cache.
+            _saveCacheData(JSON.stringify({lastCached: new Date(), locations: locations})).then(() => {
+                this.setState({
+                    data:{
+                        locations: locations
+                    },
+                    toasting: true,
+                    toastMessage: 'Refreshing information...'
+                });
             });
         });
     }
