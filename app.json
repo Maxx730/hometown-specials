@@ -3,7 +3,6 @@
     "name": "Hometown Specials",
     "slug": "hometown-specials",
     "privacy": "public",
-    "sdkVersion": "36.0.0",
     "platforms": [
       "ios",
       "android",
