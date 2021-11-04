@@ -1,21 +1,24 @@
 import { StatusBar } from 'expo-status-bar';
 import React, { useEffect } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
-import { FIREBASE_API_KEY } from '@env';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
-import { SetupFirebase, GetData } from './lib/Network';
+import Main from './views/Main';
+import Details from './views/Details';
+import LocationAdmin from './views/LocationAdmin';
 
-export default function App() {
-  useEffect(() => {
-    SetupFirebase()
-    GetData();
-  });
-  
+const Stack = createNativeStackNavigator();
+
+export default function App() {  
   return (
-    <View style={styles.container}>
-      <StatusBar style="auto" />
-      <Text>ddafdsa</Text>
-    </View>
+    <NavigationContainer>
+      <Stack.Navigator>
+        <Stack.Screen name="Main" component={Main} />
+        <Stack.Screen name="Details" component={Details} />
+        <Stack.Screen name="Location [Admin]" component={LocationAdmin}/>
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 }
 
