@@ -1,14 +1,20 @@
 import React, { useEffect, useState } from 'react';
 import { StyleSheet, Text, View, Button } from 'react-native';
+import { Feather } from '@expo/vector-icons';
 
 import { GetLocations } from '../lib/Network';
-import { ClearCachedData, CacheExists, GetCachedData, SaveCache } from '../lib/Cache';
+import { GetSetting } from '../lib/Cache';
 import Loading from '../src/components/Loading';
-import Locations from '../src/components/Locations';
+
+import { CommonStyles, Labels, Colors } from '../lib/Constants';
+
+import HsFieldSet from '../src/components/HsFieldSet';
+import HsButton from '../src/components/HsButton';
+import HsLocations from '../src/components/HsLocations';
+import HsNavigation from '../src/components/HsNavigation';
 
 const Styles = StyleSheet.create({
     Content: {
-        padding: 24,
         height: '100%'
     },
     MarginTop: {
@@ -18,7 +24,7 @@ const Styles = StyleSheet.create({
 
 export default function Main(props) {
     const [data, setData] = useState([]);
-    const [cacheDisabled, setCacheDisable] = useState(false);
+    const [darkTheme, setDarkTheme] = useState(false);
 
     useEffect(() => {
         if (data.length == 0) {
@@ -26,41 +32,35 @@ export default function Main(props) {
                 setData(_locations);
             });
         }
+
+        GetSetting('DarkTheme').then(_val => {
+            setDarkTheme(_val);
+        });
     });
+
+    const RenderMainScreen = (props, debug, data) => {
+        if (debug) {
+            return (
+                <View style={[CommonStyles.Flex, darkTheme && CommonStyles.DarkBackground]}>
+                    <HsNavigation title={Labels.WELCOME} darkTheme={darkTheme} hideBack={true} extraButton={
+                        {
+                            icon: <Feather size={32} name='settings' color={darkTheme ? Colors.White : Colors.Black}/>,
+                            onPress: () => {
+                                props.navigation.navigate('Settings');
+                            }
+                        }
+                    }/>
+
+                </View>
+            )
+        } else {
+            return (<></>)
+        }
+    }
 
     return (
         <View style={Styles.Content}>
-            {data.length > 0 ? RenderMainScreen(props, true, cacheDisabled, setCacheDisable, data) : <><Loading/></>}
+            {data.length > 0 ? RenderMainScreen(props, true, data) : <><Loading/></>}
         </View>
     );
-}
-
-function RenderMainScreen(props, debug, cacheDisabled, setCacheDisable, data) {
-    if (debug) {
-        return (
-            <View>
-                <Button disabled={cacheDisabled} onPress={(event) => {
-                    ClearCachedData();
-                    setCacheDisable(true);
-                }} title="Reset Cache"/>
-                <View style={Styles.MarginTop}>
-                    <Button onPress={() => {
-                        props.navigation.navigate('Details');
-                    }} title="Details"/>
-                </View>
-                <View style={Styles.MarginTop}>
-                    <Button title="Location [Admin]" style={Styles.MarginTop} onPress={() => {
-                        props.navigation.navigate('Location [Admin]', {
-                            id: data[0]
-                        });
-                    }}/>
-                </View>
-                <View style={Styles.MarginTop}>
-                    <Locations data={data}/>
-                </View>
-            </View>
-        )
-    } else {
-        return (<></>)
-    }
 }

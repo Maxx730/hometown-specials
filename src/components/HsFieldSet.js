@@ -8,22 +8,22 @@ const Styles = StyleSheet.create({
         paddingBottom: Sizes.Small
     },
     Header: {
-        borderBottomColor: Colors.DividerGrey,
-        borderBottomWidth: 1,
         marginBottom: Sizes.Medium,
         paddingBottom: Sizes.Small,
         marginLeft: Sizes.Large,
         marginRight: Sizes.Large
     },
     Title: {
-        paddingLeft: Sizes.Medium,
-        paddingRight: Sizes.Medium
+        fontWeight: 'bold'
+    },
+    Horizontal: {
+        flexDirection: 'row'
     }
 });
 
 const HsFieldSet = (props) => {
     return (
-        <View style={Styles.Spacing}>
+        <View style={[Styles.Spacing]}>
             {props.title && RenderHeader(props.title)}
             {props.children}
         </View>

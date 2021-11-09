@@ -1,10 +1,11 @@
-import React, { useEffect, useState } from 'react';
-import { StyleSheet, Text, View, Button, FlatList, TextInput } from 'react-native';
-import { Colors, Sizes } from '../../lib/Constants';
+import React from 'react';
+import { StyleSheet, Text, View, TextInput } from 'react-native';
+import { Colors, Sizes, Labels } from '../../lib/Constants';
 
 const Styles = StyleSheet.create({
     Spacing: {
-        marginBottom: Sizes.Medium
+        marginBottom: Sizes.Medium,
+        flex: 1
     },
     Background: {
         backgroundColor: Colors.SlightGrey,
@@ -28,6 +29,8 @@ const HsTextInput = (props) => {
         <View style={Styles.Spacing}>
             {props.title && RenderTitle(props.title)}
             <TextInput
+                placeholder={props.title ? props.title : Labels.PLACEHOLDER}
+                onChangeText={props.onChange}
                 style={Styles.Background}
                 value={props.value}
             />
