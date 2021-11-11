@@ -46,6 +46,8 @@ const Settings = (props) => {
             case 'UseLocation':
                 setUseLocation(val);
         }
+
+        props.route.params._refresh && props.route.params._refresh();
     }
 
     return (

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { StyleSheet, Text, View, Switch } from 'react-native';
+import { isEnabled } from 'react-native/Libraries/Performance/Systrace';
 
 import { Sizes, Colors, CommonStyles } from '../../lib/Constants';
 

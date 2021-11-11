@@ -17,7 +17,7 @@ const HsNavigation = (props) => {
         },
         Header: {
             flexDirection: 'row',
-            minHeight: 58
+            minHeight: props.hidden ? 0 : 58
         },
         BackButton: {
             padding: Sizes.Medium
@@ -95,8 +95,8 @@ const HsNavigation = (props) => {
                 <StatusBar style={props.darkTheme ? 'light' : 'dark'}/>
             </View>
             <View style={[Styles.Margin, Styles.Header]}>
-                {!props.hideBack && GetBackButton(props.navigation)}
-                {GetTitle()}
+                {(!props.hideBack && props.navigation) && GetBackButton(props.navigation)}
+                {!props.hidden && GetTitle()}
                 {props.extraButton && GetExtraButton()}
             </View>
         </>

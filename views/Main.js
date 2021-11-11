@@ -2,25 +2,31 @@ import React, { useEffect, useState } from 'react';
 import { StyleSheet, Text, View, Button } from 'react-native';
 import { Feather } from '@expo/vector-icons';
 
+import { NavigationContainer } from '@react-navigation/native';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+
 import { GetLocations } from '../lib/Network';
 import { GetSetting } from '../lib/Cache';
 import Loading from '../src/components/Loading';
 
-import { CommonStyles, Labels, Colors } from '../lib/Constants';
+import { CommonStyles, Labels, Colors, Sizes } from '../lib/Constants';
 
-import HsFieldSet from '../src/components/HsFieldSet';
-import HsButton from '../src/components/HsButton';
-import HsLocations from '../src/components/HsLocations';
-import HsNavigation from '../src/components/HsNavigation';
 
 const Styles = StyleSheet.create({
-    Content: {
-        height: '100%'
+    Background: {
+        height: '100%',
+        flex: 1
     },
     MarginTop: {
         paddingTop: 12
+    },
+    Content: {
+        padding: Sizes.Large,
+        flex: 1
     }
 });
+
+const Tabs = createBottomTabNavigator();
 
 export default function Main(props) {
     const [data, setData] = useState([]);
@@ -39,27 +45,15 @@ export default function Main(props) {
     });
 
     const RenderMainScreen = (props, debug, data) => {
-        if (debug) {
-            return (
-                <View style={[CommonStyles.Flex, darkTheme && CommonStyles.DarkBackground]}>
-                    <HsNavigation title={Labels.WELCOME} darkTheme={darkTheme} hideBack={true} extraButton={
-                        {
-                            icon: <Feather size={32} name='settings' color={darkTheme ? Colors.White : Colors.Black}/>,
-                            onPress: () => {
-                                props.navigation.navigate('Settings');
-                            }
-                        }
-                    }/>
+        return (
+            <View>
 
-                </View>
-            )
-        } else {
-            return (<></>)
-        }
+            </View>
+        )
     }
 
     return (
-        <View style={Styles.Content}>
+        <View style={Styles.Background}>
             {data.length > 0 ? RenderMainScreen(props, true, data) : <><Loading/></>}
         </View>
     );
