@@ -4,7 +4,7 @@ import { Feather } from '@expo/vector-icons';
 import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplete';
 import * as Location from 'expo-location';
 
-import { Colors, Sizes } from '../lib/Constants';
+import { Colors, Sizes, Labels } from '../lib/Constants';
 import { GetAllSettings } from '../lib/Cache';
 import { SearchLocation } from '../lib/Network';
 
@@ -16,6 +16,8 @@ const Search = (props) => {
     const [_error, setError] = useState(null);
     const [_settings, setSettings] = useState([]);
     const [_location, setLocation] = useState(null);
+    const [_loading, setLoading] = useState(true);
+    const [_loadingMessage, setLoadingMessage] = useState(Labels.RETRIEVING_LOCATION);
 
     useEffect(async () => {
         GetAllSettings().then(_settings => setSettings(_settings));
@@ -28,7 +30,6 @@ const Search = (props) => {
 
             const { coords } = await Location.getCurrentPositionAsync();
 
-
             if (coords) {
                 const { longitude, latitude } = coords;
                 let locations = await Location.reverseGeocodeAsync({
@@ -38,6 +39,7 @@ const Search = (props) => {
                 if (locations.length > 0) {
                     const _loc = locations[0];
                     setLocation(`${_loc.city}, ${_loc.region ? _loc.region : ''}`);
+                    setLoading(false);
                 }
             }
         }
@@ -65,7 +67,7 @@ const Search = (props) => {
             flex: 1
         },
         CityState: {
-            color: _darkTheme ? Colors.Dark : Colors.SlightGrayer,
+            color: _darkTheme ? Colors.DarkPlaceholder : Colors.SlightGrayer,
             fontSize: Sizes.FontSmall
         }
     });
@@ -75,11 +77,11 @@ const Search = (props) => {
             <HsNavigation hidden={true} darkTheme={_darkTheme}/>
             <View style={[Styles.Margin]}>
                 <HsTextInput onChange={() => {
-
+                    setLoading(true);
                 }} icon={'search'} darkTheme={_darkTheme}/>
             </View>
             <View style={Styles.Results}>
-                <HsResults/>
+                <HsResults loadingMessage={_loadingMessage} loading={_loading}/>
             </View>
             <View style={Styles.Location}>
                 {_location && <Text style={Styles.CityState}>{_location}</Text>}

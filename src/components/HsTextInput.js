@@ -41,7 +41,7 @@ const HsTextInput = (props) => {
     const RenderIcon = () => {
         return (
             <View>
-                <Feather style={Styles.Icon} size={32} name={props.icon} color={props.darkTheme ? Colors.White : Colors.Black}/>
+                <Feather style={Styles.Icon} size={32} name={props.icon} color={props.darkTheme ? Colors.DarkPlaceholder : Colors.Black}/>
             </View>
         );
     }
@@ -58,7 +58,7 @@ const HsTextInput = (props) => {
             {props.title && RenderTitle(props.title)}
             {props.icon && RenderIcon()}
             <TextInput
-                placeholderTextColor={props.darkTheme ? Colors.Darker : Colors.Black}
+                placeholderTextColor={props.darkTheme ? Colors.DarkPlaceholder : Colors.Black}
                 placeholder={props.title ? props.title : Labels.PLACEHOLDER}
                 onChangeText={props.onChange}
                 style={Styles.Background}

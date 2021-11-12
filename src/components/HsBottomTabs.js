@@ -3,7 +3,7 @@ import { StyleSheet, View, Text } from 'react-native';
 
 import { SquircleView } from 'react-native-figma-squircle';
 
-import { Colors, Sizes } from '../lib/Constants';
+import { Colors, Sizes } from '../../lib/Constants';
 
 const HsBottomTabs = (props) => {
     const Styles = StyleSheet.create({
