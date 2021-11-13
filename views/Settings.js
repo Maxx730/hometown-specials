@@ -59,6 +59,7 @@ const Settings = (props) => {
             </HsSection>
             <HsSection darkTheme={darkTheme} title={Labels.LOCATION}>
                 <HsPreferenceItem darkTheme={darkTheme} label={'Use Location'} type={'boolean'} value={useLocation} odd={true} onChange={val => SetPreference('UseLocation', val)}/>
+                <HsPreferenceItem darkTheme={darkTheme} label={Labels.SET_LOCATION} type={'button'}/>
             </HsSection>
         </View>
     );

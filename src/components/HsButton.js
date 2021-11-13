@@ -3,25 +3,37 @@ import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 import { Colors, Sizes, CommonStyles } from '../../lib/Constants';
 import { SquircleView } from 'react-native-figma-squircle';
 
-const Styles = StyleSheet.create({
-    Squircle: {
-        width: Sizes.PercentFull,
-        height: Sizes.HsButtonHeight
-    },
-    Background: {
-        paddingTop: Sizes.Large,
-        paddingBottom: Sizes.Large
-    },
-    Label: {
-        textAlign: 'center',
-        fontWeight: 'bold'
-    },
-    Margin: {
-        marginBottom: Sizes.Medium
-    }
-});
-
 const HsButton = (props) => {
+    const Styles = StyleSheet.create({
+        Squircle: {
+            alignSelf: 'center'
+        },
+        Background: {
+            padding: Sizes.Large
+        },
+        Label: {
+            fontSize: Sizes.FontMedium
+        },
+        Margin: {
+            marginBottom: Sizes.Medium
+        },
+        Layout: {
+            flexDirection: 'row',
+            alignSelf: 'center'
+        },
+        Icon: {
+            marginRight: Sizes.Medium
+        }
+    });
+    
+    const GetIcon = () => {
+        return (
+            <View style={[Styles.Icon]}>
+                {props.icon}
+            </View>
+        )
+    }
+
     return (
         <View style={[props.margin && Styles.Margin, props.style, props.horizontal && CommonStyles.Flex]}>
             <SquircleView
@@ -33,11 +45,14 @@ const HsButton = (props) => {
                 }}
             >
                 <TouchableOpacity disabled={props.type === 'disabled'} style={Styles.Background} onPress={props.onPress}>
-                    <Text style={[Styles.Label, {
-                        color: GetTextColor(props.type)
-                    }]}>
-                        {props.label}
-                    </Text>
+                    <View style={[Styles.Layout]}>
+                        {props.icon && GetIcon()}
+                        <Text style={[Styles.Label, {
+                            color: GetTextColor(props.type)
+                        }]}>
+                            {props.label}
+                        </Text>
+                    </View>
                 </TouchableOpacity>
             </SquircleView>
         </View>

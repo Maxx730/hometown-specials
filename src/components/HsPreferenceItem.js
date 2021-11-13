@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { StyleSheet, Text, View, Switch } from 'react-native';
-import { isEnabled } from 'react-native/Libraries/Performance/Systrace';
+import { Feather } from '@expo/vector-icons';
 
 import { Sizes, Colors, CommonStyles } from '../../lib/Constants';
 
@@ -29,6 +29,8 @@ const HsPreferenceItem = props => {
         switch (type) {
             case 'boolean':
                 return <Switch disabled={props.disabled} value={value} onValueChange={onChange}/>
+            case 'button':
+                return <Feather color={props.darkTheme ? Colors.White : Colors.Black} name='chevron-right' size={32}/>
             default:
                 return <View></View>
         }

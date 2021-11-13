@@ -14,6 +14,8 @@ import Details from './views/Details';
 import LocationAdmin from './views/LocationAdmin';
 import Settings from './views/Settings';
 import Search from './views/Search';
+import HsNavigation from './src/components/HsNavigation';
+import Favorites from './views/Favorites';
 
 const Stack = createNativeStackNavigator();
 const Tabs = createBottomTabNavigator();
@@ -82,9 +84,9 @@ export default function App() {
         tabBarShowLabel: false,
         tabBarStyle: Styles.Bar
       })}>
-          <Tabs.Screen name="Home" component={Main}/>
+          <Tabs.Screen name="Home" options={GetScreenOptions()} initialParams={_params} component={Main}/>
           <Tabs.Screen name="Search" options={GetScreenOptions()} initialParams={_params} component={Search}/>
-          <Tabs.Screen name="Favorites" component={Search}/>
+          <Tabs.Screen name="Favorites" options={GetScreenOptions()} initialParams={_params} component={Favorites}/>
           <Tabs.Screen name="Settings" options={GetScreenOptions()} initialParams={_params} component={Settings}/>
       </Tabs.Navigator>
     </NavigationContainer>
